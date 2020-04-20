@@ -1,5 +1,6 @@
+//#include "changePassForm.h"
 #include "mainForm.h"
-#include "changePassForm.h"
+
 using namespace StudentManagementSystem;
 
 void main()

@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include "changePassForm.h"
 namespace StudentManagementSystem {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -19,12 +20,12 @@ namespace StudentManagementSystem {
 	
 	public ref class mainForm : public System::Windows::Forms::Form
 	{
-		ref class classInfo
+	public: ref class classInfo
 		{
 		};
 		ref class userInfo
 		{
-		public: String^ fullName, ^ dob, ^ email, ^userid, ^userpass;
+		public: String^ fullName, ^ dob, ^ email, ^userid, ^userpass, ^no;
 		};
 	public:
 		mainForm(void)
@@ -96,6 +97,7 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::Button^ tbChangePass;
 	private: System::Windows::Forms::TextBox^ tbProfileEmail;
 	private: System::Windows::Forms::TextBox^ textBox11;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
 
 
@@ -139,7 +141,9 @@ namespace StudentManagementSystem {
 			this->btLogout = (gcnew System::Windows::Forms::Button());
 			this->tbProfileClass = (gcnew System::Windows::Forms::TextBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->tbProfileEmail = (gcnew System::Windows::Forms::TextBox());
 			this->tbProfileSid = (gcnew System::Windows::Forms::TextBox());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->tbProfileDob = (gcnew System::Windows::Forms::TextBox());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
@@ -152,14 +156,14 @@ namespace StudentManagementSystem {
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->tbProfileHead = (gcnew System::Windows::Forms::TextBox());
-			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
-			this->tbProfileEmail = (gcnew System::Windows::Forms::TextBox());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->panelLogin->SuspendLayout();
 			this->panelMenu->SuspendLayout();
 			this->panelMenuClass->SuspendLayout();
 			this->panelBtProfile->SuspendLayout();
 			this->panelMain->SuspendLayout();
 			this->panelProfile->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panelLogin
@@ -319,6 +323,7 @@ namespace StudentManagementSystem {
 			// 
 			// panelMain
 			// 
+			this->panelMain->Controls->Add(this->dataGridView1);
 			this->panelMain->Controls->Add(this->panelProfile);
 			this->panelMain->Controls->Add(this->panelLogin);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -348,10 +353,9 @@ namespace StudentManagementSystem {
 			this->panelProfile->Controls->Add(this->textBox9);
 			this->panelProfile->Controls->Add(this->textBox3);
 			this->panelProfile->Controls->Add(this->tbProfileHead);
-			this->panelProfile->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panelProfile->Location = System::Drawing::Point(0, 0);
+			this->panelProfile->Location = System::Drawing::Point(783, 373);
 			this->panelProfile->Name = L"panelProfile";
-			this->panelProfile->Size = System::Drawing::Size(918, 589);
+			this->panelProfile->Size = System::Drawing::Size(84, 46);
 			this->panelProfile->TabIndex = 1;
 			this->panelProfile->Visible = false;
 			// 
@@ -363,6 +367,7 @@ namespace StudentManagementSystem {
 			this->tbChangePass->TabIndex = 3;
 			this->tbChangePass->Text = L"Change password";
 			this->tbChangePass->UseVisualStyleBackColor = true;
+			this->tbChangePass->Click += gcnew System::EventHandler(this, &mainForm::tbChangePass_Click);
 			// 
 			// btLogout
 			// 
@@ -390,6 +395,14 @@ namespace StudentManagementSystem {
 			this->textBox7->TabIndex = 1;
 			this->textBox7->Text = L"Class";
 			// 
+			// tbProfileEmail
+			// 
+			this->tbProfileEmail->Location = System::Drawing::Point(182, 267);
+			this->tbProfileEmail->Name = L"tbProfileEmail";
+			this->tbProfileEmail->Size = System::Drawing::Size(100, 20);
+			this->tbProfileEmail->TabIndex = 1;
+			this->tbProfileEmail->Text = L"Email";
+			// 
 			// tbProfileSid
 			// 
 			this->tbProfileSid->Location = System::Drawing::Point(182, 316);
@@ -397,6 +410,14 @@ namespace StudentManagementSystem {
 			this->tbProfileSid->Size = System::Drawing::Size(100, 20);
 			this->tbProfileSid->TabIndex = 1;
 			this->tbProfileSid->Text = L"Student ID";
+			// 
+			// textBox11
+			// 
+			this->textBox11->Location = System::Drawing::Point(34, 267);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->Size = System::Drawing::Size(100, 20);
+			this->textBox11->TabIndex = 1;
+			this->textBox11->Text = L"Email";
 			// 
 			// textBox6
 			// 
@@ -491,25 +512,17 @@ namespace StudentManagementSystem {
 			this->tbProfileHead->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tbProfileHead->Location = System::Drawing::Point(0, 0);
 			this->tbProfileHead->Name = L"tbProfileHead";
-			this->tbProfileHead->Size = System::Drawing::Size(918, 20);
+			this->tbProfileHead->Size = System::Drawing::Size(84, 20);
 			this->tbProfileHead->TabIndex = 0;
 			this->tbProfileHead->Text = L"PROFILE";
 			// 
-			// textBox11
+			// dataGridView1
 			// 
-			this->textBox11->Location = System::Drawing::Point(34, 267);
-			this->textBox11->Name = L"textBox11";
-			this->textBox11->Size = System::Drawing::Size(100, 20);
-			this->textBox11->TabIndex = 1;
-			this->textBox11->Text = L"Email";
-			// 
-			// tbProfileEmail
-			// 
-			this->tbProfileEmail->Location = System::Drawing::Point(182, 267);
-			this->tbProfileEmail->Name = L"tbProfileEmail";
-			this->tbProfileEmail->Size = System::Drawing::Size(100, 20);
-			this->tbProfileEmail->TabIndex = 1;
-			this->tbProfileEmail->Text = L"Email";
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(244, 64);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(240, 150);
+			this->dataGridView1->TabIndex = 2;
 			// 
 			// mainForm
 			// 
@@ -529,12 +542,13 @@ namespace StudentManagementSystem {
 			this->panelMain->ResumeLayout(false);
 			this->panelProfile->ResumeLayout(false);
 			this->panelProfile->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 		//
-		List<classInfo^> classList;
+		public: List<classInfo^> classList;
 		List<userInfo^> userInfoList;
 		userInfo^ uInfo;
 		//
@@ -556,6 +570,8 @@ namespace StudentManagementSystem {
 			f.open("user.csv");
 			while (f.good())
 			{
+				getline(f, s, ',');
+				u->no = gcnew String(s.c_str());
 				getline(f, s, ',');
 				u->fullName = gcnew String(s.c_str());
 				getline(f, s, ',');
@@ -584,6 +600,7 @@ namespace StudentManagementSystem {
 		void openPanel(Panel^ tmp) //hide all panels and open 1 panel
 		{
 			panelProfile->Visible = false;
+			tmp->Dock = DockStyle(5);
 			tmp->Visible = true;
 		}
 		private: System::Void btLogin_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -601,7 +618,6 @@ namespace StudentManagementSystem {
 			else
 			{
 				tbLogin->Text = "WRONG ID OR PASSWORD. PLEASE TRY AGAIN!";
-				tbLogin->Text = userInfoList[1]->userpass->Length.ToString();
 			}
 		}			   
 		public: System::Void btProfile_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -616,5 +632,14 @@ namespace StudentManagementSystem {
 			showLoginPanel();
 			openPanel(panelLogin);
 		}
+		private: System::Void tbChangePass_Click(System::Object^ sender, System::EventArgs^ e) {
+			changePassForm^ f = gcnew changePassForm;
+			f->ShowDialog();
+			uInfo->userpass = f->newPass;
+			btProfile->PerformClick();
+		}
+		//thieu phan load lai file data sau khi update password
+		// xong task 1 - 6
+
 	};
 }
