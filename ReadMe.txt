@@ -1,6 +1,7 @@
 19125116
 Châu Lê Nhật Quang
 quanggr8@gmail.com
+0942422269
 Quang Lê
 
 19125129
@@ -12,5 +13,5 @@ thanhtung2833@gmail.com
 19125123
 Nguyễn Minh Thư
 nguyenthu04052001@gmail.com
-Nguyễnn Thư
 0938026297
+Nguyễnn Thư
