@@ -225,6 +225,8 @@ namespace StudentManagementSystem {
 		}
 
 
+
+
 	private: System::Void tb2ndPass_TextChanged(System::Object^ sender, System::EventArgs^ e)
 	{
 		tb2ndPass->PasswordChar = '*';
