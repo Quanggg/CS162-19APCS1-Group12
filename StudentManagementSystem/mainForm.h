@@ -22,10 +22,11 @@ namespace StudentManagementSystem {
 	{
 	public: ref class classInfo
 		{
+		public: String ^ name, ^ detail;
 		};
-		ref class userInfo
+	public: ref class userInfo
 		{
-		public: String^ fullName, ^ dob, ^ email, ^userid, ^userpass, ^no;
+		public: String ^ fullName, ^ dob, ^ email, ^userid, ^userpass, ^no;
 		};
 	public:
 		mainForm(void)
@@ -49,6 +50,7 @@ namespace StudentManagementSystem {
 				delete components;
 			}
 		}
+#pragma region Windows Form Designer generated code
 	private: System::Windows::Forms::Panel^ panelLogin;
 	private: System::Windows::Forms::TextBox^ tbUserPass;
 	protected:
@@ -60,10 +62,10 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::Panel^ panelBtProfile;
 
 	private: System::Windows::Forms::Button^ btProfile;
-	private: System::Windows::Forms::Panel^ panelMenuClass;
 
-	private: System::Windows::Forms::Button^ btStudentList;
-	private: System::Windows::Forms::Button^ btClassList;
+
+
+
 	private: System::Windows::Forms::Button^ btClass;
 	private: System::Windows::Forms::Panel^ panelLogo;
 
@@ -97,7 +99,21 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::Button^ tbChangePass;
 	private: System::Windows::Forms::TextBox^ tbProfileEmail;
 	private: System::Windows::Forms::TextBox^ textBox11;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Panel^ panelClassList;
+	private: System::Windows::Forms::TextBox^ textBox12;
+	private: System::Windows::Forms::DataGridView^ dgvClassList;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvClassNo;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ dgvClassName;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ dgvClassDetail;
+	private: System::Windows::Forms::DataGridView^ dgvStudentList;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListNo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListID;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListLastname;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListFirstname;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListGender;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListDob;
+	private: System::Windows::Forms::DataGridViewComboBoxColumn^ dgvStudentListAction;
+
 
 
 
@@ -111,7 +127,7 @@ namespace StudentManagementSystem {
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
-#pragma region Windows Form Designer generated code
+
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -128,14 +144,18 @@ namespace StudentManagementSystem {
 			this->tbUserId = (gcnew System::Windows::Forms::TextBox());
 			this->panelMenu = (gcnew System::Windows::Forms::Panel());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->panelMenuClass = (gcnew System::Windows::Forms::Panel());
-			this->btStudentList = (gcnew System::Windows::Forms::Button());
-			this->btClassList = (gcnew System::Windows::Forms::Button());
 			this->btClass = (gcnew System::Windows::Forms::Button());
 			this->panelBtProfile = (gcnew System::Windows::Forms::Panel());
 			this->btProfile = (gcnew System::Windows::Forms::Button());
 			this->panelLogo = (gcnew System::Windows::Forms::Panel());
 			this->panelMain = (gcnew System::Windows::Forms::Panel());
+			this->panelClassList = (gcnew System::Windows::Forms::Panel());
+			this->dgvStudentList = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvClassList = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvClassNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvClassName = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->dgvClassDetail = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->panelProfile = (gcnew System::Windows::Forms::Panel());
 			this->tbChangePass = (gcnew System::Windows::Forms::Button());
 			this->btLogout = (gcnew System::Windows::Forms::Button());
@@ -156,14 +176,21 @@ namespace StudentManagementSystem {
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->tbProfileHead = (gcnew System::Windows::Forms::TextBox());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListFirstname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListDob = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListAction = (gcnew System::Windows::Forms::DataGridViewComboBoxColumn());
 			this->panelLogin->SuspendLayout();
 			this->panelMenu->SuspendLayout();
-			this->panelMenuClass->SuspendLayout();
 			this->panelBtProfile->SuspendLayout();
 			this->panelMain->SuspendLayout();
+			this->panelClassList->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->BeginInit();
 			this->panelProfile->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panelLogin
@@ -176,9 +203,9 @@ namespace StudentManagementSystem {
 			this->panelLogin->Controls->Add(this->btLogin);
 			this->panelLogin->Controls->Add(this->tbUserPass);
 			this->panelLogin->Controls->Add(this->tbUserId);
-			this->panelLogin->Location = System::Drawing::Point(845, 461);
+			this->panelLogin->Location = System::Drawing::Point(560, 542);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(10, 13);
+			this->panelLogin->Size = System::Drawing::Size(10, 10);
 			this->panelLogin->TabIndex = 0;
 			// 
 			// textBox2
@@ -233,7 +260,6 @@ namespace StudentManagementSystem {
 			// 
 			this->panelMenu->AutoScroll = true;
 			this->panelMenu->Controls->Add(this->button1);
-			this->panelMenu->Controls->Add(this->panelMenuClass);
 			this->panelMenu->Controls->Add(this->btClass);
 			this->panelMenu->Controls->Add(this->panelBtProfile);
 			this->panelMenu->Controls->Add(this->panelLogo);
@@ -246,42 +272,12 @@ namespace StudentManagementSystem {
 			// button1
 			// 
 			this->button1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->button1->Location = System::Drawing::Point(0, 293);
+			this->button1->Location = System::Drawing::Point(0, 227);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(156, 43);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// panelMenuClass
-			// 
-			this->panelMenuClass->Controls->Add(this->btStudentList);
-			this->panelMenuClass->Controls->Add(this->btClassList);
-			this->panelMenuClass->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panelMenuClass->Location = System::Drawing::Point(0, 227);
-			this->panelMenuClass->Name = L"panelMenuClass";
-			this->panelMenuClass->Size = System::Drawing::Size(156, 66);
-			this->panelMenuClass->TabIndex = 3;
-			// 
-			// btStudentList
-			// 
-			this->btStudentList->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btStudentList->Location = System::Drawing::Point(0, 33);
-			this->btStudentList->Name = L"btStudentList";
-			this->btStudentList->Size = System::Drawing::Size(156, 33);
-			this->btStudentList->TabIndex = 1;
-			this->btStudentList->Text = L"View student list";
-			this->btStudentList->UseVisualStyleBackColor = true;
-			// 
-			// btClassList
-			// 
-			this->btClassList->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btClassList->Location = System::Drawing::Point(0, 0);
-			this->btClassList->Name = L"btClassList";
-			this->btClassList->Size = System::Drawing::Size(156, 33);
-			this->btClassList->TabIndex = 0;
-			this->btClassList->Text = L"View class list";
-			this->btClassList->UseVisualStyleBackColor = true;
 			// 
 			// btClass
 			// 
@@ -292,6 +288,7 @@ namespace StudentManagementSystem {
 			this->btClass->TabIndex = 1;
 			this->btClass->Text = L"Class";
 			this->btClass->UseVisualStyleBackColor = true;
+			this->btClass->Click += gcnew System::EventHandler(this, &mainForm::btClass_Click);
 			// 
 			// panelBtProfile
 			// 
@@ -323,7 +320,7 @@ namespace StudentManagementSystem {
 			// 
 			// panelMain
 			// 
-			this->panelMain->Controls->Add(this->dataGridView1);
+			this->panelMain->Controls->Add(this->panelClassList);
 			this->panelMain->Controls->Add(this->panelProfile);
 			this->panelMain->Controls->Add(this->panelLogin);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -331,6 +328,75 @@ namespace StudentManagementSystem {
 			this->panelMain->Name = L"panelMain";
 			this->panelMain->Size = System::Drawing::Size(918, 589);
 			this->panelMain->TabIndex = 2;
+			// 
+			// panelClassList
+			// 
+			this->panelClassList->Controls->Add(this->dgvStudentList);
+			this->panelClassList->Controls->Add(this->dgvClassList);
+			this->panelClassList->Controls->Add(this->textBox12);
+			this->panelClassList->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panelClassList->Location = System::Drawing::Point(0, 0);
+			this->panelClassList->Name = L"panelClassList";
+			this->panelClassList->Size = System::Drawing::Size(918, 589);
+			this->panelClassList->TabIndex = 2;
+			// 
+			// dgvStudentList
+			// 
+			this->dgvStudentList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvStudentList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+				this->dgvStudentListNo,
+					this->dgvStudentListID, this->dgvStudentListLastname, this->dgvStudentListFirstname, this->dgvStudentListGender, this->dgvStudentListDob,
+					this->dgvStudentListAction
+			});
+			this->dgvStudentList->Location = System::Drawing::Point(74, 127);
+			this->dgvStudentList->Name = L"dgvStudentList";
+			this->dgvStudentList->RowHeadersVisible = false;
+			this->dgvStudentList->Size = System::Drawing::Size(633, 343);
+			this->dgvStudentList->TabIndex = 2;
+			// 
+			// dgvClassList
+			// 
+			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->dgvClassNo,
+					this->dgvClassName, this->dgvClassDetail
+			});
+			this->dgvClassList->Location = System::Drawing::Point(18, 45);
+			this->dgvClassList->Name = L"dgvClassList";
+			this->dgvClassList->RowHeadersVisible = false;
+			this->dgvClassList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvClassList->Size = System::Drawing::Size(884, 494);
+			this->dgvClassList->TabIndex = 1;
+			this->dgvClassList->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvClassList_CellContentClick);
+			// 
+			// dgvClassNo
+			// 
+			this->dgvClassNo->HeaderText = L"No";
+			this->dgvClassNo->Name = L"dgvClassNo";
+			this->dgvClassNo->ReadOnly = true;
+			this->dgvClassNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvClassNo->Width = 50;
+			// 
+			// dgvClassName
+			// 
+			this->dgvClassName->HeaderText = L"CLASS NAME";
+			this->dgvClassName->Name = L"dgvClassName";
+			this->dgvClassName->Width = 150;
+			// 
+			// dgvClassDetail
+			// 
+			this->dgvClassDetail->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->dgvClassDetail->HeaderText = L"DETAIL";
+			this->dgvClassDetail->Name = L"dgvClassDetail";
+			// 
+			// textBox12
+			// 
+			this->textBox12->Dock = System::Windows::Forms::DockStyle::Top;
+			this->textBox12->Location = System::Drawing::Point(0, 0);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(918, 20);
+			this->textBox12->TabIndex = 0;
+			this->textBox12->Text = L"Class List";
 			// 
 			// panelProfile
 			// 
@@ -353,9 +419,9 @@ namespace StudentManagementSystem {
 			this->panelProfile->Controls->Add(this->textBox9);
 			this->panelProfile->Controls->Add(this->textBox3);
 			this->panelProfile->Controls->Add(this->tbProfileHead);
-			this->panelProfile->Location = System::Drawing::Point(783, 373);
+			this->panelProfile->Location = System::Drawing::Point(679, 160);
 			this->panelProfile->Name = L"panelProfile";
-			this->panelProfile->Size = System::Drawing::Size(84, 46);
+			this->panelProfile->Size = System::Drawing::Size(68, 45);
 			this->panelProfile->TabIndex = 1;
 			this->panelProfile->Visible = false;
 			// 
@@ -512,17 +578,50 @@ namespace StudentManagementSystem {
 			this->tbProfileHead->Dock = System::Windows::Forms::DockStyle::Top;
 			this->tbProfileHead->Location = System::Drawing::Point(0, 0);
 			this->tbProfileHead->Name = L"tbProfileHead";
-			this->tbProfileHead->Size = System::Drawing::Size(84, 20);
+			this->tbProfileHead->Size = System::Drawing::Size(68, 20);
 			this->tbProfileHead->TabIndex = 0;
 			this->tbProfileHead->Text = L"PROFILE";
 			// 
-			// dataGridView1
+			// dgvStudentListNo
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(244, 64);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(240, 150);
-			this->dataGridView1->TabIndex = 2;
+			this->dgvStudentListNo->HeaderText = L"No";
+			this->dgvStudentListNo->Name = L"dgvStudentListNo";
+			this->dgvStudentListNo->ReadOnly = true;
+			this->dgvStudentListNo->Width = 50;
+			// 
+			// dgvStudentListID
+			// 
+			this->dgvStudentListID->HeaderText = L"STUDEN ID";
+			this->dgvStudentListID->Name = L"dgvStudentListID";
+			// 
+			// dgvStudentListLastname
+			// 
+			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->dgvStudentListLastname->HeaderText = L"LASTNAME";
+			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
+			// 
+			// dgvStudentListFirstname
+			// 
+			this->dgvStudentListFirstname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->dgvStudentListFirstname->HeaderText = L"FIRSTNAME";
+			this->dgvStudentListFirstname->Name = L"dgvStudentListFirstname";
+			// 
+			// dgvStudentListGender
+			// 
+			this->dgvStudentListGender->HeaderText = L"GENDER";
+			this->dgvStudentListGender->Name = L"dgvStudentListGender";
+			// 
+			// dgvStudentListDob
+			// 
+			this->dgvStudentListDob->HeaderText = L"DoB";
+			this->dgvStudentListDob->Name = L"dgvStudentListDob";
+			// 
+			// dgvStudentListAction
+			// 
+			this->dgvStudentListAction->DisplayStyle = System::Windows::Forms::DataGridViewComboBoxDisplayStyle::ComboBox;
+			this->dgvStudentListAction->HeaderText = L"ACTION";
+			this->dgvStudentListAction->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Remove", L"Edit", L"Move" });
+			this->dgvStudentListAction->Name = L"dgvStudentListAction";
 			// 
 			// mainForm
 			// 
@@ -537,20 +636,23 @@ namespace StudentManagementSystem {
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
 			this->panelMenu->ResumeLayout(false);
-			this->panelMenuClass->ResumeLayout(false);
 			this->panelBtProfile->ResumeLayout(false);
 			this->panelMain->ResumeLayout(false);
+			this->panelClassList->ResumeLayout(false);
+			this->panelClassList->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->EndInit();
 			this->panelProfile->ResumeLayout(false);
 			this->panelProfile->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 		//
-		public: List<classInfo^> classList;
+		List<classInfo^> classList;
 		List<userInfo^> userInfoList;
 		userInfo^ uInfo;
+		int panelClassList_load = 0;
 		//
 		void showLoginPanel() //open Login screen
 		{
@@ -559,31 +661,46 @@ namespace StudentManagementSystem {
 			this->Top = (this->Top * 2 - 500 + 650) / 2;
 			this->Height = 500;
 			this->Width = 380;
-			panelLogin->Dock = DockStyle(5);
+			openPanel(panelLogin);
 		}
 		void loadData()
 		{
 			// import accounts file
 			std::ifstream f;
 			std::string s;
-			userInfo^ u = gcnew userInfo;
-			f.open("user.csv");
+			userInfo^ u;
+			f.open("user_login.txt");
 			while (f.good())
 			{
-				getline(f, s, ',');
+				u = gcnew userInfo;
+				getline(f, s, '\n');
 				u->no = gcnew String(s.c_str());
-				getline(f, s, ',');
+				getline(f, s, '\n');
 				u->fullName = gcnew String(s.c_str());
-				getline(f, s, ',');
+				getline(f, s, '\n');
 				u->dob = gcnew String(s.c_str());
-				getline(f, s, ',');
+				getline(f, s, '\n');
 				u->email = gcnew String(s.c_str());
-				getline(f, s, ',');
+				getline(f, s, '\n');
 				u->userid = gcnew String(s.c_str());
 				getline(f, s, '\n');
 				u->userpass = gcnew String(s.c_str());
 				userInfoList.Add(u);
 			}
+			f.close();
+			//import class list file
+			f.open("class_list.txt");
+			classInfo^ u1;
+			while (f.good())
+			{
+				u1 = gcnew classInfo;
+				getline(f, s, '\n');
+				u1->name = gcnew String(s.c_str());
+				getline(f, s, '\n');
+				u1->detail = gcnew String(s.c_str());
+				classList.Add(u1);
+			}
+			f.close();
 		}
 		bool loginCheck(String^ id, String^ pass) //check when user login
 		{
@@ -599,10 +716,28 @@ namespace StudentManagementSystem {
 		}
 		void openPanel(Panel^ tmp) //hide all panels and open 1 panel
 		{
+			if (tmp->Visible) return;
+			panelClassList->Visible = false;
 			panelProfile->Visible = false;
 			tmp->Dock = DockStyle(5);
 			tmp->Visible = true;
 		}
+		void dgvClassListLoad()
+		{
+			int x = 0;
+			for each (classInfo ^ i in classList)
+			{
+				int y = 1;
+				dgvClassList->Rows->Add();
+				dgvClassList->Rows[x]->Cells[0]->Value = x+1;
+				dgvClassList->Rows[x]->Cells[1]->Value = i->name;
+				dgvClassList->Rows[x]->Cells[2]->Value = i->detail;
+				x++;
+			}
+			if (!x) MessageBox::Show(this, "NO DATA! \n PLEASE IMPORT", "WARNING", MessageBoxButtons::OK);
+			panelClassList_load = 1;
+		}
+		//
 		private: System::Void btLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (loginCheck(tbUserId->Text, tbUserPass->Text))
 			{
@@ -641,5 +776,12 @@ namespace StudentManagementSystem {
 		//thieu phan load lai file data sau khi update password
 		// xong task 1 - 6
 
-	};
+		private: System::Void btClass_Click(System::Object^ sender, System::EventArgs^ e) {
+			openPanel(panelClassList);
+			if (!panelClassList_load) dgvClassListLoad();
+		}
+		private: System::Void dgvClassList_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+			//if (dgvClassList->Rows[e->RowIndex])
+		}
+};
 }

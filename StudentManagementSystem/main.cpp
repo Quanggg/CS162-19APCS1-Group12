@@ -2,7 +2,7 @@
 #include "mainForm.h"
 
 using namespace StudentManagementSystem;
-
+[STAThreadAttribute]
 void main()
 {
 	Application::EnableVisualStyles();
