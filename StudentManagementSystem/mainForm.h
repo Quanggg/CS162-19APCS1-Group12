@@ -341,14 +341,14 @@ namespace StudentManagementSystem {
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
@@ -535,6 +535,7 @@ namespace StudentManagementSystem {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(125, 342);
 			this->panel2->TabIndex = 5;
+			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &mainForm::panel2_Paint);
 			// 
 			// panel4
 			// 
@@ -840,6 +841,8 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
 			this->panelMain->Controls->Add(this->panelProfile);
 			this->panelMain->Controls->Add(this->panelCourse);
+			this->panelMain->Controls->Add(this->dgvSchedule);
+			this->panelMain->Controls->Add(this->dgvScore);
 			this->panelMain->Controls->Add(this->panelClassList);
 			this->panelMain->Controls->Add(this->panelCheckIn);
 			this->panelMain->Controls->Add(this->panelScore);
@@ -862,10 +865,10 @@ namespace StudentManagementSystem {
 			this->panelProfile->Controls->Add(this->groupBox1);
 			this->panelProfile->Controls->Add(this->button2);
 			this->panelProfile->Controls->Add(this->label3);
-			this->panelProfile->Location = System::Drawing::Point(238, 144);
+			this->panelProfile->Location = System::Drawing::Point(293, 353);
 			this->panelProfile->Margin = System::Windows::Forms::Padding(4);
 			this->panelProfile->Name = L"panelProfile";
-			this->panelProfile->Size = System::Drawing::Size(959, 568);
+			this->panelProfile->Size = System::Drawing::Size(82, 93);
 			this->panelProfile->TabIndex = 1;
 			this->panelProfile->Visible = false;
 			// 
@@ -1164,7 +1167,7 @@ namespace StudentManagementSystem {
 			this->button2->Location = System::Drawing::Point(0, 73);
 			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(959, 2);
+			this->button2->Size = System::Drawing::Size(82, 2);
 			this->button2->TabIndex = 5;
 			this->button2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button2->UseVisualStyleBackColor = false;
@@ -1180,7 +1183,7 @@ namespace StudentManagementSystem {
 			this->label3->Location = System::Drawing::Point(0, 0);
 			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(959, 73);
+			this->label3->Size = System::Drawing::Size(82, 73);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"       Profile";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1562,7 +1565,7 @@ namespace StudentManagementSystem {
 			this->panelClassList->Controls->Add(this->button3);
 			this->panelClassList->Controls->Add(this->panelClassHeader);
 			this->panelClassList->Controls->Add(this->dgvClassList);
-			this->panelClassList->Location = System::Drawing::Point(833, 15);
+			this->panelClassList->Location = System::Drawing::Point(158, 243);
 			this->panelClassList->Margin = System::Windows::Forms::Padding(4);
 			this->panelClassList->Name = L"panelClassList";
 			this->panelClassList->Size = System::Drawing::Size(217, 102);
@@ -1581,16 +1584,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvStudentList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvStudentList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this->dgvStudentList->ColumnHeadersHeight = 30;
 			this->dgvStudentList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvStudentList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
@@ -1748,16 +1751,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvClassList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle7->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			this->dgvClassList->ColumnHeadersHeight = 30;
 			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
@@ -1788,8 +1791,8 @@ namespace StudentManagementSystem {
 			// 
 			// dgvClassNo
 			// 
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::MidnightBlue;
-			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle8->BackColor = System::Drawing::Color::MidnightBlue;
+			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle8;
 			this->dgvClassNo->HeaderText = L"No";
 			this->dgvClassNo->MinimumWidth = 6;
 			this->dgvClassNo->Name = L"dgvClassNo";
@@ -1799,8 +1802,8 @@ namespace StudentManagementSystem {
 			// 
 			// Column29
 			// 
-			dataGridViewCellStyle7->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column29->DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle9->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column29->DefaultCellStyle = dataGridViewCellStyle9;
 			this->Column29->HeaderText = L"CLASS NAME";
 			this->Column29->MinimumWidth = 6;
 			this->Column29->Name = L"Column29";
@@ -1811,8 +1814,8 @@ namespace StudentManagementSystem {
 			// Column30
 			// 
 			this->Column30->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column30->DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle10->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column30->DefaultCellStyle = dataGridViewCellStyle10;
 			this->Column30->HeaderText = L"DETAIL";
 			this->Column30->MinimumWidth = 6;
 			this->Column30->Name = L"Column30";
@@ -1877,16 +1880,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvCheckIn->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvCheckIn->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this->dgvCheckIn->ColumnHeadersHeight = 30;
 			this->dgvCheckIn->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvCheckIn->EnableHeadersVisualStyles = false;
@@ -1910,8 +1913,7 @@ namespace StudentManagementSystem {
 			// 
 			this->panelScore->Controls->Add(this->button7);
 			this->panelScore->Controls->Add(this->label13);
-			this->panelScore->Controls->Add(this->dgvScore);
-			this->panelScore->Location = System::Drawing::Point(505, 91);
+			this->panelScore->Location = System::Drawing::Point(619, 57);
 			this->panelScore->Margin = System::Windows::Forms::Padding(4);
 			this->panelScore->Name = L"panelScore";
 			this->panelScore->Size = System::Drawing::Size(320, 138);
@@ -1963,16 +1965,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvScore->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvScore->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle10->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvScore->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvScore->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this->dgvScore->ColumnHeadersHeight = 30;
 			this->dgvScore->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvScore->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -1981,7 +1983,7 @@ namespace StudentManagementSystem {
 			});
 			this->dgvScore->EnableHeadersVisualStyles = false;
 			this->dgvScore->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvScore->Location = System::Drawing::Point(0, -464);
+			this->dgvScore->Location = System::Drawing::Point(450, 27);
 			this->dgvScore->Margin = System::Windows::Forms::Padding(4);
 			this->dgvScore->Name = L"dgvScore";
 			this->dgvScore->ReadOnly = true;
@@ -1994,7 +1996,7 @@ namespace StudentManagementSystem {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvScore->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvScore->RowTemplate->Height = 25;
-			this->dgvScore->Size = System::Drawing::Size(320, 602);
+			this->dgvScore->Size = System::Drawing::Size(124, 181);
 			this->dgvScore->TabIndex = 1;
 			// 
 			// Column24
@@ -2041,8 +2043,7 @@ namespace StudentManagementSystem {
 			// 
 			this->panelSchedule->Controls->Add(this->button6);
 			this->panelSchedule->Controls->Add(this->label12);
-			this->panelSchedule->Controls->Add(this->dgvSchedule);
-			this->panelSchedule->Location = System::Drawing::Point(120, 27);
+			this->panelSchedule->Location = System::Drawing::Point(80, 48);
 			this->panelSchedule->Margin = System::Windows::Forms::Padding(4);
 			this->panelSchedule->Name = L"panelSchedule";
 			this->panelSchedule->Size = System::Drawing::Size(220, 181);
@@ -2094,16 +2095,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvSchedule->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvSchedule->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvSchedule->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvSchedule->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvSchedule->ColumnHeadersHeight = 30;
 			this->dgvSchedule->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvSchedule->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
@@ -2112,7 +2113,7 @@ namespace StudentManagementSystem {
 			});
 			this->dgvSchedule->EnableHeadersVisualStyles = false;
 			this->dgvSchedule->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvSchedule->Location = System::Drawing::Point(0, -421);
+			this->dgvSchedule->Location = System::Drawing::Point(397, 100);
 			this->dgvSchedule->Margin = System::Windows::Forms::Padding(4);
 			this->dgvSchedule->MultiSelect = false;
 			this->dgvSchedule->Name = L"dgvSchedule";
@@ -2126,7 +2127,7 @@ namespace StudentManagementSystem {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvSchedule->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvSchedule->RowTemplate->Height = 25;
-			this->dgvSchedule->Size = System::Drawing::Size(220, 602);
+			this->dgvSchedule->Size = System::Drawing::Size(95, 381);
 			this->dgvSchedule->TabIndex = 1;
 			// 
 			// Column17
@@ -2970,6 +2971,7 @@ namespace StudentManagementSystem {
 		if (e->X < 50) panelMenu->Visible = true;
 		if (e->X > 50) panelMenu->Visible = false;
 	}
+
 
 
 };
