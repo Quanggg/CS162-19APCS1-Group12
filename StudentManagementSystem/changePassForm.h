@@ -91,8 +91,13 @@ namespace StudentManagementSystem {
 			// 
 			// tb1stPass
 			// 
+
 			this->tb1stPass->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
+
+			this->tb1stPass->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(62)));
+
 			this->tb1stPass->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->tb1stPass->Font = (gcnew System::Drawing::Font(L"Consolas", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -131,7 +136,11 @@ namespace StudentManagementSystem {
 			this->btAcc->Location = System::Drawing::Point(317, 226);
 			this->btAcc->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btAcc->Name = L"btAcc";
+
 			this->btAcc->Size = System::Drawing::Size(148, 52);
+
+			this->btAcc->Size = System::Drawing::Size(111, 42);
+
 			this->btAcc->TabIndex = 2;
 			this->btAcc->Text = L"Accept";
 			this->btAcc->UseVisualStyleBackColor = false;
@@ -150,7 +159,11 @@ namespace StudentManagementSystem {
 			this->btCancel->Location = System::Drawing::Point(473, 226);
 			this->btCancel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btCancel->Name = L"btCancel";
+
 			this->btCancel->Size = System::Drawing::Size(148, 52);
+
+			this->btCancel->Size = System::Drawing::Size(111, 42);
+
 			this->btCancel->TabIndex = 2;
 			this->btCancel->Text = L"Cancel";
 			this->btCancel->UseVisualStyleBackColor = true;
@@ -165,7 +178,11 @@ namespace StudentManagementSystem {
 			this->btOk->Location = System::Drawing::Point(161, 226);
 			this->btOk->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btOk->Name = L"btOk";
+
 			this->btOk->Size = System::Drawing::Size(148, 52);
+
+			this->btOk->Size = System::Drawing::Size(111, 42);
+
 			this->btOk->TabIndex = 4;
 			this->btOk->Text = L"OK";
 			this->btOk->UseVisualStyleBackColor = true;
@@ -261,10 +278,17 @@ namespace StudentManagementSystem {
 			this->AcceptButton = this->btAcc;
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
 			this->CancelButton = this->btCancel;
 			this->ClientSize = System::Drawing::Size(637, 293);
+
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(62)));
+			this->CancelButton = this->btCancel;
+			this->ClientSize = System::Drawing::Size(478, 238);
+
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->panel2);
@@ -327,6 +351,8 @@ namespace StudentManagementSystem {
 	private: System::Void button2_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		tb2ndPass->UseSystemPasswordChar = true;
 	}
-	};
+
+};
+
 }
 

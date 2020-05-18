@@ -372,6 +372,7 @@ namespace StudentManagementSystem {
 			this->btProfile = (gcnew System::Windows::Forms::Button());
 			this->panelLogo = (gcnew System::Windows::Forms::Panel());
 			this->panelMain = (gcnew System::Windows::Forms::Panel());
+
 			this->panelProfile = (gcnew System::Windows::Forms::Panel());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
@@ -393,6 +394,7 @@ namespace StudentManagementSystem {
 			this->tbProfileSid = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+
 			this->panelCourse = (gcnew System::Windows::Forms::Panel());
 			this->panelSemester = (gcnew System::Windows::Forms::Panel());
 			this->btSemester2 = (gcnew System::Windows::Forms::Button());
@@ -642,8 +644,13 @@ namespace StudentManagementSystem {
 			// panelMenu
 			// 
 			this->panelMenu->AutoScroll = true;
+
 			this->panelMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
+
+			this->panelMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+
 			this->panelMenu->Controls->Add(this->btScore);
 			this->panelMenu->Controls->Add(this->btSchedule);
 			this->panelMenu->Controls->Add(this->btCheckIn);
@@ -657,7 +664,11 @@ namespace StudentManagementSystem {
 			this->panelMenu->Location = System::Drawing::Point(0, 0);
 			this->panelMenu->Margin = System::Windows::Forms::Padding(4);
 			this->panelMenu->Name = L"panelMenu";
+
 			this->panelMenu->Size = System::Drawing::Size(235, 725);
+
+			this->panelMenu->Size = System::Drawing::Size(176, 589);
+
 			this->panelMenu->TabIndex = 1;
 			// 
 			// btScore
@@ -802,13 +813,22 @@ namespace StudentManagementSystem {
 			this->panelBtProfile->Location = System::Drawing::Point(0, 123);
 			this->panelBtProfile->Margin = System::Windows::Forms::Padding(4);
 			this->panelBtProfile->Name = L"panelBtProfile";
+
 			this->panelBtProfile->Size = System::Drawing::Size(235, 122);
+
+			this->panelBtProfile->Size = System::Drawing::Size(176, 99);
+
 			this->panelBtProfile->TabIndex = 0;
 			// 
 			// btProfile
 			// 
+
 			this->btProfile->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
+
+			this->btProfile->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+
 			this->btProfile->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->btProfile->FlatAppearance->BorderSize = 0;
 			this->btProfile->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -832,14 +852,23 @@ namespace StudentManagementSystem {
 			this->panelLogo->Location = System::Drawing::Point(0, 0);
 			this->panelLogo->Margin = System::Windows::Forms::Padding(4);
 			this->panelLogo->Name = L"panelLogo";
+
 			this->panelLogo->Size = System::Drawing::Size(235, 123);
+
+			this->panelLogo->Size = System::Drawing::Size(176, 100);
+
 			this->panelLogo->TabIndex = 2;
 			// 
 			// panelMain
 			// 
+
 			this->panelMain->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(42)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
 			this->panelMain->Controls->Add(this->panelProfile);
+
+			this->panelMain->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+
 			this->panelMain->Controls->Add(this->panelCourse);
 			this->panelMain->Controls->Add(this->dgvSchedule);
 			this->panelMain->Controls->Add(this->dgvScore);
@@ -850,10 +879,16 @@ namespace StudentManagementSystem {
 			this->panelMain->Controls->Add(this->panelLecturer);
 			this->panelMain->Controls->Add(this->panelLogin);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
+
 			this->panelMain->Location = System::Drawing::Point(235, 0);
 			this->panelMain->Margin = System::Windows::Forms::Padding(4);
 			this->panelMain->Name = L"panelMain";
 			this->panelMain->Size = System::Drawing::Size(1197, 725);
+
+			this->panelMain->Location = System::Drawing::Point(176, 0);
+			this->panelMain->Name = L"panelMain";
+			this->panelMain->Size = System::Drawing::Size(898, 589);
+
 			this->panelMain->TabIndex = 2;
 			this->panelMain->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &mainForm::panelMain_MouseMove);
 			// 
@@ -1619,7 +1654,11 @@ namespace StudentManagementSystem {
 			this->dgvStudentList->RowTemplate->DefaultCellStyle->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			this->dgvStudentList->RowTemplate->Height = 25;
 			this->dgvStudentList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+
 			this->dgvStudentList->Size = System::Drawing::Size(217, 0);
+
+			this->dgvStudentList->Size = System::Drawing::Size(163, 0);
+
 			this->dgvStudentList->TabIndex = 2;
 			this->dgvStudentList->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvStudentList_CellEndEdit);
 			this->dgvStudentList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvStudentList_CellMouseDown);
@@ -1627,7 +1666,10 @@ namespace StudentManagementSystem {
 			// dgvStudentListNo
 			// 
 			this->dgvStudentListNo->HeaderText = L"No";
+
 			this->dgvStudentListNo->MinimumWidth = 6;
+
+
 			this->dgvStudentListNo->Name = L"dgvStudentListNo";
 			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListNo->Width = 50;
@@ -1636,39 +1678,60 @@ namespace StudentManagementSystem {
 			// 
 			this->dgvStudentListID->ContextMenuStrip = this->dgvStudentListMenu;
 			this->dgvStudentListID->HeaderText = L"STUDEN ID";
+
 			this->dgvStudentListID->MinimumWidth = 6;
+
+
 			this->dgvStudentListID->Name = L"dgvStudentListID";
 			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListID->Width = 130;
 			// 
 			// dgvStudentListMenu
 			// 
+
 			this->dgvStudentListMenu->ImageScalingSize = System::Drawing::Size(20, 20);
+
+
 			this->dgvStudentListMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->addNewStudentToolStripMenuItem,
 					this->removeToolStripMenuItem, this->changeClassToolStripMenuItem
 			});
 			this->dgvStudentListMenu->Name = L"dgvStudentListMenu";
+
 			this->dgvStudentListMenu->Size = System::Drawing::Size(193, 76);
+
+			this->dgvStudentListMenu->Size = System::Drawing::Size(166, 70);
 			// 
 			// addNewStudentToolStripMenuItem
 			// 
 			this->addNewStudentToolStripMenuItem->Name = L"addNewStudentToolStripMenuItem";
+
 			this->addNewStudentToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+
+			this->addNewStudentToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+
 			this->addNewStudentToolStripMenuItem->Text = L"Add new Student";
 			this->addNewStudentToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::addNewStudentToolStripMenuItem_Click);
 			// 
 			// removeToolStripMenuItem
 			// 
 			this->removeToolStripMenuItem->Name = L"removeToolStripMenuItem";
+
 			this->removeToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+
+			this->removeToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+
 			this->removeToolStripMenuItem->Text = L"Remove";
 			this->removeToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::removeToolStripMenuItem_Click);
 			// 
 			// changeClassToolStripMenuItem
 			// 
 			this->changeClassToolStripMenuItem->Name = L"changeClassToolStripMenuItem";
+
 			this->changeClassToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+
+			this->changeClassToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+
 			this->changeClassToolStripMenuItem->Text = L"Change class";
 			this->changeClassToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::changeClassToolStripMenuItem_Click);
 			// 
@@ -1676,7 +1739,10 @@ namespace StudentManagementSystem {
 			// 
 			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
 			this->dgvStudentListLastname->HeaderText = L"LASTNAME";
+
 			this->dgvStudentListLastname->MinimumWidth = 6;
+
+
 			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
 			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			// 
@@ -1684,19 +1750,403 @@ namespace StudentManagementSystem {
 			// 
 			this->dgvStudentListFirstname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
 			this->dgvStudentListFirstname->HeaderText = L"FIRSTNAME";
+
 			this->dgvStudentListFirstname->MinimumWidth = 6;
+
+
 			this->dgvStudentListFirstname->Name = L"dgvStudentListFirstname";
 			this->dgvStudentListFirstname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			// 
 			// dgvStudentListGender
 			// 
 			this->dgvStudentListGender->HeaderText = L"GENDER";
+
 			this->dgvStudentListGender->MinimumWidth = 6;
 			this->dgvStudentListGender->Name = L"dgvStudentListGender";
 			this->dgvStudentListGender->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListGender->Width = 125;
 			// 
 			// dgvStudentListDob
+
+			this->dgvStudentListGender->Name = L"dgvStudentListGender";
+			this->dgvStudentListGender->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// dgvStudentListDob
+			// 
+			this->dgvStudentListDob->HeaderText = L"DoB";
+			this->dgvStudentListDob->Name = L"dgvStudentListDob";
+			this->dgvStudentListDob->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->button3->Dock = System::Windows::Forms::DockStyle::Top;
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->ForeColor = System::Drawing::SystemColors::Control;
+			this->button3->Location = System::Drawing::Point(0, 59);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(163, 2);
+			this->button3->TabIndex = 6;
+			this->button3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Visible = false;
+			// 
+			// panelClassHeader
+			// 
+			this->panelClassHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(62)));
+			this->panelClassHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panelClassHeader->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->panelClassHeader->ForeColor = System::Drawing::SystemColors::Control;
+			this->panelClassHeader->Location = System::Drawing::Point(0, 0);
+			this->panelClassHeader->Name = L"panelClassHeader";
+			this->panelClassHeader->Size = System::Drawing::Size(163, 59);
+			this->panelClassHeader->TabIndex = 5;
+			this->panelClassHeader->Text = L"       Class list";
+			this->panelClassHeader->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// dgvClassList
+			// 
+			this->dgvClassList->AllowUserToAddRows = false;
+			this->dgvClassList->AllowUserToDeleteRows = false;
+			this->dgvClassList->AllowUserToResizeColumns = false;
+			this->dgvClassList->AllowUserToResizeRows = false;
+			this->dgvClassList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dgvClassList->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->dgvClassList->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvClassList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			this->dgvClassList->ColumnHeadersHeight = 30;
+			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->dgvClassNo,
+					this->Column29, this->Column30
+			});
+			this->dgvClassList->EnableHeadersVisualStyles = false;
+			this->dgvClassList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->dgvClassList->Location = System::Drawing::Point(0, 100);
+			this->dgvClassList->MultiSelect = false;
+			this->dgvClassList->Name = L"dgvClassList";
+			this->dgvClassList->ReadOnly = true;
+			this->dgvClassList->RowHeadersVisible = false;
+			this->dgvClassList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvClassList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->dgvClassList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 11.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dgvClassList->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
+			this->dgvClassList->RowTemplate->Height = 25;
+			this->dgvClassList->RowTemplate->ReadOnly = true;
+			this->dgvClassList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvClassList->Size = System::Drawing::Size(163, 0);
+			this->dgvClassList->TabIndex = 1;
+			this->dgvClassList->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvClassList_CellClick);
+			// 
+			// dgvClassNo
+			// 
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::MidnightBlue;
+			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle6;
+			this->dgvClassNo->HeaderText = L"No";
+			this->dgvClassNo->Name = L"dgvClassNo";
+			this->dgvClassNo->ReadOnly = true;
+			this->dgvClassNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvClassNo->Width = 50;
+			// 
+			// Column29
+			// 
+			dataGridViewCellStyle7->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column29->DefaultCellStyle = dataGridViewCellStyle7;
+			this->Column29->HeaderText = L"CLASS NAME";
+			this->Column29->Name = L"Column29";
+			this->Column29->ReadOnly = true;
+			this->Column29->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column29->Width = 150;
+			// 
+			// Column30
+			// 
+			this->Column30->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			dataGridViewCellStyle8->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column30->DefaultCellStyle = dataGridViewCellStyle8;
+			this->Column30->HeaderText = L"DETAIL";
+			this->Column30->Name = L"Column30";
+			this->Column30->ReadOnly = true;
+			this->Column30->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// panelProfile
+			// 
+			this->panelProfile->Controls->Add(this->groupBox2);
+			this->panelProfile->Controls->Add(this->groupBox1);
+			this->panelProfile->Controls->Add(this->button2);
+			this->panelProfile->Controls->Add(this->label3);
+			this->panelProfile->Location = System::Drawing::Point(802, 12);
+			this->panelProfile->Name = L"panelProfile";
+			this->panelProfile->Size = System::Drawing::Size(84, 83);
+			this->panelProfile->TabIndex = 1;
+			this->panelProfile->Visible = false;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->label10);
+			this->groupBox2->Controls->Add(this->label9);
+			this->groupBox2->Controls->Add(this->tbProfileUserid);
+			this->groupBox2->Controls->Add(this->tbProfileUserPass);
+			this->groupBox2->Controls->Add(this->btLogout);
+			this->groupBox2->Controls->Add(this->tbChangePass);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Century Schoolbook", 12));
+			this->groupBox2->ForeColor = System::Drawing::SystemColors::Control;
+			this->groupBox2->Location = System::Drawing::Point(458, 100);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(378, 452);
+			this->groupBox2->TabIndex = 7;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Login information";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label10->Location = System::Drawing::Point(16, 130);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(90, 22);
+			this->label10->TabIndex = 4;
+			this->label10->Text = L"Password";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(16, 54);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(90, 22);
+			this->label9->TabIndex = 4;
+			this->label9->Text = L"Username";
+			// 
+			// tbProfileUserid
+			// 
+			this->tbProfileUserid->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileUserid->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileUserid->Enabled = false;
+			this->tbProfileUserid->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
+			this->tbProfileUserid->ForeColor = System::Drawing::SystemColors::ScrollBar;
+			this->tbProfileUserid->Location = System::Drawing::Point(6, 79);
+			this->tbProfileUserid->Name = L"tbProfileUserid";
+			this->tbProfileUserid->ReadOnly = true;
+			this->tbProfileUserid->Size = System::Drawing::Size(330, 19);
+			this->tbProfileUserid->TabIndex = 1;
+			this->tbProfileUserid->Text = L"User name";
+			this->tbProfileUserid->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// tbProfileUserPass
+			// 
+			this->tbProfileUserPass->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileUserPass->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileUserPass->Enabled = false;
+			this->tbProfileUserPass->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
+			this->tbProfileUserPass->ForeColor = System::Drawing::SystemColors::ScrollBar;
+			this->tbProfileUserPass->Location = System::Drawing::Point(6, 155);
+			this->tbProfileUserPass->Name = L"tbProfileUserPass";
+			this->tbProfileUserPass->ReadOnly = true;
+			this->tbProfileUserPass->Size = System::Drawing::Size(330, 19);
+			this->tbProfileUserPass->TabIndex = 1;
+			this->tbProfileUserPass->Text = L"Password";
+			this->tbProfileUserPass->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			this->tbProfileUserPass->UseSystemPasswordChar = true;
+			// 
+			// btLogout
+			// 
+			this->btLogout->FlatAppearance->BorderSize = 0;
+			this->btLogout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btLogout->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btLogout->Location = System::Drawing::Point(271, 402);
+			this->btLogout->Name = L"btLogout";
+			this->btLogout->Size = System::Drawing::Size(101, 44);
+			this->btLogout->TabIndex = 2;
+			this->btLogout->Text = L"Logout";
+			this->btLogout->UseVisualStyleBackColor = true;
+			this->btLogout->Click += gcnew System::EventHandler(this, &mainForm::btLogout_Click);
+			// 
+			// tbChangePass
+			// 
+			this->tbChangePass->FlatAppearance->BorderSize = 0;
+			this->tbChangePass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->tbChangePass->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tbChangePass->Location = System::Drawing::Point(111, 402);
+			this->tbChangePass->Name = L"tbChangePass";
+			this->tbChangePass->Size = System::Drawing::Size(141, 44);
+			this->tbChangePass->TabIndex = 3;
+			this->tbChangePass->Text = L"Change password";
+			this->tbChangePass->UseVisualStyleBackColor = true;
+			this->tbChangePass->Click += gcnew System::EventHandler(this, &mainForm::tbChangePass_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label8);
+			this->groupBox1->Controls->Add(this->label7);
+			this->groupBox1->Controls->Add(this->label6);
+			this->groupBox1->Controls->Add(this->label5);
+			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->tbProfileEmail);
+			this->groupBox1->Controls->Add(this->tbProfileClass);
+			this->groupBox1->Controls->Add(this->tbProfileFullname);
+			this->groupBox1->Controls->Add(this->tbProfileDob);
+			this->groupBox1->Controls->Add(this->tbProfileSid);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Century Schoolbook", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->ForeColor = System::Drawing::SystemColors::Control;
+			this->groupBox1->Location = System::Drawing::Point(34, 100);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(378, 452);
+			this->groupBox1->TabIndex = 6;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Your information";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(9, 368);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(60, 22);
+			this->label8->TabIndex = 2;
+			this->label8->Text = L"Class";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(9, 286);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(110, 22);
+			this->label7->TabIndex = 2;
+			this->label7->Text = L"Student ID";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(9, 207);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(60, 22);
+			this->label6->TabIndex = 2;
+			this->label6->Text = L"Email";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(9, 130);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(140, 22);
+			this->label5->TabIndex = 2;
+			this->label5->Text = L"Date of Birth";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(9, 54);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(100, 22);
+			this->label4->TabIndex = 2;
+			this->label4->Text = L"Full name";
+			// 
+			// tbProfileEmail
+			// 
+			this->tbProfileEmail->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileEmail->Enabled = false;
+			this->tbProfileEmail->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tbProfileEmail->ForeColor = System::Drawing::SystemColors::WindowFrame;
+			this->tbProfileEmail->Location = System::Drawing::Point(9, 231);
+			this->tbProfileEmail->Name = L"tbProfileEmail";
+			this->tbProfileEmail->ReadOnly = true;
+			this->tbProfileEmail->Size = System::Drawing::Size(335, 19);
+			this->tbProfileEmail->TabIndex = 1;
+			this->tbProfileEmail->Text = L"Email";
+			this->tbProfileEmail->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// tbProfileClass
+			// 
+			this->tbProfileClass->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileClass->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileClass->Enabled = false;
+			this->tbProfileClass->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tbProfileClass->ForeColor = System::Drawing::SystemColors::WindowFrame;
+			this->tbProfileClass->Location = System::Drawing::Point(9, 393);
+			this->tbProfileClass->Name = L"tbProfileClass";
+			this->tbProfileClass->ReadOnly = true;
+			this->tbProfileClass->Size = System::Drawing::Size(335, 19);
+			this->tbProfileClass->TabIndex = 1;
+			this->tbProfileClass->Text = L"Class";
+			this->tbProfileClass->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// tbProfileFullname
+			// 
+			this->tbProfileFullname->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileFullname->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileFullname->Enabled = false;
+			this->tbProfileFullname->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tbProfileFullname->ForeColor = System::Drawing::SystemColors::WindowFrame;
+			this->tbProfileFullname->Location = System::Drawing::Point(9, 79);
+			this->tbProfileFullname->Name = L"tbProfileFullname";
+			this->tbProfileFullname->ReadOnly = true;
+			this->tbProfileFullname->Size = System::Drawing::Size(335, 19);
+			this->tbProfileFullname->TabIndex = 1;
+			this->tbProfileFullname->Text = L"Full name";
+			this->tbProfileFullname->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// tbProfileDob
+			// 
+			this->tbProfileDob->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->tbProfileDob->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbProfileDob->Enabled = false;
+			this->tbProfileDob->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->tbProfileDob->ForeColor = System::Drawing::SystemColors::WindowFrame;
+			this->tbProfileDob->Location = System::Drawing::Point(9, 156);
+			this->tbProfileDob->Name = L"tbProfileDob";
+			this->tbProfileDob->ReadOnly = true;
+			this->tbProfileDob->Size = System::Drawing::Size(335, 19);
+			this->tbProfileDob->TabIndex = 1;
+			this->tbProfileDob->Text = L"Date of birth";
+			this->tbProfileDob->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// tbProfileSid
+
 			// 
 			this->dgvStudentListDob->HeaderText = L"DoB";
 			this->dgvStudentListDob->MinimumWidth = 6;
@@ -2348,7 +2798,10 @@ namespace StudentManagementSystem {
 			this->Controls->Add(this->panelMenu);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+
 			this->Margin = System::Windows::Forms::Padding(4);
+
+
 			this->Name = L"mainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->panelLogin->ResumeLayout(false);
