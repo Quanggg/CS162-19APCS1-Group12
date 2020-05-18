@@ -178,7 +178,7 @@ namespace StudentManagementSystem {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::Control;
-			this->label1->Location = System::Drawing::Point(43, 62);
+			this->label1->Location = System::Drawing::Point(13, 54);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(186, 23);
@@ -191,7 +191,7 @@ namespace StudentManagementSystem {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::Control;
-			this->label2->Location = System::Drawing::Point(43, 142);
+			this->label2->Location = System::Drawing::Point(13, 134);
 			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(142, 23);
