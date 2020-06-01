@@ -855,9 +855,9 @@ namespace StudentManagementSystem {
 			this->panelSemester->Controls->Add(this->btSemester3);
 			this->panelSemester->Controls->Add(this->btSemester1);
 			this->panelSemester->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panelSemester->Location = System::Drawing::Point(0, 358);
+			this->panelSemester->Location = System::Drawing::Point(0, 287);
 			this->panelSemester->Name = L"panelSemester";
-			this->panelSemester->Size = System::Drawing::Size(898, 231);
+			this->panelSemester->Size = System::Drawing::Size(898, 302);
 			this->panelSemester->TabIndex = 8;
 			// 
 			// btSemester2
@@ -872,7 +872,7 @@ namespace StudentManagementSystem {
 			this->btSemester2->ForeColor = System::Drawing::SystemColors::Control;
 			this->btSemester2->Location = System::Drawing::Point(299, 0);
 			this->btSemester2->Name = L"btSemester2";
-			this->btSemester2->Size = System::Drawing::Size(300, 231);
+			this->btSemester2->Size = System::Drawing::Size(300, 302);
 			this->btSemester2->TabIndex = 2;
 			this->btSemester2->Text = L"SEMESTER II";
 			this->btSemester2->UseVisualStyleBackColor = false;
@@ -890,7 +890,7 @@ namespace StudentManagementSystem {
 			this->btSemester3->ForeColor = System::Drawing::SystemColors::Control;
 			this->btSemester3->Location = System::Drawing::Point(599, 0);
 			this->btSemester3->Name = L"btSemester3";
-			this->btSemester3->Size = System::Drawing::Size(299, 231);
+			this->btSemester3->Size = System::Drawing::Size(299, 302);
 			this->btSemester3->TabIndex = 2;
 			this->btSemester3->Text = L"SEMESTER III";
 			this->btSemester3->UseVisualStyleBackColor = false;
@@ -908,7 +908,7 @@ namespace StudentManagementSystem {
 			this->btSemester1->ForeColor = System::Drawing::SystemColors::Control;
 			this->btSemester1->Location = System::Drawing::Point(0, 0);
 			this->btSemester1->Name = L"btSemester1";
-			this->btSemester1->Size = System::Drawing::Size(299, 231);
+			this->btSemester1->Size = System::Drawing::Size(299, 302);
 			this->btSemester1->TabIndex = 2;
 			this->btSemester1->Text = L"SEMESTER I";
 			this->btSemester1->UseVisualStyleBackColor = false;
@@ -982,7 +982,7 @@ namespace StudentManagementSystem {
 			this->dgvCourseList->MultiSelect = false;
 			this->dgvCourseList->Name = L"dgvCourseList";
 			this->dgvCourseList->RowHeadersVisible = false;
-			this->dgvCourseList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvCourseList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvCourseList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(60)));
 			this->dgvCourseList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
@@ -2494,7 +2494,6 @@ namespace StudentManagementSystem {
 				dgvStudentList->Rows->RemoveAt(dgvStudentList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvStudentList->RowCount; i++)
 				{
-					//if (i) f << endl;
 					dgvStudentList->Rows[i]->Cells[0]->Value = i + 1;
 					f << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
@@ -2582,7 +2581,7 @@ namespace StudentManagementSystem {
 		}
 	}
 #pragma endregion
-
+		   String^ course_file;
 		   void dgvAYload()
 		   {
 			   ifstream f("semester.txt");
@@ -2602,6 +2601,7 @@ namespace StudentManagementSystem {
 		   }
 		   void dgvCourseLoad(string st)
 		   {
+			   course_file = dgvAY->SelectedCells[0]->Value->ToString() + "-" + gcnew String(st.c_str()) + ".txt";
 			   ifstream f(msclr::interop::marshal_as<std::string>(dgvAY->SelectedCells[0]->Value->ToString()) + "-" + st + ".txt");
 			   string s;
 			   getline(f, s, '\n');
@@ -2639,6 +2639,7 @@ namespace StudentManagementSystem {
 				   x++;
 			   }
 			   f.close();
+			   dgvCourseList->ClearSelection();
 		   }
 	private: System::Void btCourse_Click(System::Object^ sender, System::EventArgs^ e) {
 		openPanel(panelCourse);
@@ -2761,6 +2762,17 @@ namespace StudentManagementSystem {
 	}
 	private: System::Void addToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		dgvCourseList->Rows->Add();
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[0]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[1]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[2]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[3]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[4]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[5]->Value = "      ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[6]->Value = "      ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[7]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[8]->Value = "   ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[9]->Value = "   ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[10]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[0]->Value = dgvCourseList->RowCount;
 	}
 	private: System::Void removeToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2770,9 +2782,27 @@ namespace StudentManagementSystem {
 				+ dgvCourseList->SelectedCells[1]->Value + "?", "WARNING!", MessageBoxButtons::YesNo);
 			if (d == System::Windows::Forms::DialogResult::Yes)
 			{
+				std::ofstream f;
+				f.open(msclr::interop::marshal_as<std::string>(course_file->ToString()));
 				dgvCourseList->Rows->RemoveAt(dgvCourseList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvCourseList->RowCount; i++)
-					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;
+				{
+					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;					
+					f << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl << 
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2,1)) << endl << 
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2,1)) << endl << 
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[10]->Value->ToString());
+				}
+				f.close();
+				// LOAD LAI FILE user_login.txt
 				dgvCourseList->Focus();
 			}
 		}
