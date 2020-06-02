@@ -372,6 +372,24 @@ namespace StudentManagementSystem {
 			this->btProfile = (gcnew System::Windows::Forms::Button());
 			this->panelLogo = (gcnew System::Windows::Forms::Panel());
 			this->panelMain = (gcnew System::Windows::Forms::Panel());
+			this->panelClassList = (gcnew System::Windows::Forms::Panel());
+			this->dgvStudentList = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListMenu = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->addNewStudentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->removeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->changeClassToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListFirstname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListDob = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->panelClassHeader = (gcnew System::Windows::Forms::Label());
+			this->dgvClassList = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvClassNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column29 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column30 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panelCourse = (gcnew System::Windows::Forms::Panel());
 			this->panelSemester = (gcnew System::Windows::Forms::Panel());
 			this->btSemester2 = (gcnew System::Windows::Forms::Button());
@@ -402,24 +420,6 @@ namespace StudentManagementSystem {
 			this->ayMenu = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->createToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->panelClassList = (gcnew System::Windows::Forms::Panel());
-			this->dgvStudentList = (gcnew System::Windows::Forms::DataGridView());
-			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListMenu = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->addNewStudentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->removeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->changeClassToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListFirstname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListDob = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->panelClassHeader = (gcnew System::Windows::Forms::Label());
-			this->dgvClassList = (gcnew System::Windows::Forms::DataGridView());
-			this->dgvClassNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column29 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column30 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panelProfile = (gcnew System::Windows::Forms::Panel());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
@@ -482,16 +482,16 @@ namespace StudentManagementSystem {
 			this->panelMenu->SuspendLayout();
 			this->panelBtProfile->SuspendLayout();
 			this->panelMain->SuspendLayout();
+			this->panelClassList->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->BeginInit();
+			this->dgvStudentListMenu->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->BeginInit();
 			this->panelCourse->SuspendLayout();
 			this->panelSemester->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCourseList))->BeginInit();
 			this->dgvCourseListMenu->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAY))->BeginInit();
 			this->ayMenu->SuspendLayout();
-			this->panelClassList->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->BeginInit();
-			this->dgvStudentListMenu->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->BeginInit();
 			this->panelProfile->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -821,8 +821,8 @@ namespace StudentManagementSystem {
 			// 
 			this->panelMain->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(60)));
-			this->panelMain->Controls->Add(this->panelCourse);
 			this->panelMain->Controls->Add(this->panelClassList);
+			this->panelMain->Controls->Add(this->panelCourse);
 			this->panelMain->Controls->Add(this->panelProfile);
 			this->panelMain->Controls->Add(this->panelCheckIn);
 			this->panelMain->Controls->Add(this->panelScore);
@@ -836,358 +836,13 @@ namespace StudentManagementSystem {
 			this->panelMain->TabIndex = 2;
 			this->panelMain->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &mainForm::panelMain_MouseMove);
 			// 
-			// panelCourse
-			// 
-			this->panelCourse->Controls->Add(this->panelSemester);
-			this->panelCourse->Controls->Add(this->button4);
-			this->panelCourse->Controls->Add(this->panelCourseHeader);
-			this->panelCourse->Controls->Add(this->dgvCourseList);
-			this->panelCourse->Controls->Add(this->dgvAY);
-			this->panelCourse->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panelCourse->Location = System::Drawing::Point(0, 0);
-			this->panelCourse->Name = L"panelCourse";
-			this->panelCourse->Size = System::Drawing::Size(898, 589);
-			this->panelCourse->TabIndex = 3;
-			// 
-			// panelSemester
-			// 
-			this->panelSemester->Controls->Add(this->btSemester2);
-			this->panelSemester->Controls->Add(this->btSemester3);
-			this->panelSemester->Controls->Add(this->btSemester1);
-			this->panelSemester->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panelSemester->Location = System::Drawing::Point(0, 287);
-			this->panelSemester->Name = L"panelSemester";
-			this->panelSemester->Size = System::Drawing::Size(898, 302);
-			this->panelSemester->TabIndex = 8;
-			// 
-			// btSemester2
-			// 
-			this->btSemester2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(55)));
-			this->btSemester2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->btSemester2->FlatAppearance->BorderSize = 0;
-			this->btSemester2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btSemester2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btSemester2->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSemester2->Location = System::Drawing::Point(299, 0);
-			this->btSemester2->Name = L"btSemester2";
-			this->btSemester2->Size = System::Drawing::Size(300, 302);
-			this->btSemester2->TabIndex = 2;
-			this->btSemester2->Text = L"SEMESTER II";
-			this->btSemester2->UseVisualStyleBackColor = false;
-			this->btSemester2->Click += gcnew System::EventHandler(this, &mainForm::btSemester2_Click);
-			// 
-			// btSemester3
-			// 
-			this->btSemester3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(65)));
-			this->btSemester3->Dock = System::Windows::Forms::DockStyle::Right;
-			this->btSemester3->FlatAppearance->BorderSize = 0;
-			this->btSemester3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btSemester3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btSemester3->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSemester3->Location = System::Drawing::Point(599, 0);
-			this->btSemester3->Name = L"btSemester3";
-			this->btSemester3->Size = System::Drawing::Size(299, 302);
-			this->btSemester3->TabIndex = 2;
-			this->btSemester3->Text = L"SEMESTER III";
-			this->btSemester3->UseVisualStyleBackColor = false;
-			this->btSemester3->Click += gcnew System::EventHandler(this, &mainForm::btSemester3_Click);
-			// 
-			// btSemester1
-			// 
-			this->btSemester1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			this->btSemester1->Dock = System::Windows::Forms::DockStyle::Left;
-			this->btSemester1->FlatAppearance->BorderSize = 0;
-			this->btSemester1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btSemester1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btSemester1->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSemester1->Location = System::Drawing::Point(0, 0);
-			this->btSemester1->Name = L"btSemester1";
-			this->btSemester1->Size = System::Drawing::Size(299, 302);
-			this->btSemester1->TabIndex = 2;
-			this->btSemester1->Text = L"SEMESTER I";
-			this->btSemester1->UseVisualStyleBackColor = false;
-			this->btSemester1->Click += gcnew System::EventHandler(this, &mainForm::btSemester1_Click);
-			// 
-			// button4
-			// 
-			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(68)));
-			this->button4->Dock = System::Windows::Forms::DockStyle::Top;
-			this->button4->FlatAppearance->BorderSize = 0;
-			this->button4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button4->ForeColor = System::Drawing::SystemColors::Control;
-			this->button4->Location = System::Drawing::Point(0, 59);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(898, 2);
-			this->button4->TabIndex = 7;
-			this->button4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button4->UseVisualStyleBackColor = false;
-			this->button4->Visible = false;
-			// 
-			// panelCourseHeader
-			// 
-			this->panelCourseHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(62)));
-			this->panelCourseHeader->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panelCourseHeader->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->panelCourseHeader->ForeColor = System::Drawing::SystemColors::Control;
-			this->panelCourseHeader->Location = System::Drawing::Point(0, 0);
-			this->panelCourseHeader->Name = L"panelCourseHeader";
-			this->panelCourseHeader->Size = System::Drawing::Size(898, 59);
-			this->panelCourseHeader->TabIndex = 6;
-			this->panelCourseHeader->Text = L"       Academic years";
-			this->panelCourseHeader->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// dgvCourseList
-			// 
-			this->dgvCourseList->AllowUserToAddRows = false;
-			this->dgvCourseList->AllowUserToDeleteRows = false;
-			this->dgvCourseList->AllowUserToResizeColumns = false;
-			this->dgvCourseList->AllowUserToResizeRows = false;
-			this->dgvCourseList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->dgvCourseList->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
-			this->dgvCourseList->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->dgvCourseList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvCourseList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this->dgvCourseList->ColumnHeadersHeight = 50;
-			this->dgvCourseList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-			this->dgvCourseList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(11) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8, this->Column9, this->Column10,
-					this->Column11
-			});
-			this->dgvCourseList->ContextMenuStrip = this->dgvCourseListMenu;
-			this->dgvCourseList->EnableHeadersVisualStyles = false;
-			this->dgvCourseList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvCourseList->Location = System::Drawing::Point(0, 100);
-			this->dgvCourseList->MultiSelect = false;
-			this->dgvCourseList->Name = L"dgvCourseList";
-			this->dgvCourseList->RowHeadersVisible = false;
-			this->dgvCourseList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			this->dgvCourseList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(60)));
-			this->dgvCourseList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dgvCourseList->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
-			this->dgvCourseList->RowTemplate->Height = 25;
-			this->dgvCourseList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvCourseList->Size = System::Drawing::Size(898, 489);
-			this->dgvCourseList->TabIndex = 3;
-			this->dgvCourseList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvCourseList_CellMouseDown);
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"No";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 50;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"COURSE ID";
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 130;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"COURSE NAME";
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 300;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"CLASS";
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 80;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"LECTURER ACCOUNT";
-			this->Column5->Name = L"Column5";
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"START DATE";
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 150;
-			// 
-			// Column7
-			// 
-			this->Column7->HeaderText = L"END DATE";
-			this->Column7->Name = L"Column7";
-			this->Column7->Width = 150;
-			// 
-			// Column8
-			// 
-			this->Column8->HeaderText = L"DAY OF WEEK";
-			this->Column8->Name = L"Column8";
-			// 
-			// Column9
-			// 
-			this->Column9->HeaderText = L"START AT";
-			this->Column9->Name = L"Column9";
-			this->Column9->Width = 80;
-			// 
-			// Column10
-			// 
-			this->Column10->HeaderText = L"END AT";
-			this->Column10->Name = L"Column10";
-			this->Column10->Width = 80;
-			// 
-			// Column11
-			// 
-			this->Column11->HeaderText = L"ROOM";
-			this->Column11->Name = L"Column11";
-			this->Column11->Width = 70;
-			// 
-			// dgvCourseListMenu
-			// 
-			this->dgvCourseListMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
-				this->addToolStripMenuItem,
-					this->removeToolStripMenuItem1, this->viewStudentToolStripMenuItem, this->viewScoreboardToolStripMenuItem, this->viewAttendanceListToolStripMenuItem
-			});
-			this->dgvCourseListMenu->Name = L"dgvCourseListMenu";
-			this->dgvCourseListMenu->Size = System::Drawing::Size(185, 114);
-			// 
-			// addToolStripMenuItem
-			// 
-			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(184, 22);
-			this->addToolStripMenuItem->Text = L"Add";
-			this->addToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::addToolStripMenuItem_Click);
-			// 
-			// removeToolStripMenuItem1
-			// 
-			this->removeToolStripMenuItem1->Name = L"removeToolStripMenuItem1";
-			this->removeToolStripMenuItem1->Size = System::Drawing::Size(184, 22);
-			this->removeToolStripMenuItem1->Text = L"Remove";
-			this->removeToolStripMenuItem1->Click += gcnew System::EventHandler(this, &mainForm::removeToolStripMenuItem1_Click);
-			// 
-			// viewStudentToolStripMenuItem
-			// 
-			this->viewStudentToolStripMenuItem->Name = L"viewStudentToolStripMenuItem";
-			this->viewStudentToolStripMenuItem->Size = System::Drawing::Size(184, 22);
-			this->viewStudentToolStripMenuItem->Text = L"View Student";
-			this->viewStudentToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewStudentToolStripMenuItem_Click);
-			// 
-			// viewScoreboardToolStripMenuItem
-			// 
-			this->viewScoreboardToolStripMenuItem->Name = L"viewScoreboardToolStripMenuItem";
-			this->viewScoreboardToolStripMenuItem->Size = System::Drawing::Size(184, 22);
-			this->viewScoreboardToolStripMenuItem->Text = L"View Scoreboard";
-			this->viewScoreboardToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewScoreboardToolStripMenuItem_Click);
-			// 
-			// viewAttendanceListToolStripMenuItem
-			// 
-			this->viewAttendanceListToolStripMenuItem->Name = L"viewAttendanceListToolStripMenuItem";
-			this->viewAttendanceListToolStripMenuItem->Size = System::Drawing::Size(184, 22);
-			this->viewAttendanceListToolStripMenuItem->Text = L"View Attendance List";
-			this->viewAttendanceListToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewAttendanceListToolStripMenuItem_Click);
-			// 
-			// dgvAY
-			// 
-			this->dgvAY->AllowUserToAddRows = false;
-			this->dgvAY->AllowUserToDeleteRows = false;
-			this->dgvAY->AllowUserToResizeColumns = false;
-			this->dgvAY->AllowUserToResizeRows = false;
-			this->dgvAY->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->dgvAY->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(70)));
-			this->dgvAY->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->dgvAY->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvAY->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this->dgvAY->ColumnHeadersHeight = 40;
-			this->dgvAY->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-			this->dgvAY->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->ayClumn });
-			this->dgvAY->ContextMenuStrip = this->ayMenu;
-			this->dgvAY->EnableHeadersVisualStyles = false;
-			this->dgvAY->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvAY->Location = System::Drawing::Point(0, 100);
-			this->dgvAY->MultiSelect = false;
-			this->dgvAY->Name = L"dgvAY";
-			this->dgvAY->RowHeadersVisible = false;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dgvAY->RowsDefaultCellStyle = dataGridViewCellStyle3;
-			this->dgvAY->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			this->dgvAY->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
-			this->dgvAY->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 26.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dgvAY->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
-			this->dgvAY->RowTemplate->Height = 100;
-			this->dgvAY->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvAY->Size = System::Drawing::Size(898, 489);
-			this->dgvAY->TabIndex = 1;
-			this->dgvAY->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellDoubleClick);
-			this->dgvAY->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellEndEdit);
-			this->dgvAY->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvAY_CellMouseDown);
-			// 
-			// ayClumn
-			// 
-			this->ayClumn->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			this->ayClumn->HeaderText = L"ACADEMIC YEARS";
-			this->ayClumn->Name = L"ayClumn";
-			// 
-			// ayMenu
-			// 
-			this->ayMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->createToolStripMenuItem,
-					this->deleteToolStripMenuItem
-			});
-			this->ayMenu->Name = L"ayMenu";
-			this->ayMenu->Size = System::Drawing::Size(109, 48);
-			// 
-			// createToolStripMenuItem
-			// 
-			this->createToolStripMenuItem->Name = L"createToolStripMenuItem";
-			this->createToolStripMenuItem->Size = System::Drawing::Size(108, 22);
-			this->createToolStripMenuItem->Text = L"Create";
-			this->createToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::createToolStripMenuItem_Click);
-			// 
-			// deleteToolStripMenuItem
-			// 
-			this->deleteToolStripMenuItem->Name = L"deleteToolStripMenuItem";
-			this->deleteToolStripMenuItem->Size = System::Drawing::Size(108, 22);
-			this->deleteToolStripMenuItem->Text = L"Delete";
-			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::deleteToolStripMenuItem_Click);
-			// 
 			// panelClassList
 			// 
 			this->panelClassList->Controls->Add(this->dgvStudentList);
 			this->panelClassList->Controls->Add(this->button3);
 			this->panelClassList->Controls->Add(this->panelClassHeader);
 			this->panelClassList->Controls->Add(this->dgvClassList);
-			this->panelClassList->Location = System::Drawing::Point(625, 12);
+			this->panelClassList->Location = System::Drawing::Point(633, 17);
 			this->panelClassList->Name = L"panelClassList";
 			this->panelClassList->Size = System::Drawing::Size(163, 83);
 			this->panelClassList->TabIndex = 2;
@@ -1205,16 +860,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvStudentList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvStudentList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvStudentList->ColumnHeadersHeight = 30;
 			this->dgvStudentList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvStudentList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
@@ -1228,7 +883,7 @@ namespace StudentManagementSystem {
 			this->dgvStudentList->MultiSelect = false;
 			this->dgvStudentList->Name = L"dgvStudentList";
 			this->dgvStudentList->RowHeadersVisible = false;
-			this->dgvStudentList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvStudentList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvStudentList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
 			this->dgvStudentList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
@@ -1359,16 +1014,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvClassList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dgvClassList->ColumnHeadersHeight = 30;
 			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
@@ -1382,7 +1037,7 @@ namespace StudentManagementSystem {
 			this->dgvClassList->Name = L"dgvClassList";
 			this->dgvClassList->ReadOnly = true;
 			this->dgvClassList->RowHeadersVisible = false;
-			this->dgvClassList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvClassList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvClassList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 11.25F, System::Drawing::FontStyle::Regular,
@@ -1397,8 +1052,8 @@ namespace StudentManagementSystem {
 			// 
 			// dgvClassNo
 			// 
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::MidnightBlue;
-			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::MidnightBlue;
+			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvClassNo->HeaderText = L"No";
 			this->dgvClassNo->Name = L"dgvClassNo";
 			this->dgvClassNo->ReadOnly = true;
@@ -1407,8 +1062,8 @@ namespace StudentManagementSystem {
 			// 
 			// Column29
 			// 
-			dataGridViewCellStyle7->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column29->DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column29->DefaultCellStyle = dataGridViewCellStyle4;
 			this->Column29->HeaderText = L"CLASS NAME";
 			this->Column29->Name = L"Column29";
 			this->Column29->ReadOnly = true;
@@ -1418,12 +1073,357 @@ namespace StudentManagementSystem {
 			// Column30
 			// 
 			this->Column30->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column30->DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column30->DefaultCellStyle = dataGridViewCellStyle5;
 			this->Column30->HeaderText = L"DETAIL";
 			this->Column30->Name = L"Column30";
 			this->Column30->ReadOnly = true;
 			this->Column30->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// panelCourse
+			// 
+			this->panelCourse->Controls->Add(this->panelSemester);
+			this->panelCourse->Controls->Add(this->button4);
+			this->panelCourse->Controls->Add(this->panelCourseHeader);
+			this->panelCourse->Controls->Add(this->dgvCourseList);
+			this->panelCourse->Controls->Add(this->dgvAY);
+			this->panelCourse->Location = System::Drawing::Point(639, 117);
+			this->panelCourse->Name = L"panelCourse";
+			this->panelCourse->Size = System::Drawing::Size(66, 45);
+			this->panelCourse->TabIndex = 3;
+			// 
+			// panelSemester
+			// 
+			this->panelSemester->Controls->Add(this->btSemester2);
+			this->panelSemester->Controls->Add(this->btSemester3);
+			this->panelSemester->Controls->Add(this->btSemester1);
+			this->panelSemester->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panelSemester->Location = System::Drawing::Point(0, -444);
+			this->panelSemester->Name = L"panelSemester";
+			this->panelSemester->Size = System::Drawing::Size(66, 489);
+			this->panelSemester->TabIndex = 8;
+			// 
+			// btSemester2
+			// 
+			this->btSemester2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(55)));
+			this->btSemester2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->btSemester2->FlatAppearance->BorderSize = 0;
+			this->btSemester2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btSemester2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btSemester2->ForeColor = System::Drawing::SystemColors::Control;
+			this->btSemester2->Location = System::Drawing::Point(299, 0);
+			this->btSemester2->Name = L"btSemester2";
+			this->btSemester2->Size = System::Drawing::Size(0, 489);
+			this->btSemester2->TabIndex = 2;
+			this->btSemester2->Text = L"SEMESTER II";
+			this->btSemester2->UseVisualStyleBackColor = false;
+			this->btSemester2->Click += gcnew System::EventHandler(this, &mainForm::btSemester2_Click);
+			// 
+			// btSemester3
+			// 
+			this->btSemester3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(65)));
+			this->btSemester3->Dock = System::Windows::Forms::DockStyle::Right;
+			this->btSemester3->FlatAppearance->BorderSize = 0;
+			this->btSemester3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btSemester3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btSemester3->ForeColor = System::Drawing::SystemColors::Control;
+			this->btSemester3->Location = System::Drawing::Point(-233, 0);
+			this->btSemester3->Name = L"btSemester3";
+			this->btSemester3->Size = System::Drawing::Size(299, 489);
+			this->btSemester3->TabIndex = 2;
+			this->btSemester3->Text = L"SEMESTER III";
+			this->btSemester3->UseVisualStyleBackColor = false;
+			this->btSemester3->Click += gcnew System::EventHandler(this, &mainForm::btSemester3_Click);
+			// 
+			// btSemester1
+			// 
+			this->btSemester1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			this->btSemester1->Dock = System::Windows::Forms::DockStyle::Left;
+			this->btSemester1->FlatAppearance->BorderSize = 0;
+			this->btSemester1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btSemester1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btSemester1->ForeColor = System::Drawing::SystemColors::Control;
+			this->btSemester1->Location = System::Drawing::Point(0, 0);
+			this->btSemester1->Name = L"btSemester1";
+			this->btSemester1->Size = System::Drawing::Size(299, 489);
+			this->btSemester1->TabIndex = 2;
+			this->btSemester1->Text = L"SEMESTER I";
+			this->btSemester1->UseVisualStyleBackColor = false;
+			this->btSemester1->Click += gcnew System::EventHandler(this, &mainForm::btSemester1_Click);
+			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->button4->Dock = System::Windows::Forms::DockStyle::Top;
+			this->button4->FlatAppearance->BorderSize = 0;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->ForeColor = System::Drawing::SystemColors::Control;
+			this->button4->Location = System::Drawing::Point(0, 59);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(66, 2);
+			this->button4->TabIndex = 7;
+			this->button4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Visible = false;
+			// 
+			// panelCourseHeader
+			// 
+			this->panelCourseHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(62)));
+			this->panelCourseHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panelCourseHeader->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->panelCourseHeader->ForeColor = System::Drawing::SystemColors::Control;
+			this->panelCourseHeader->Location = System::Drawing::Point(0, 0);
+			this->panelCourseHeader->Name = L"panelCourseHeader";
+			this->panelCourseHeader->Size = System::Drawing::Size(66, 59);
+			this->panelCourseHeader->TabIndex = 6;
+			this->panelCourseHeader->Text = L"       Academic years";
+			this->panelCourseHeader->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// dgvCourseList
+			// 
+			this->dgvCourseList->AllowUserToAddRows = false;
+			this->dgvCourseList->AllowUserToDeleteRows = false;
+			this->dgvCourseList->AllowUserToResizeColumns = false;
+			this->dgvCourseList->AllowUserToResizeRows = false;
+			this->dgvCourseList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dgvCourseList->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->dgvCourseList->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvCourseList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvCourseList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			this->dgvCourseList->ColumnHeadersHeight = 50;
+			this->dgvCourseList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->dgvCourseList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(11) {
+				this->Column1,
+					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8, this->Column9, this->Column10,
+					this->Column11
+			});
+			this->dgvCourseList->ContextMenuStrip = this->dgvCourseListMenu;
+			this->dgvCourseList->EnableHeadersVisualStyles = false;
+			this->dgvCourseList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->dgvCourseList->Location = System::Drawing::Point(0, -444);
+			this->dgvCourseList->MultiSelect = false;
+			this->dgvCourseList->Name = L"dgvCourseList";
+			this->dgvCourseList->RowHeadersVisible = false;
+			this->dgvCourseList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			this->dgvCourseList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->dgvCourseList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dgvCourseList->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
+			this->dgvCourseList->RowTemplate->Height = 25;
+			this->dgvCourseList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvCourseList->Size = System::Drawing::Size(66, 489);
+			this->dgvCourseList->TabIndex = 3;
+			this->dgvCourseList->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvCourseList_CellEndEdit);
+			this->dgvCourseList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvCourseList_CellMouseDown);
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"No";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 50;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"COURSE ID";
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 130;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"COURSE NAME";
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 300;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"CLASS";
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 80;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"LECTURER ACCOUNT";
+			this->Column5->Name = L"Column5";
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"START DATE";
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 150;
+			// 
+			// Column7
+			// 
+			this->Column7->HeaderText = L"END DATE";
+			this->Column7->Name = L"Column7";
+			this->Column7->Width = 150;
+			// 
+			// Column8
+			// 
+			this->Column8->HeaderText = L"DAY OF WEEK";
+			this->Column8->Name = L"Column8";
+			// 
+			// Column9
+			// 
+			this->Column9->HeaderText = L"START AT";
+			this->Column9->Name = L"Column9";
+			this->Column9->Width = 80;
+			// 
+			// Column10
+			// 
+			this->Column10->HeaderText = L"END AT";
+			this->Column10->Name = L"Column10";
+			this->Column10->Width = 80;
+			// 
+			// Column11
+			// 
+			this->Column11->HeaderText = L"ROOM";
+			this->Column11->Name = L"Column11";
+			this->Column11->Width = 70;
+			// 
+			// dgvCourseListMenu
+			// 
+			this->dgvCourseListMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+				this->addToolStripMenuItem,
+					this->removeToolStripMenuItem1, this->viewStudentToolStripMenuItem, this->viewScoreboardToolStripMenuItem, this->viewAttendanceListToolStripMenuItem
+			});
+			this->dgvCourseListMenu->Name = L"dgvCourseListMenu";
+			this->dgvCourseListMenu->Size = System::Drawing::Size(185, 114);
+			// 
+			// addToolStripMenuItem
+			// 
+			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
+			this->addToolStripMenuItem->Size = System::Drawing::Size(184, 22);
+			this->addToolStripMenuItem->Text = L"Add";
+			this->addToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::addToolStripMenuItem_Click);
+			// 
+			// removeToolStripMenuItem1
+			// 
+			this->removeToolStripMenuItem1->Name = L"removeToolStripMenuItem1";
+			this->removeToolStripMenuItem1->Size = System::Drawing::Size(184, 22);
+			this->removeToolStripMenuItem1->Text = L"Remove";
+			this->removeToolStripMenuItem1->Click += gcnew System::EventHandler(this, &mainForm::removeToolStripMenuItem1_Click);
+			// 
+			// viewStudentToolStripMenuItem
+			// 
+			this->viewStudentToolStripMenuItem->Name = L"viewStudentToolStripMenuItem";
+			this->viewStudentToolStripMenuItem->Size = System::Drawing::Size(184, 22);
+			this->viewStudentToolStripMenuItem->Text = L"View Student";
+			this->viewStudentToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewStudentToolStripMenuItem_Click);
+			// 
+			// viewScoreboardToolStripMenuItem
+			// 
+			this->viewScoreboardToolStripMenuItem->Name = L"viewScoreboardToolStripMenuItem";
+			this->viewScoreboardToolStripMenuItem->Size = System::Drawing::Size(184, 22);
+			this->viewScoreboardToolStripMenuItem->Text = L"View Scoreboard";
+			this->viewScoreboardToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewScoreboardToolStripMenuItem_Click);
+			// 
+			// viewAttendanceListToolStripMenuItem
+			// 
+			this->viewAttendanceListToolStripMenuItem->Name = L"viewAttendanceListToolStripMenuItem";
+			this->viewAttendanceListToolStripMenuItem->Size = System::Drawing::Size(184, 22);
+			this->viewAttendanceListToolStripMenuItem->Text = L"View Attendance List";
+			this->viewAttendanceListToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewAttendanceListToolStripMenuItem_Click);
+			// 
+			// dgvAY
+			// 
+			this->dgvAY->AllowUserToAddRows = false;
+			this->dgvAY->AllowUserToDeleteRows = false;
+			this->dgvAY->AllowUserToResizeColumns = false;
+			this->dgvAY->AllowUserToResizeRows = false;
+			this->dgvAY->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dgvAY->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->dgvAY->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvAY->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle7->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Consolas", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle7->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvAY->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			this->dgvAY->ColumnHeadersHeight = 40;
+			this->dgvAY->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->dgvAY->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->ayClumn });
+			this->dgvAY->ContextMenuStrip = this->ayMenu;
+			this->dgvAY->EnableHeadersVisualStyles = false;
+			this->dgvAY->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->dgvAY->Location = System::Drawing::Point(0, -444);
+			this->dgvAY->MultiSelect = false;
+			this->dgvAY->Name = L"dgvAY";
+			this->dgvAY->RowHeadersVisible = false;
+			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dgvAY->RowsDefaultCellStyle = dataGridViewCellStyle8;
+			this->dgvAY->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvAY->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
+			this->dgvAY->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 26.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dgvAY->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
+			this->dgvAY->RowTemplate->Height = 100;
+			this->dgvAY->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvAY->Size = System::Drawing::Size(66, 489);
+			this->dgvAY->TabIndex = 1;
+			this->dgvAY->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellDoubleClick);
+			this->dgvAY->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellEndEdit);
+			this->dgvAY->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvAY_CellMouseDown);
+			// 
+			// ayClumn
+			// 
+			this->ayClumn->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->ayClumn->HeaderText = L"ACADEMIC YEARS";
+			this->ayClumn->Name = L"ayClumn";
+			// 
+			// ayMenu
+			// 
+			this->ayMenu->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->createToolStripMenuItem,
+					this->deleteToolStripMenuItem
+			});
+			this->ayMenu->Name = L"ayMenu";
+			this->ayMenu->Size = System::Drawing::Size(109, 48);
+			// 
+			// createToolStripMenuItem
+			// 
+			this->createToolStripMenuItem->Name = L"createToolStripMenuItem";
+			this->createToolStripMenuItem->Size = System::Drawing::Size(108, 22);
+			this->createToolStripMenuItem->Text = L"Create";
+			this->createToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::createToolStripMenuItem_Click);
+			// 
+			// deleteToolStripMenuItem
+			// 
+			this->deleteToolStripMenuItem->Name = L"deleteToolStripMenuItem";
+			this->deleteToolStripMenuItem->Size = System::Drawing::Size(108, 22);
+			this->deleteToolStripMenuItem->Text = L"Delete";
+			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::deleteToolStripMenuItem_Click);
 			// 
 			// panelProfile
 			// 
@@ -1934,9 +1934,9 @@ namespace StudentManagementSystem {
 			this->panelSchedule->Controls->Add(this->button6);
 			this->panelSchedule->Controls->Add(this->label12);
 			this->panelSchedule->Controls->Add(this->dgvSchedule);
-			this->panelSchedule->Location = System::Drawing::Point(90, 22);
+			this->panelSchedule->Location = System::Drawing::Point(674, 449);
 			this->panelSchedule->Name = L"panelSchedule";
-			this->panelSchedule->Size = System::Drawing::Size(165, 147);
+			this->panelSchedule->Size = System::Drawing::Size(182, 90);
 			this->panelSchedule->TabIndex = 6;
 			// 
 			// button6
@@ -1950,7 +1950,7 @@ namespace StudentManagementSystem {
 			this->button6->ForeColor = System::Drawing::SystemColors::Control;
 			this->button6->Location = System::Drawing::Point(0, 59);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(165, 2);
+			this->button6->Size = System::Drawing::Size(182, 2);
 			this->button6->TabIndex = 7;
 			this->button6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button6->UseVisualStyleBackColor = false;
@@ -1966,7 +1966,7 @@ namespace StudentManagementSystem {
 			this->label12->ForeColor = System::Drawing::SystemColors::Control;
 			this->label12->Location = System::Drawing::Point(0, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(165, 59);
+			this->label12->Size = System::Drawing::Size(182, 59);
 			this->label12->TabIndex = 6;
 			this->label12->Text = L"       Schedule";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -2001,7 +2001,7 @@ namespace StudentManagementSystem {
 			});
 			this->dgvSchedule->EnableHeadersVisualStyles = false;
 			this->dgvSchedule->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvSchedule->Location = System::Drawing::Point(0, -342);
+			this->dgvSchedule->Location = System::Drawing::Point(0, -399);
 			this->dgvSchedule->MultiSelect = false;
 			this->dgvSchedule->Name = L"dgvSchedule";
 			this->dgvSchedule->ReadOnly = true;
@@ -2013,7 +2013,7 @@ namespace StudentManagementSystem {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvSchedule->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvSchedule->RowTemplate->Height = 25;
-			this->dgvSchedule->Size = System::Drawing::Size(165, 489);
+			this->dgvSchedule->Size = System::Drawing::Size(182, 489);
 			this->dgvSchedule->TabIndex = 1;
 			// 
 			// Column17
@@ -2224,16 +2224,16 @@ namespace StudentManagementSystem {
 			this->panelMenu->ResumeLayout(false);
 			this->panelBtProfile->ResumeLayout(false);
 			this->panelMain->ResumeLayout(false);
+			this->panelClassList->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->EndInit();
+			this->dgvStudentListMenu->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->EndInit();
 			this->panelCourse->ResumeLayout(false);
 			this->panelSemester->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCourseList))->EndInit();
 			this->dgvCourseListMenu->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAY))->EndInit();
 			this->ayMenu->ResumeLayout(false);
-			this->panelClassList->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->EndInit();
-			this->dgvStudentListMenu->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClassList))->EndInit();
 			this->panelProfile->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -2581,6 +2581,7 @@ namespace StudentManagementSystem {
 		}
 	}
 #pragma endregion
+		   //fix panel course header
 		   String^ course_file;
 		   void dgvAYload()
 		   {
@@ -2625,7 +2626,7 @@ namespace StudentManagementSystem {
 				   dgvCourseList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
 				   s.insert(2, "/").insert(5, "/");
-				   dgvCourseList->Rows[x]->Cells[6]->Value = gcnew String(s.c_str());				   
+				   dgvCourseList->Rows[x]->Cells[6]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
 				   dgvCourseList->Rows[x]->Cells[7]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
@@ -2722,7 +2723,7 @@ namespace StudentManagementSystem {
 		try
 		{
 			dgvAY->EndEdit();
-			panelCourseHeader->Text = dgvAY->SelectedCells[0]->Value->ToString();
+			panelCourseHeader->Text = "     " + dgvAY->SelectedCells[0]->Value->ToString();
 			dgvAY->Visible = false;
 			panelSemester->Visible = true;
 		}
@@ -2787,7 +2788,7 @@ namespace StudentManagementSystem {
 				dgvCourseList->Rows->RemoveAt(dgvCourseList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvCourseList->RowCount; i++)
 				{
-					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;					
+					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;
 					f << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
@@ -2796,9 +2797,9 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl << 
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2,1)) << endl << 
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2,1)) << endl << 
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2, 1)) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2, 1)) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[10]->Value->ToString());
 				}
 				f.close();
@@ -2811,12 +2812,40 @@ namespace StudentManagementSystem {
 			return;
 		}
 	}
+	private: System::Void dgvCourseList_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		try
+		{
+			std::ofstream f;
+			f.open(msclr::interop::marshal_as<std::string>(course_file->ToString()));
+			for (int i = 0; i < dgvCourseList->RowCount; i++)
+			{
+				f << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[10]->Value->ToString());
+			}
+			f.close();
+			// LOAD LAI FILE user_login.txt
+		}
+		catch (Exception^ ex)
+		{
+			return;
+		}
+	}
 	private: System::Void viewStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		studentForm^ f = gcnew studentForm;
+		studentForm^ f = gcnew studentForm(dgvCourseList->SelectedCells[3]->Value->ToString());
 		f->ShowDialog();
 	}
 	private: System::Void viewScoreboardToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		scoreboardForm^ f = gcnew scoreboardForm;
+		scoreboardForm^ f = gcnew scoreboardForm(dgvCourseList->SelectedCells[3]->Value->ToString());
 		f->ShowDialog();
 	}
 	private: System::Void viewAttendanceListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2868,10 +2897,6 @@ namespace StudentManagementSystem {
 		if (e->X < 50) panelMenu->Visible = true;
 		if (e->X > 50) panelMenu->Visible = false;
 	}
-
-
-
-
 
 	};
 }
