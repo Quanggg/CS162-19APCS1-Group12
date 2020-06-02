@@ -250,6 +250,7 @@ namespace StudentManagementSystem {
 				dgvStudentList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
 				x++;
 			}
+			dgvStudentList->ClearSelection();
 		}
 	private: System::Void addNewStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		dgvStudentList->Rows->Add();
