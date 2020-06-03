@@ -4,7 +4,7 @@
 le chau nhat quang
 8
 8
-10
+9.5
 9.0
 2
 19125116
