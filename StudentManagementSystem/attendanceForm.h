@@ -110,10 +110,12 @@ namespace StudentManagementSystem {
 			this->dgvAtt->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->dgvAtt->EnableHeadersVisualStyles = false;
 			this->dgvAtt->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvAtt->Location = System::Drawing::Point(0, 58);
+			this->dgvAtt->Location = System::Drawing::Point(0, 72);
+			this->dgvAtt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgvAtt->MultiSelect = false;
 			this->dgvAtt->Name = L"dgvAtt";
 			this->dgvAtt->RowHeadersVisible = false;
+			this->dgvAtt->RowHeadersWidth = 51;
 			this->dgvAtt->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvAtt->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
@@ -124,13 +126,14 @@ namespace StudentManagementSystem {
 			this->dgvAtt->RowTemplate->DefaultCellStyle->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			this->dgvAtt->RowTemplate->Height = 25;
 			this->dgvAtt->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvAtt->Size = System::Drawing::Size(819, 353);
+			this->dgvAtt->Size = System::Drawing::Size(1092, 434);
 			this->dgvAtt->TabIndex = 5;
 			this->dgvAtt->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &attendanceForm::dgvAtt_CellEndEdit);
 			// 
 			// dgvStudentListNo
 			// 
 			this->dgvStudentListNo->HeaderText = L"No";
+			this->dgvStudentListNo->MinimumWidth = 6;
 			this->dgvStudentListNo->Name = L"dgvStudentListNo";
 			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListNo->Width = 50;
@@ -138,6 +141,7 @@ namespace StudentManagementSystem {
 			// dgvStudentListID
 			// 
 			this->dgvStudentListID->HeaderText = L"STUDENT ID";
+			this->dgvStudentListID->MinimumWidth = 6;
 			this->dgvStudentListID->Name = L"dgvStudentListID";
 			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListID->Width = 130;
@@ -146,31 +150,34 @@ namespace StudentManagementSystem {
 			// 
 			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
 			this->dgvStudentListLastname->HeaderText = L"STUDENT NAME";
+			this->dgvStudentListLastname->MinimumWidth = 6;
 			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
 			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvStudentListLastname->Width = 250;
 			// 
 			// contextMenuStrip1
 			// 
+			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->exportToCSVFileToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(166, 26);
+			this->contextMenuStrip1->Size = System::Drawing::Size(195, 28);
 			// 
 			// exportToCSVFileToolStripMenuItem
 			// 
 			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
-			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(194, 24);
 			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
 			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::exportToCSVFileToolStripMenuItem_Click);
 			// 
 			// attendanceForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->ClientSize = System::Drawing::Size(819, 411);
+			this->ClientSize = System::Drawing::Size(1092, 506);
 			this->Controls->Add(this->dgvAtt);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"attendanceForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"attendanceForm";
@@ -283,5 +290,6 @@ namespace StudentManagementSystem {
 		}
 		f.close();
 	}
+
 };
 }
