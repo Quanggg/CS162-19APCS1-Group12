@@ -17,12 +17,13 @@ namespace StudentManagementSystem {
 	public ref class studentForm : public System::Windows::Forms::Form
 	{
 	public:
-		studentForm(String^ s)
+		studentForm(int k, String^ s)
 		{
 			InitializeComponent();
 			this->Text = s;
 			classname = s;
 			dgvStudentListLoad();
+			if (k > 1) dgvStudentList->ReadOnly = true;
 			//
 			//TODO: Add the constructor code here
 			//

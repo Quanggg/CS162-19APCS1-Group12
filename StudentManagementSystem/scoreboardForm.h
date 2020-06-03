@@ -18,12 +18,13 @@ namespace StudentManagementSystem {
 	public ref class scoreboardForm : public System::Windows::Forms::Form
 	{
 	public:
-		scoreboardForm(String^ s)
+		scoreboardForm(int k, String^ s)
 		{
 			InitializeComponent();
 			classname = s;
 			this->Text = s;
 			dgvScoreLoad();
+			if (k == 1) dgvScore->ReadOnly = true;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -31,6 +32,7 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToCSVFileToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ importFromCSVFileToolStripMenuItem;
 	public: String^ classname;
 	protected:
 		/// <summary>
@@ -85,6 +87,7 @@ namespace StudentManagementSystem {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->exportToCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->importFromCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvScore))->BeginInit();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -135,6 +138,7 @@ namespace StudentManagementSystem {
 			this->dgvScore->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvScore->Size = System::Drawing::Size(796, 353);
 			this->dgvScore->TabIndex = 4;
+			this->dgvScore->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &scoreboardForm::dgvScore_CellEndEdit);
 			// 
 			// dgvStudentListNo
 			// 
@@ -181,16 +185,25 @@ namespace StudentManagementSystem {
 			// 
 			// contextMenuStrip1
 			// 
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->exportToCSVFileToolStripMenuItem });
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->exportToCSVFileToolStripMenuItem,
+					this->importFromCSVFileToolStripMenuItem
+			});
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(181, 48);
+			this->contextMenuStrip1->Size = System::Drawing::Size(183, 48);
 			// 
 			// exportToCSVFileToolStripMenuItem
 			// 
 			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
-			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(182, 22);
 			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
 			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &scoreboardForm::exportToCSVFileToolStripMenuItem_Click);
+			// 
+			// importFromCSVFileToolStripMenuItem
+			// 
+			this->importFromCSVFileToolStripMenuItem->Name = L"importFromCSVFileToolStripMenuItem";
+			this->importFromCSVFileToolStripMenuItem->Size = System::Drawing::Size(182, 22);
+			this->importFromCSVFileToolStripMenuItem->Text = L"Import from CSV file";
 			// 
 			// scoreboardForm
 			// 
@@ -250,6 +263,21 @@ namespace StudentManagementSystem {
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[3]->Value->ToString()) << "," <<
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[4]->Value->ToString()) << "," <<
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[5]->Value->ToString()) << "," <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[6]->Value->ToString());
+		}
+		f.close();
+	}
+	private: System::Void dgvScore_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		ofstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_sco.l");
+		for (int i = 0; i < dgvScore->RowCount; i++)
+		{
+			f << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[0]->Value->ToString()) << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[1]->Value->ToString()) << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[2]->Value->ToString()) << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[3]->Value->ToString()) << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[4]->Value->ToString()) << endl <<
+				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[5]->Value->ToString()) << endl <<
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[6]->Value->ToString());
 		}
 		f.close();

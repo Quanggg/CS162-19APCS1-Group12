@@ -37,7 +37,7 @@ namespace StudentManagementSystem {
 		mainForm(void)
 		{
 			InitializeComponent();
-			loadData();
+			initData();
 			showLoginPanel();
 			//
 			//TODO: Add the constructor code here
@@ -339,6 +339,7 @@ namespace StudentManagementSystem {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(mainForm::typeid));
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
@@ -347,7 +348,6 @@ namespace StudentManagementSystem {
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
@@ -384,6 +384,10 @@ namespace StudentManagementSystem {
 			this->dgvLecturerMenu = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->panelCheckIn = (gcnew System::Windows::Forms::Panel());
+			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->dgvCheckIn = (gcnew System::Windows::Forms::DataGridView());
 			this->panelClassList = (gcnew System::Windows::Forms::Panel());
 			this->dgvStudentList = (gcnew System::Windows::Forms::DataGridView());
 			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -453,10 +457,6 @@ namespace StudentManagementSystem {
 			this->tbProfileSid = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->panelCheckIn = (gcnew System::Windows::Forms::Panel());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->dgvCheckIn = (gcnew System::Windows::Forms::DataGridView());
 			this->panelScore = (gcnew System::Windows::Forms::Panel());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->label13 = (gcnew System::Windows::Forms::Label());
@@ -485,6 +485,8 @@ namespace StudentManagementSystem {
 			this->panelLecturer->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLecturer))->BeginInit();
 			this->dgvLecturerMenu->SuspendLayout();
+			this->panelCheckIn->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCheckIn))->BeginInit();
 			this->panelClassList->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->BeginInit();
 			this->dgvStudentListMenu->SuspendLayout();
@@ -498,8 +500,6 @@ namespace StudentManagementSystem {
 			this->panelProfile->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
-			this->panelCheckIn->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCheckIn))->BeginInit();
 			this->panelScore->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvScore))->BeginInit();
 			this->panelSchedule->SuspendLayout();
@@ -979,6 +979,88 @@ namespace StudentManagementSystem {
 			this->toolStripMenuItem2->Size = System::Drawing::Size(108, 22);
 			this->toolStripMenuItem2->Text = L"Delete";
 			this->toolStripMenuItem2->Click += gcnew System::EventHandler(this, &mainForm::toolStripMenuItem2_Click);
+			// 
+			// panelCheckIn
+			// 
+			this->panelCheckIn->Controls->Add(this->button8);
+			this->panelCheckIn->Controls->Add(this->label14);
+			this->panelCheckIn->Controls->Add(this->dgvCheckIn);
+			this->panelCheckIn->Location = System::Drawing::Point(379, 244);
+			this->panelCheckIn->Name = L"panelCheckIn";
+			this->panelCheckIn->Size = System::Drawing::Size(193, 106);
+			this->panelCheckIn->TabIndex = 5;
+			// 
+			// button8
+			// 
+			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->button8->Dock = System::Windows::Forms::DockStyle::Top;
+			this->button8->FlatAppearance->BorderSize = 0;
+			this->button8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button8->ForeColor = System::Drawing::SystemColors::Control;
+			this->button8->Location = System::Drawing::Point(0, 59);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(193, 2);
+			this->button8->TabIndex = 7;
+			this->button8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Visible = false;
+			// 
+			// label14
+			// 
+			this->label14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(62)));
+			this->label14->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label14->ForeColor = System::Drawing::SystemColors::Control;
+			this->label14->Location = System::Drawing::Point(0, 0);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(193, 59);
+			this->label14->TabIndex = 6;
+			this->label14->Text = L"       Check-in Result";
+			this->label14->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// dgvCheckIn
+			// 
+			this->dgvCheckIn->AllowUserToAddRows = false;
+			this->dgvCheckIn->AllowUserToDeleteRows = false;
+			this->dgvCheckIn->AllowUserToResizeColumns = false;
+			this->dgvCheckIn->AllowUserToResizeRows = false;
+			this->dgvCheckIn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dgvCheckIn->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->dgvCheckIn->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvCheckIn->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this->dgvCheckIn->ColumnHeadersHeight = 30;
+			this->dgvCheckIn->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->dgvCheckIn->EnableHeadersVisualStyles = false;
+			this->dgvCheckIn->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->dgvCheckIn->Location = System::Drawing::Point(0, 100);
+			this->dgvCheckIn->Name = L"dgvCheckIn";
+			this->dgvCheckIn->ReadOnly = true;
+			this->dgvCheckIn->RowHeadersVisible = false;
+			this->dgvCheckIn->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvCheckIn->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
+			this->dgvCheckIn->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dgvCheckIn->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
+			this->dgvCheckIn->Size = System::Drawing::Size(193, 6);
+			this->dgvCheckIn->TabIndex = 1;
 			// 
 			// panelClassList
 			// 
@@ -1874,88 +1956,6 @@ namespace StudentManagementSystem {
 			this->label3->Text = L"       Profile";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// panelCheckIn
-			// 
-			this->panelCheckIn->Controls->Add(this->button8);
-			this->panelCheckIn->Controls->Add(this->label14);
-			this->panelCheckIn->Controls->Add(this->dgvCheckIn);
-			this->panelCheckIn->Location = System::Drawing::Point(379, 244);
-			this->panelCheckIn->Name = L"panelCheckIn";
-			this->panelCheckIn->Size = System::Drawing::Size(193, 106);
-			this->panelCheckIn->TabIndex = 5;
-			// 
-			// button8
-			// 
-			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(68)));
-			this->button8->Dock = System::Windows::Forms::DockStyle::Top;
-			this->button8->FlatAppearance->BorderSize = 0;
-			this->button8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button8->ForeColor = System::Drawing::SystemColors::Control;
-			this->button8->Location = System::Drawing::Point(0, 59);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(193, 2);
-			this->button8->TabIndex = 7;
-			this->button8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button8->UseVisualStyleBackColor = false;
-			this->button8->Visible = false;
-			// 
-			// label14
-			// 
-			this->label14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(26)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(62)));
-			this->label14->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label14->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label14->ForeColor = System::Drawing::SystemColors::Control;
-			this->label14->Location = System::Drawing::Point(0, 0);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(193, 59);
-			this->label14->TabIndex = 6;
-			this->label14->Text = L"       Check-in Result";
-			this->label14->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			// 
-			// dgvCheckIn
-			// 
-			this->dgvCheckIn->AllowUserToAddRows = false;
-			this->dgvCheckIn->AllowUserToDeleteRows = false;
-			this->dgvCheckIn->AllowUserToResizeColumns = false;
-			this->dgvCheckIn->AllowUserToResizeRows = false;
-			this->dgvCheckIn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->dgvCheckIn->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(70)));
-			this->dgvCheckIn->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->dgvCheckIn->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this->dgvCheckIn->ColumnHeadersHeight = 30;
-			this->dgvCheckIn->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-			this->dgvCheckIn->EnableHeadersVisualStyles = false;
-			this->dgvCheckIn->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvCheckIn->Location = System::Drawing::Point(0, 100);
-			this->dgvCheckIn->Name = L"dgvCheckIn";
-			this->dgvCheckIn->ReadOnly = true;
-			this->dgvCheckIn->RowHeadersVisible = false;
-			this->dgvCheckIn->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			this->dgvCheckIn->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
-			this->dgvCheckIn->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dgvCheckIn->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
-			this->dgvCheckIn->Size = System::Drawing::Size(193, 6);
-			this->dgvCheckIn->TabIndex = 1;
-			// 
 			// panelScore
 			// 
 			this->panelScore->Controls->Add(this->button7);
@@ -2229,6 +2229,8 @@ namespace StudentManagementSystem {
 			this->panelLecturer->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLecturer))->EndInit();
 			this->dgvLecturerMenu->ResumeLayout(false);
+			this->panelCheckIn->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCheckIn))->EndInit();
 			this->panelClassList->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvStudentList))->EndInit();
 			this->dgvStudentListMenu->ResumeLayout(false);
@@ -2244,8 +2246,6 @@ namespace StudentManagementSystem {
 			this->groupBox2->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			this->panelCheckIn->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCheckIn))->EndInit();
 			this->panelScore->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvScore))->EndInit();
 			this->panelSchedule->ResumeLayout(false);
@@ -2269,12 +2269,12 @@ namespace StudentManagementSystem {
 			this->Width = 380;
 			openPanel(panelLogin);
 		}
-		void loadData()
+		void initData()
 		{
-
-			//create student account
+			ofstream fi("general/class_list.txt");
+			fi << "aa";
+			fi.close();
 		}
-
 		void openPanel(Panel^ tmp) //hide all panels and open 1 panel
 		{
 			if (tmp->Visible) return;
@@ -2663,6 +2663,11 @@ namespace StudentManagementSystem {
 			dgvCourseList->Visible = true;
 			dgvAY->Visible = false;
 			panelCourseHeader->Text = "2019-2020 Semester II";
+			dgvAY->Rows->Clear();
+			dgvAY->Rows->Add();
+			dgvAY->SelectAll();
+			dgvAY->SelectedCells[0]->Value = "2019-2020";
+			dgvCourseLoad("hk2");
 			//load courselist
 		}
 	}
@@ -2844,15 +2849,15 @@ namespace StudentManagementSystem {
 		}
 	}
 	private: System::Void viewStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		studentForm^ f = gcnew studentForm(dgvCourseList->SelectedCells[3]->Value->ToString());
+		studentForm^ f = gcnew studentForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
 		f->ShowDialog();
 	}
 	private: System::Void viewScoreboardToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		scoreboardForm^ f = gcnew scoreboardForm(dgvCourseList->SelectedCells[3]->Value->ToString());
+		scoreboardForm^ f = gcnew scoreboardForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
 		f->ShowDialog();
 	}
 	private: System::Void viewAttendanceListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		attendanceForm^ f = gcnew attendanceForm(dgvCourseList->SelectedCells[3]->Value->ToString());
+		attendanceForm^ f = gcnew attendanceForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
 		f->ShowDialog();
 	}
 #pragma endregion
