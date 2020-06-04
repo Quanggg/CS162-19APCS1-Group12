@@ -43,7 +43,7 @@ namespace StudentManagementSystem {
 			std::string s;
 			int x = 0;
 			dgvClassList->Rows->Clear();
-			f.open("class_list.txt");
+			f.open("general\\class_list.txt");
 			getline(f, s, '\n');
 			while (f.good())
 			{
@@ -93,10 +93,10 @@ namespace StudentManagementSystem {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle21 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle22 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle23 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle24 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dgvClassList = (gcnew System::Windows::Forms::DataGridView());
 			this->dgvClassNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column29 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -115,16 +115,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvClassList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle21->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle21->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle21->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle21->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle21->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle21->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle21->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvClassList->ColumnHeadersHeight = 30;
 			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
@@ -139,7 +139,7 @@ namespace StudentManagementSystem {
 			this->dgvClassList->Name = L"dgvClassList";
 			this->dgvClassList->ReadOnly = true;
 			this->dgvClassList->RowHeadersVisible = false;
-			this->dgvClassList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->dgvClassList->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvClassList->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 11.25F, System::Drawing::FontStyle::Regular,
@@ -154,8 +154,8 @@ namespace StudentManagementSystem {
 			// 
 			// dgvClassNo
 			// 
-			dataGridViewCellStyle22->BackColor = System::Drawing::Color::MidnightBlue;
-			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle22;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::MidnightBlue;
+			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle2;
 			this->dgvClassNo->HeaderText = L"No";
 			this->dgvClassNo->Name = L"dgvClassNo";
 			this->dgvClassNo->ReadOnly = true;
@@ -164,8 +164,8 @@ namespace StudentManagementSystem {
 			// 
 			// Column29
 			// 
-			dataGridViewCellStyle23->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column29->DefaultCellStyle = dataGridViewCellStyle23;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column29->DefaultCellStyle = dataGridViewCellStyle3;
 			this->Column29->HeaderText = L"CLASS NAME";
 			this->Column29->Name = L"Column29";
 			this->Column29->ReadOnly = true;
@@ -175,8 +175,8 @@ namespace StudentManagementSystem {
 			// Column30
 			// 
 			this->Column30->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			dataGridViewCellStyle24->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column30->DefaultCellStyle = dataGridViewCellStyle24;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column30->DefaultCellStyle = dataGridViewCellStyle4;
 			this->Column30->HeaderText = L"DETAIL";
 			this->Column30->Name = L"Column30";
 			this->Column30->ReadOnly = true;
@@ -227,12 +227,12 @@ namespace StudentManagementSystem {
 					MessageBox::Show(this, "Move to Class " + dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()
 						+ " successfully", "Notification");
 					std::ifstream fin;
-					fin.open(msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".l");
+					fin.open("general\\class\\" + msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".txt");
 					std::ostringstream s;
 					s << fin.rdbuf();
 					fin.close();
 					std::ofstream fout;
-					fout.open(msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".l");
+					fout.open("general\\class\\" + msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".txt");
 					fout << s.str();
 					fout << endl;
 					fout <<
@@ -241,7 +241,7 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(r->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString());
 					fout.close();
 				}
 			}
