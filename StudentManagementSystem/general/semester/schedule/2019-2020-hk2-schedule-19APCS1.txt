@@ -1,0 +1,23 @@
+
+1
+CS162
+Introduction to Programming
+19APCS1
+dbtien
+040620
+060120
+MON
+0730
+1130
+I42
+2
+CM101
+Communications
+19APCS1
+dnvu
+040620
+060120
+SAT
+1330
+1730
+I23

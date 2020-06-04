@@ -43,7 +43,7 @@ namespace StudentManagementSystem {
 			std::string s;
 			int x = 0;
 			dgvClassList->Rows->Clear();
-			f.open("class_list.txt");
+			f.open("general\\class_list.txt");
 			getline(f, s, '\n');
 			while (f.good())
 			{
@@ -227,12 +227,12 @@ namespace StudentManagementSystem {
 					MessageBox::Show(this, "Move to Class " + dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()
 						+ " successfully", "Notification");
 					std::ifstream fin;
-					fin.open(msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".l");
+					fin.open("general\\class\\" + msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".txt");
 					std::ostringstream s;
 					s << fin.rdbuf();
 					fin.close();
 					std::ofstream fout;
-					fout.open(msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".l");
+					fout.open("general\\class\\" + msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString()) + ".txt");
 					fout << s.str();
 					fout << endl;
 					fout <<
@@ -241,7 +241,7 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(r->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString());
 					fout.close();
 				}
 			}
