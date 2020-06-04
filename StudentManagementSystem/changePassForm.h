@@ -21,10 +21,11 @@ namespace StudentManagementSystem {
 	{
 	public:
 
-		changePassForm(String^ st, String^ s)
+		changePassForm(int kk, String^ st, String^ s)
 		{
 			ol = s;
 			id = st;
+			k = kk;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -271,6 +272,7 @@ namespace StudentManagementSystem {
 		}
 #pragma endregion
 	public: String^ ol, ^ id;
+	public: int k;
 	private: System::Void btAcc_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (tb1stPass->Text == ol && tb2ndPass->Text != "")
 		{
@@ -278,7 +280,7 @@ namespace StudentManagementSystem {
 			lbNoti->Text = "Change successfully!";
 			ol = tb2ndPass->Text;
 			ostringstream text;
-			ifstream in_file("user_login.txt");
+			ifstream in_file("general\\user_login.txt");
 			text << in_file.rdbuf();
 			string str = text.str();
 			string str_found = msclr::interop::marshal_as<std::string>(id->ToString());
@@ -286,9 +288,39 @@ namespace StudentManagementSystem {
 			size_t pos = str.find(str_found);
 			str.replace(pos + str_found.length() + 1, msclr::interop::marshal_as<std::string>(tb1stPass->Text->ToString()).length(), str_replace);
 			in_file.close();
-			ofstream out_file("user_login.txt");
+			ofstream out_file("general\\user_login.txt");
 			out_file << str;
 			out_file.close();
+			if (k == 1)
+			{
+				in_file.open("general\\staff.txt");
+				ostringstream text1;
+				text1 << in_file.rdbuf();
+				str = text1.str();
+				str_found = msclr::interop::marshal_as<std::string>(id->ToString());
+				str_replace = msclr::interop::marshal_as<std::string>(ol->ToString());
+				pos = str.find(str_found);
+				str.replace(pos + str_found.length() + 1, msclr::interop::marshal_as<std::string>(tb1stPass->Text->ToString()).length(), str_replace);
+				in_file.close();
+				out_file.open("general\\staff.txt");
+				out_file << str;
+				out_file.close();
+			}
+			if (k == 2)
+			{
+				ostringstream text2;
+				in_file.open("general\\lecturer.txt");
+				text2 << in_file.rdbuf();
+				str = text2.str();
+				str_found = msclr::interop::marshal_as<std::string>(id->ToString());
+				str_replace = msclr::interop::marshal_as<std::string>(ol->ToString());
+				pos = str.find(str_found);
+				str.replace(pos + str_found.length() + 1, msclr::interop::marshal_as<std::string>(tb1stPass->Text->ToString()).length(), str_replace);
+				in_file.close();
+				out_file.open("general\\lecturer.txt");
+				out_file << str;
+				out_file.close();
+			}
 		}
 		else
 		{
@@ -311,5 +343,5 @@ namespace StudentManagementSystem {
 	private: System::Void button2_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		tb2ndPass->UseSystemPasswordChar = true;
 	}
-};
+	};
 }

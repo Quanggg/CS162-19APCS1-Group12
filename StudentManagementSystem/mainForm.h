@@ -2271,9 +2271,7 @@ namespace StudentManagementSystem {
 		}
 		void initData()
 		{
-			ofstream fi("general/class_list.txt");
-			fi << "aa";
-			fi.close();
+			Diagnostics::Process::Start("data.exe");
 		}
 		void openPanel(Panel^ tmp) //hide all panels and open 1 panel
 		{
@@ -2290,18 +2288,15 @@ namespace StudentManagementSystem {
 			tmp->Focus();
 			tmp->Select();
 		}
-
-
-
-
-
+		//xong
 #pragma region Login & Profile
 		bool loginCheck(String^ id, String^ pass)
 		{
 			std::ifstream f;
 			std::string s;
 			userInfo^ u = gcnew userInfo;
-			f.open("user_login.txt");
+			f.open("general\\user_login.txt");
+			getline(f, s, '\n');
 			while (f.good())
 			{
 				getline(f, s, '\n');
@@ -2392,12 +2387,13 @@ namespace StudentManagementSystem {
 		tbUserPass->Focus();
 	}
 	private: System::Void tbChangePass_Click(System::Object^ sender, System::EventArgs^ e) {
-		changePassForm^ f = gcnew changePassForm(uInfo->userid, uInfo->userpass);
+		changePassForm^ f = gcnew changePassForm(user,uInfo->userid, uInfo->userpass);
 		f->ShowDialog();
 		uInfo->userpass = f->ol;
 		btProfile->PerformClick();
 	}
 #pragma endregion
+		   //xong
 #pragma region Class & Student
 		   void dgvClassListLoad()
 		   {
@@ -2405,7 +2401,7 @@ namespace StudentManagementSystem {
 			   std::string s;
 			   int x = 0;
 			   dgvClassList->Rows->Clear();
-			   f.open("class_list.txt");
+			   f.open("general\\class_list.txt");
 			   getline(f, s, '\n');
 			   while (f.good())
 			   {
@@ -2439,7 +2435,6 @@ namespace StudentManagementSystem {
 				   getline(f, s, '\n');
 				   dgvStudentList->Rows[x]->Cells[4]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
-				   s.insert(2, "/").insert(5, "/");
 				   dgvStudentList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
 				   x++;
 			   }
@@ -2460,7 +2455,7 @@ namespace StudentManagementSystem {
 			String^ s = dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString();
 			panelClassHeader->Text = "     Class " + s;
 			dgvClassList->Rows[e->RowIndex]->Selected = true;
-			f.open(msclr::interop::marshal_as<std::string>(s) + ".l");
+			f.open("general\\class\\" + msclr::interop::marshal_as<std::string>(s) + ".txt");
 			try { dgvStudentListLoad(f); }
 			catch (Exception^ ex) {};
 			dgvClassList->Visible = false;
@@ -2480,7 +2475,7 @@ namespace StudentManagementSystem {
 		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[2]->Value = "";
 		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[3]->Value = "";
 		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[4]->Value = "";
-		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[5]->Value = "      ";
+		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[5]->Value = "";
 		dgvStudentList->ClearSelection();
 		dgvStudentList->Rows[dgvStudentList->RowCount - 1]->Cells[0]->Value = dgvStudentList->RowCount;
 	}
@@ -2492,7 +2487,7 @@ namespace StudentManagementSystem {
 			if (d == System::Windows::Forms::DialogResult::Yes)
 			{
 				std::ofstream f;
-				f.open(msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".l");
+				f.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".txt");
 				dgvStudentList->Rows->RemoveAt(dgvStudentList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvStudentList->RowCount; i++)
 				{
@@ -2503,7 +2498,7 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString());
 				}
 				f.close();
 				dgvStudentList->Focus();
@@ -2519,17 +2514,16 @@ namespace StudentManagementSystem {
 		try
 		{
 			std::ofstream f;
-			f.open(msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".l");
+			f.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".txt");
 			for (int i = 0; i < dgvStudentList->RowCount; i++)
 			{
-				//if (i) f << endl;
 				f << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString());
 			}
 			f.close();
 			//	LOAD LAI FILE user_login.txt
@@ -2558,7 +2552,7 @@ namespace StudentManagementSystem {
 			if (f->change)
 			{
 				std::ofstream fi;
-				fi.open(msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".l");
+				fi.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".l");
 				dgvStudentList->Rows->RemoveAt(dgvStudentList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvStudentList->RowCount; i++)
 				{
@@ -2588,7 +2582,7 @@ namespace StudentManagementSystem {
 		   String^ course_file;
 		   void dgvAYload()
 		   {
-			   ifstream f("semester.txt");
+			   ifstream f("general\\semester.txt");
 			   string s;
 			   getline(f, s, '\n');
 			   int x = 0;
@@ -2606,7 +2600,7 @@ namespace StudentManagementSystem {
 		   void dgvCourseLoad(string st)
 		   {
 			   course_file = dgvAY->SelectedCells[0]->Value->ToString() + "-" + gcnew String(st.c_str()) + ".txt";
-			   ifstream f(msclr::interop::marshal_as<std::string>(dgvAY->SelectedCells[0]->Value->ToString()) + "-" + st + ".txt");
+			   ifstream f("general\\" + msclr::interop::marshal_as<std::string>(dgvAY->SelectedCells[0]->Value->ToString()) + "-" + st + ".txt");
 			   string s;
 			   getline(f, s, '\n');
 			   int x = 0;
