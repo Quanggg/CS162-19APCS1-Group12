@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <algorithm>
 #include <map>
 #include <string>
 #include <fstream>
@@ -23,6 +24,14 @@ namespace StudentManagementSystem {
 	/// <summary>
 	/// Summary for mainForm
 	/// </summary>
+	struct user_info
+	{
+		string id, pass;
+	};
+	struct student
+	{
+		string id, lname, fname, dob, cls, gender;
+	};
 	public ref class mainForm : public System::Windows::Forms::Form
 	{
 	public: ref class classInfo
@@ -37,7 +46,6 @@ namespace StudentManagementSystem {
 		mainForm(void)
 		{
 			InitializeComponent();
-			initData();
 			showLoginPanel();
 			//
 			//TODO: Add the constructor code here
@@ -291,6 +299,8 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column28;
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Button^ btImport;
+private: System::Windows::Forms::Button^ button9;
 
 
 
@@ -338,18 +348,18 @@ namespace StudentManagementSystem {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(mainForm::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle13 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle14 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle15 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle16 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle17 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle18 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle19 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
@@ -477,6 +487,8 @@ namespace StudentManagementSystem {
 			this->Column21 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column22 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column23 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btImport = (gcnew System::Windows::Forms::Button());
+			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->panelLogin->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panelMenu->SuspendLayout();
@@ -829,6 +841,8 @@ namespace StudentManagementSystem {
 			this->panelMain->Controls->Add(this->panelScore);
 			this->panelMain->Controls->Add(this->panelSchedule);
 			this->panelMain->Controls->Add(this->panelLogin);
+			this->panelMain->Controls->Add(this->btImport);
+			this->panelMain->Controls->Add(this->button9);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panelMain->Location = System::Drawing::Point(176, 0);
 			this->panelMain->Name = L"panelMain";
@@ -841,10 +855,9 @@ namespace StudentManagementSystem {
 			this->panelLecturer->Controls->Add(this->button5);
 			this->panelLecturer->Controls->Add(this->label11);
 			this->panelLecturer->Controls->Add(this->dgvLecturer);
-			this->panelLecturer->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panelLecturer->Location = System::Drawing::Point(0, 0);
+			this->panelLecturer->Location = System::Drawing::Point(383, 373);
 			this->panelLecturer->Name = L"panelLecturer";
-			this->panelLecturer->Size = System::Drawing::Size(898, 589);
+			this->panelLecturer->Size = System::Drawing::Size(196, 80);
 			this->panelLecturer->TabIndex = 4;
 			// 
 			// button5
@@ -858,7 +871,7 @@ namespace StudentManagementSystem {
 			this->button5->ForeColor = System::Drawing::SystemColors::Control;
 			this->button5->Location = System::Drawing::Point(0, 59);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(898, 2);
+			this->button5->Size = System::Drawing::Size(196, 2);
 			this->button5->TabIndex = 7;
 			this->button5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button5->UseVisualStyleBackColor = false;
@@ -874,7 +887,7 @@ namespace StudentManagementSystem {
 			this->label11->ForeColor = System::Drawing::SystemColors::Control;
 			this->label11->Location = System::Drawing::Point(0, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(898, 59);
+			this->label11->Size = System::Drawing::Size(196, 59);
 			this->label11->TabIndex = 6;
 			this->label11->Text = L"       Lecturer list";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -891,16 +904,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvLecturer->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvLecturer->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle13->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle13->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvLecturer->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle13->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle13->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle13->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle13->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvLecturer->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			this->dgvLecturer->ColumnHeadersHeight = 30;
 			this->dgvLecturer->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvLecturer->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -910,7 +923,7 @@ namespace StudentManagementSystem {
 			this->dgvLecturer->ContextMenuStrip = this->dgvLecturerMenu;
 			this->dgvLecturer->EnableHeadersVisualStyles = false;
 			this->dgvLecturer->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvLecturer->Location = System::Drawing::Point(0, 100);
+			this->dgvLecturer->Location = System::Drawing::Point(0, -409);
 			this->dgvLecturer->MultiSelect = false;
 			this->dgvLecturer->Name = L"dgvLecturer";
 			this->dgvLecturer->RowHeadersVisible = false;
@@ -922,7 +935,7 @@ namespace StudentManagementSystem {
 			this->dgvLecturer->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvLecturer->RowTemplate->Height = 25;
 			this->dgvLecturer->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvLecturer->Size = System::Drawing::Size(898, 489);
+			this->dgvLecturer->Size = System::Drawing::Size(196, 489);
 			this->dgvLecturer->TabIndex = 1;
 			this->dgvLecturer->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvLecturer_CellEndEdit);
 			this->dgvLecturer->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvLecturer_CellMouseDown);
@@ -1035,16 +1048,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvCheckIn->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvCheckIn->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvCheckIn->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvCheckIn->ColumnHeadersHeight = 30;
 			this->dgvCheckIn->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvCheckIn->EnableHeadersVisualStyles = false;
@@ -1086,16 +1099,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvStudentList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvStudentList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle14->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle14->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle14->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle14->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle14->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle14->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle14->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvStudentList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
 			this->dgvStudentList->ColumnHeadersHeight = 30;
 			this->dgvStudentList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvStudentList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
@@ -1240,16 +1253,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvClassList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvClassList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvClassList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvClassList->ColumnHeadersHeight = 30;
 			this->dgvClassList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvClassList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
@@ -1278,8 +1291,8 @@ namespace StudentManagementSystem {
 			// 
 			// dgvClassNo
 			// 
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::MidnightBlue;
-			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle15->BackColor = System::Drawing::Color::MidnightBlue;
+			this->dgvClassNo->DefaultCellStyle = dataGridViewCellStyle15;
 			this->dgvClassNo->HeaderText = L"No";
 			this->dgvClassNo->Name = L"dgvClassNo";
 			this->dgvClassNo->ReadOnly = true;
@@ -1288,8 +1301,8 @@ namespace StudentManagementSystem {
 			// 
 			// Column29
 			// 
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column29->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle16->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column29->DefaultCellStyle = dataGridViewCellStyle16;
 			this->Column29->HeaderText = L"CLASS NAME";
 			this->Column29->Name = L"Column29";
 			this->Column29->ReadOnly = true;
@@ -1299,8 +1312,8 @@ namespace StudentManagementSystem {
 			// Column30
 			// 
 			this->Column30->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
-			dataGridViewCellStyle7->BackColor = System::Drawing::Color::MidnightBlue;
-			this->Column30->DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle17->BackColor = System::Drawing::Color::MidnightBlue;
+			this->Column30->DefaultCellStyle = dataGridViewCellStyle17;
 			this->Column30->HeaderText = L"DETAIL";
 			this->Column30->Name = L"Column30";
 			this->Column30->ReadOnly = true;
@@ -1427,16 +1440,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvCourseList->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvCourseList->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle18->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle18->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvCourseList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle18->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle18->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle18->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle18->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvCourseList->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
 			this->dgvCourseList->ColumnHeadersHeight = 50;
 			this->dgvCourseList->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvCourseList->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(11) {
@@ -1585,16 +1598,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvAY->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvAY->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Consolas", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Consolas", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvAY->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+			dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvAY->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			this->dgvAY->ColumnHeadersHeight = 40;
 			this->dgvAY->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvAY->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->ayClumn });
@@ -1605,9 +1618,9 @@ namespace StudentManagementSystem {
 			this->dgvAY->MultiSelect = false;
 			this->dgvAY->Name = L"dgvAY";
 			this->dgvAY->RowHeadersVisible = false;
-			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dgvAY->RowsDefaultCellStyle = dataGridViewCellStyle10;
+			this->dgvAY->RowsDefaultCellStyle = dataGridViewCellStyle19;
 			this->dgvAY->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			this->dgvAY->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
@@ -2010,16 +2023,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvScore->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvScore->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
-				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)));
+			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvScore->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvScore->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
 			this->dgvScore->ColumnHeadersHeight = 30;
 			this->dgvScore->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvScore->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -2127,16 +2140,16 @@ namespace StudentManagementSystem {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
 			this->dgvSchedule->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvSchedule->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
+			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvSchedule->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle10->ForeColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvSchedule->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 			this->dgvSchedule->ColumnHeadersHeight = 30;
 			this->dgvSchedule->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvSchedule->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
@@ -2209,6 +2222,42 @@ namespace StudentManagementSystem {
 			this->Column23->Name = L"Column23";
 			this->Column23->ReadOnly = true;
 			// 
+			// btImport
+			// 
+			this->btImport->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->btImport->FlatAppearance->BorderSize = 0;
+			this->btImport->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btImport->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btImport->ForeColor = System::Drawing::SystemColors::Control;
+			this->btImport->Location = System::Drawing::Point(6, 501);
+			this->btImport->Name = L"btImport";
+			this->btImport->Size = System::Drawing::Size(249, 85);
+			this->btImport->TabIndex = 8;
+			this->btImport->Text = L"IMPORT NEW FILE";
+			this->btImport->UseVisualStyleBackColor = false;
+			this->btImport->Visible = false;
+			this->btImport->Click += gcnew System::EventHandler(this, &mainForm::btImport_Click);
+			// 
+			// button9
+			// 
+			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->button9->FlatAppearance->BorderSize = 0;
+			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button9->Font = (gcnew System::Drawing::Font(L"Century Gothic", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button9->ForeColor = System::Drawing::SystemColors::Control;
+			this->button9->Location = System::Drawing::Point(261, 501);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(249, 85);
+			this->button9->TabIndex = 9;
+			this->button9->Text = L"CHECK-IN";
+			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Visible = false;
+			this->button9->Click += gcnew System::EventHandler(this, &mainForm::button9_Click);
+			// 
 			// mainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -2269,10 +2318,6 @@ namespace StudentManagementSystem {
 			this->Width = 380;
 			openPanel(panelLogin);
 		}
-		void initData()
-		{
-			Diagnostics::Process::Start("data.exe");
-		}
 		void openPanel(Panel^ tmp) //hide all panels and open 1 panel
 		{
 			if (tmp->Visible) return;
@@ -2287,6 +2332,593 @@ namespace StudentManagementSystem {
 			tmp->Visible = true;
 			tmp->Focus();
 			tmp->Select();
+		}
+		void reloadSemester()
+		{
+			ifstream f1;
+			string s1;
+			f1.open("general\\class_list.txt");
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				ifstream f3("general\\semester.txt");
+				string s2, s3;
+				getline(f3, s3, '\n');
+				while (f3.good())
+				{
+					getline(f3, s3, '\n');
+					ifstream f2("general\\class\\" + s1 + ".txt");
+					if (f2.is_open())
+					{
+						f2.close();
+						ofstream f4;
+						ifstream f5;
+						string s5;
+						f5.open("general\\semester\\schedule\\" + s3 + "-hk1-schedule.txt");
+						getline(f5, s5, '\n');
+						while (f5.good())
+						{
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							string tmp = s5;
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							if (s1 == s5)
+								f4.open("general\\semester\\student\\" + s3 + "-hk1-" + tmp + "-" + s1 + ".txt");
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							f2.open("general\\class\\" + s1 + ".txt");
+							getline(f2, s2, '\n');
+							while (f2.good())
+							{
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+							}
+							f2.close();
+							f4.close();
+						}
+						f5.close();
+						f5.open("general\\semester\\schedule\\" + s3 + "-hk2-schedule.txt");
+						getline(f5, s5, '\n');
+						while (f5.good())
+						{
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							string tmp = s5;
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							if (s1 == s5)
+								f4.open("general\\semester\\student\\" + s3 + "-hk2-" + tmp + "-" + s1 + ".txt");
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							f2.open("general\\class\\" + s1 + ".txt");
+							getline(f2, s2, '\n');
+							while (f2.good())
+							{
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+							}
+							f2.close();
+							f4.close();
+						}
+						f5.close();
+						f5.open("general\\semester\\schedule\\" + s3 + "-hk3-schedule.txt");
+						getline(f5, s5, '\n');
+						while (f5.good())
+						{
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							string tmp = s5;
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							if (s1 == s5)
+								f4.open("general\\semester\\student\\" + s3 + "-hk3-" + tmp + "-" + s1 + ".txt");
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							getline(f5, s5, '\n');
+							f2.open("general\\class\\" + s1 + ".txt");
+							getline(f2, s2, '\n');
+							while (f2.good())
+							{
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+								getline(f2, s2, '\n');
+								f4 << endl
+									<< s2;
+							}
+							f2.close();
+							f4.close();
+						}
+						f5.close();
+					}
+				}
+				f3.close();
+				getline(f1, s1, '\n');
+			}
+			f1.close();
+		}
+		static bool cmp1(user_info u1, user_info u2)
+		{
+			return u1.id < u2.id;
+		}
+		static bool cmp2(student& si1, student& si2)
+		{
+			return si1.id < si2.id;
+		};
+		void reloadUserLogin()
+		{
+			ifstream f1("general\\user_login.txt");
+			string s1;
+			user_info* u = new user_info[10000];
+			getline(f1, s1, '\n');
+			int i = 0;
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				getline(f1, s1, '\n');
+				getline(f1, s1, '\n');
+				getline(f1, s1, '\n');
+				u[i].id = s1;
+				getline(f1, s1, '\n');
+				u[i++].pass = s1;
+				getline(f1, s1, '\n');
+			}
+			int user_size = i;
+			sort(u, u + i, cmp1);//[](user_info &u1, user_info &u2) { return u1.id < u2.id; });
+			f1.close();
+			f1.open("general\\class_list.txt");
+			i = 0;
+			getline(f1, s1, '\n');
+			student* si = new student[10000];
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				ifstream f2("general\\class\\" + s1 + ".txt");
+				string s2, s6;
+				getline(f2, s2, '\n');
+				while (f2.good())
+				{
+					getline(f2, s2, '\n');
+					getline(f2, s2, '\n');
+					si[i].id = s2;
+					getline(f2, s2, '\n');
+					si[i].lname = s2;
+					getline(f2, s2, '\n');
+					si[i].fname = s2;
+					getline(f2, s2, '\n');
+					si[i].gender = s2;
+					getline(f2, s2, '\n');
+					si[i].dob = s2;
+					getline(f2, s2, '\n');
+					si[i++].cls = s2;
+				}
+				f2.close();
+				getline(f1, s1, '\n');
+			}
+			f1.close();
+			f1.open("general\\Lecturer.txt");
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				si[i].lname = s1;
+				si[i].fname = "";
+				getline(f1, s1, '\n');
+				si[i].id = s1;
+				getline(f1, s1, '\n');
+				si[i].dob = s1;
+				si[i].gender = "NONE";
+				si[i++].cls = "Lecturer";
+			}
+			f1.close();
+			f1.open("general\\Staff.txt");
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				si[i].lname = s1;
+				si[i].fname = "";
+				getline(f1, s1, '\n');
+				si[i].id = s1;
+				getline(f1, s1, '\n');
+				si[i].dob = s1;
+				si[i].gender = "NONE";
+				si[i++].cls = "Staff";
+			}
+			f1.close();
+			int student_size = i;
+			sort(si, si + i, cmp2);//[](student& si1, student& si2) { return si1.id < si2.id; });
+			int j = i = 0;
+			ofstream f2("general\\user_login.txt");
+			while (j < student_size)
+			{
+				if (u[i].id == si[j].id)
+				{
+					if (si[j].cls == "Lecturer" || si[j].cls == "Staff")
+					{
+						f2 << endl
+							<< si[j].lname << endl
+							<< "NONE\nNONE\n"
+							<< si[j].id << endl
+							<< u[i].pass << endl
+							<< si[j].cls;
+					}
+					else
+					{
+						f2 << endl
+							<< si[j].lname + " " + si[j].fname << endl
+							<< si[j].dob << endl
+							<< "NONE\n"
+							<< si[j].id << endl
+							<< u[i].pass << endl
+							<< si[j].cls;
+					}
+					i++;
+					j++;
+				}
+				else if (u[i].id < si[j].id)
+					i++;
+				else if (u[i].id > si[j].id)
+				{
+					if (si[j].cls == "Lecturer" || si[j].cls == "Staff")
+					{
+						f2 << endl
+							<< si[j].lname << endl
+							<< "NONE\nNONE\n"
+							<< si[j].id << endl
+							<< si[j].dob << endl
+							<< si[j].cls;
+					}
+					else
+					{
+						f2 << endl
+							<< si[j].lname + " " + si[j].fname << endl
+							<< si[j].dob << endl
+							<< "NONE\n"
+							<< si[j].id << endl;
+						if (si[j].dob.length() < 8)
+							f2 << si[j].dob << endl
+							<< si[j].cls;
+						else
+							f2 << si[j].dob.erase(4, 1).erase(6, 1) << endl
+							<< si[j].cls;
+					}
+					j++;
+				}
+			}
+			f2.close();
+			delete[] u;
+			delete[] si;
+			reloadSemester();
+		}
+		void importData()
+		{
+			ifstream f1("general\\class_list.txt");
+			//read student
+			ofstream f4("general\\user_login.txt");
+			string s1;
+			int i1, i2, i3;
+			i1 = i2 = i3 = 1;
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				string s2, s5;
+				ifstream f2("import\\" + s1 + "-Student.csv");
+				if (f2.is_open())
+				{
+					ofstream f3("general\\class\\" + s1 + ".txt");
+					getline(f2, s2, '\n');
+					while (f2.good())
+					{
+						string tmp;
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						tmp = s2;
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						f4 << endl
+							<< s2 << " ";
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						f4 << s2;
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						getline(f2, s2, ',');
+						f3 << endl
+							<< s2;
+						f4 << endl
+							<< s2;
+						f4 << endl
+							<< "NONE";
+						f4 << endl
+							<< tmp;
+						f4 << endl
+							<< s2.erase(4, 1).erase(6, 1);
+						getline(f2, s2, '\n');
+						f3 << endl
+							<< s2;
+						f4 << endl
+							<< s2;
+					}
+					f2.close();
+					f3.close();
+				}
+				ifstream f5("general\\semester.txt");
+				ofstream f3;
+				getline(f5, s5, '\n');
+				while (f5.good())
+				{
+					getline(f5, s5, '\n');
+					f2.open("import\\" + s5 + "-hk1-schedule-" + s1 + ".csv");
+					if (f2.is_open())
+					{
+						if (i1)
+						{
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk1-schedule.txt");
+							i1 = 0;
+						}
+						else
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk1-schedule.txt", ios::app);
+						getline(f2, s2, '\n');
+						while (f2.good())
+						{
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, '\n');
+							f3 << endl
+								<< s2;
+						}
+						f3.close();
+						f2.close();
+					}
+					f2.open("import\\" + s5 + "-hk2-schedule-" + s1 + ".csv");
+					if (f2.is_open())
+					{
+						if (i2)
+						{
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk2-schedule.txt");
+							i2 = 0;
+						}
+						else
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk2-schedule.txt", ios::app);
+						getline(f2, s2, '\n');
+						while (f2.good())
+						{
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, '\n');
+							f3 << endl
+								<< s2;
+						}
+						f3.close();
+						f2.close();
+					}
+					f2.open("import\\" + s5 + "-hk3-schedule-" + s1 + ".csv");
+					if (f2.is_open())
+					{
+						if (i3)
+						{
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk3-schedule.txt");
+							i3 = 0;
+						}
+						else
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk3-schedule.txt", ios::app);
+						getline(f2, s2, '\n');
+						while (f2.good())
+						{
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, ',');
+							f3 << endl
+								<< s2;
+							getline(f2, s2, '\n');
+							f3 << endl
+								<< s2;
+						}
+						f3.close();
+						f2.close();
+					}
+				}
+				f5.close();
+				getline(f1, s1, '\n');
+			}
+			f1.close();
+			f1.open("general\\staff.txt");
+			//read staff
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				f4 << "\nNONE\nNONE";
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				f4 << "\nStaff";
+			}
+			f1.close();
+			f1.open("general\\lecturer.txt");
+			//read staff
+			getline(f1, s1, '\n');
+			while (f1.good())
+			{
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				f4 << "\nNONE\nNONE";
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				getline(f1, s1, '\n');
+				f4 << endl
+					<< s1;
+				f4 << "\nLecturer";
+			}
+			f1.close();
+			f4.close();
+			reloadUserLogin();
 		}
 		//xong
 #pragma region Login & Profile
@@ -2347,12 +2979,14 @@ namespace StudentManagementSystem {
 			btCheckIn->Visible = false;
 			btScore->Visible = false;
 			btSchedule->Visible = false;
+			btImport->Visible = true;
 			if (user > 1)
 			{
 				btClass->Visible = false;
 				btLecturer->Visible = false;
 				if (user > 2)
 				{
+					btImport->Visible = false;
 					btCourse->Visible = false;
 					btCheckIn->Visible = true;
 					btScore->Visible = true;
@@ -2373,8 +3007,6 @@ namespace StudentManagementSystem {
 		openPanel(panelProfile);
 		tbProfileFullname->Text = uInfo->fullName;
 		tbProfileDob->Text = uInfo->dob;
-		tbProfileDob->Text = tbProfileDob->Text->Insert(2, "/");
-		tbProfileDob->Text = tbProfileDob->Text->Insert(5, "/");
 		tbProfileEmail->Text = uInfo->email;
 		tbProfileSid->Text = uInfo->userid;
 		tbProfileClass->Text = uInfo->cls;
@@ -2387,7 +3019,7 @@ namespace StudentManagementSystem {
 		tbUserPass->Focus();
 	}
 	private: System::Void tbChangePass_Click(System::Object^ sender, System::EventArgs^ e) {
-		changePassForm^ f = gcnew changePassForm(user,uInfo->userid, uInfo->userpass);
+		changePassForm^ f = gcnew changePassForm(user, uInfo->userid, uInfo->userpass);
 		f->ShowDialog();
 		uInfo->userpass = f->ol;
 		btProfile->PerformClick();
@@ -2436,6 +3068,7 @@ namespace StudentManagementSystem {
 				   dgvStudentList->Rows[x]->Cells[4]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
 				   dgvStudentList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
+				   getline(f, s, '\n');
 				   x++;
 			   }
 			   f.close();
@@ -2498,11 +3131,12 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString());
+						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11));
 				}
 				f.close();
-				dgvStudentList->Focus();
-				// LOAD LAI FILE user_login.txt
+				dgvStudentList->ClearSelection();
+				reloadUserLogin();
 			}
 		}
 		catch (Exception^ ex)
@@ -2517,16 +3151,24 @@ namespace StudentManagementSystem {
 			f.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".txt");
 			for (int i = 0; i < dgvStudentList->RowCount; i++)
 			{
+				if (dgvStudentList->Rows[i]->Cells[0]->Value == nullptr) dgvStudentList->Rows[i]->Cells[0]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[1]->Value == nullptr) dgvStudentList->Rows[i]->Cells[1]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[2]->Value == nullptr) dgvStudentList->Rows[i]->Cells[2]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[3]->Value == nullptr) dgvStudentList->Rows[i]->Cells[3]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[4]->Value == nullptr) dgvStudentList->Rows[i]->Cells[4]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[5]->Value == nullptr) dgvStudentList->Rows[i]->Cells[5]->Value = "";
 				f << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString());
+					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11));
 			}
 			f.close();
 			//	LOAD LAI FILE user_login.txt
+			reloadUserLogin();
 		}
 		catch (Exception^ ex)
 		{
@@ -2552,7 +3194,7 @@ namespace StudentManagementSystem {
 			if (f->change)
 			{
 				std::ofstream fi;
-				fi.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".l");
+				fi.open("general\\class\\" + msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11)) + ".txt");
 				dgvStudentList->Rows->RemoveAt(dgvStudentList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvStudentList->RowCount; i++)
 				{
@@ -2564,11 +3206,13 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(panelClassHeader->Text->Substring(11));
 				}
 				fi.close();
 				dgvStudentList->ClearSelection();
 				//update lai file user_login
+				reloadUserLogin();
 			}
 		}
 		catch (Exception^ ex)
@@ -2577,9 +3221,10 @@ namespace StudentManagementSystem {
 		}
 	}
 #pragma endregion
+		   //xong
 #pragma region Course
 		   //fix panel course header
-		   String^ course_file;
+		   String^ course_file, ^ course_path;
 		   void dgvAYload()
 		   {
 			   ifstream f("general\\semester.txt");
@@ -2600,7 +3245,8 @@ namespace StudentManagementSystem {
 		   void dgvCourseLoad(string st)
 		   {
 			   course_file = dgvAY->SelectedCells[0]->Value->ToString() + "-" + gcnew String(st.c_str()) + ".txt";
-			   ifstream f("general\\" + msclr::interop::marshal_as<std::string>(dgvAY->SelectedCells[0]->Value->ToString()) + "-" + st + ".txt");
+			   course_path = dgvAY->SelectedCells[0]->Value->ToString() + "-" + gcnew String(st.c_str());
+			   ifstream f("general\\semester\\schedule\\" + msclr::interop::marshal_as<std::string>(dgvAY->SelectedCells[0]->Value->ToString()) + "-" + st + "-schedule.txt");
 			   string s;
 			   getline(f, s, '\n');
 			   int x = 0;
@@ -2609,7 +3255,7 @@ namespace StudentManagementSystem {
 			   {
 				   dgvCourseList->Rows->Add();
 				   getline(f, s, '\n');
-				   dgvCourseList->Rows[x]->Cells[0]->Value = gcnew String(s.c_str());
+				   dgvCourseList->Rows[x]->Cells[0]->Value = x + 1;
 				   getline(f, s, '\n');
 				   dgvCourseList->Rows[x]->Cells[1]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
@@ -2619,18 +3265,14 @@ namespace StudentManagementSystem {
 				   getline(f, s, '\n');
 				   dgvCourseList->Rows[x]->Cells[4]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
-				   s.insert(2, "/").insert(5, "/");
 				   dgvCourseList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
-				   s.insert(2, "/").insert(5, "/");
 				   dgvCourseList->Rows[x]->Cells[6]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
 				   dgvCourseList->Rows[x]->Cells[7]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
-				   s.insert(2, ":");
 				   dgvCourseList->Rows[x]->Cells[8]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
-				   s.insert(2, ":");
 				   dgvCourseList->Rows[x]->Cells[9]->Value = gcnew String(s.c_str());
 				   getline(f, s, '\n');
 				   dgvCourseList->Rows[x]->Cells[10]->Value = gcnew String(s.c_str());
@@ -2690,7 +3332,7 @@ namespace StudentManagementSystem {
 			{
 				dgvAY->Rows->RemoveAt(dgvAY->SelectedCells[0]->RowIndex);
 				std::ofstream f;
-				f.open("semester.txt");
+				f.open("general\\semester.txt");
 				for (int i = 0; i < dgvAY->RowCount; i++)
 				{
 					f << endl << msclr::interop::marshal_as<std::string>(dgvAY->Rows[i]->Cells[0]->Value->ToString());
@@ -2709,9 +3351,10 @@ namespace StudentManagementSystem {
 		try
 		{
 			std::ofstream f;
-			f.open("semester.txt");
+			f.open("general\\semester.txt");
 			for (int i = 0; i < dgvAY->RowCount; i++)
 			{
+				if (dgvAY->Rows[i]->Cells[0]->Value == nullptr) dgvAY->Rows[i]->Cells[0]->Value = "";
 				f << endl << msclr::interop::marshal_as<std::string>(dgvAY->Rows[i]->Cells[0]->Value->ToString());
 			}
 			f.close();
@@ -2770,11 +3413,11 @@ namespace StudentManagementSystem {
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[2]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[3]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[4]->Value = "";
-		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[5]->Value = "      ";
-		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[6]->Value = "      ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[5]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[6]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[7]->Value = "";
-		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[8]->Value = "   ";
-		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[9]->Value = "   ";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[8]->Value = "";
+		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[9]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[10]->Value = "";
 		dgvCourseList->Rows[dgvCourseList->RowCount - 1]->Cells[0]->Value = dgvCourseList->RowCount;
 	}
@@ -2786,7 +3429,7 @@ namespace StudentManagementSystem {
 			if (d == System::Windows::Forms::DialogResult::Yes)
 			{
 				std::ofstream f;
-				f.open(msclr::interop::marshal_as<std::string>(course_file->ToString()));
+				f.open("general\\semester\\schedule\\" + msclr::interop::marshal_as<std::string>(course_path->ToString()) + "-schedule.txt");
 				dgvCourseList->Rows->RemoveAt(dgvCourseList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvCourseList->RowCount; i++)
 				{
@@ -2797,16 +3440,15 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2, 1)) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2, 1)) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[10]->Value->ToString());
 				}
 				f.close();
-				// LOAD LAI FILE user_login.txt
-				dgvCourseList->Focus();
+				dgvCourseList->ClearSelection();
 			}
 		}
 		catch (Exception^ ex)
@@ -2818,24 +3460,34 @@ namespace StudentManagementSystem {
 		try
 		{
 			std::ofstream f;
-			f.open(msclr::interop::marshal_as<std::string>(course_file->ToString()));
+			f.open("general\\semester\\schedule\\" + msclr::interop::marshal_as<std::string>(course_path->ToString()) + "-schedule.txt");
 			for (int i = 0; i < dgvCourseList->RowCount; i++)
 			{
+				if (dgvCourseList->Rows[i]->Cells[0]->Value == nullptr) dgvCourseList->Rows[i]->Cells[0]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[1]->Value == nullptr) dgvCourseList->Rows[i]->Cells[1]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[2]->Value == nullptr) dgvCourseList->Rows[i]->Cells[2]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[3]->Value == nullptr) dgvCourseList->Rows[i]->Cells[3]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[4]->Value == nullptr) dgvCourseList->Rows[i]->Cells[4]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[5]->Value == nullptr) dgvCourseList->Rows[i]->Cells[5]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[6]->Value == nullptr) dgvCourseList->Rows[i]->Cells[6]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[7]->Value == nullptr) dgvCourseList->Rows[i]->Cells[7]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[8]->Value == nullptr) dgvCourseList->Rows[i]->Cells[8]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[9]->Value == nullptr) dgvCourseList->Rows[i]->Cells[9]->Value = "";
+				if (dgvCourseList->Rows[i]->Cells[10]->Value == nullptr) dgvCourseList->Rows[i]->Cells[10]->Value = "";
 				f << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()->Remove(5, 1)->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[6]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[7]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()->Remove(2, 1)) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()->Remove(2, 1)) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[8]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[9]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvCourseList->Rows[i]->Cells[10]->Value->ToString());
 			}
 			f.close();
-			// LOAD LAI FILE user_login.txt
 		}
 		catch (Exception^ ex)
 		{
@@ -2843,39 +3495,66 @@ namespace StudentManagementSystem {
 		}
 	}
 	private: System::Void viewStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		studentForm^ f = gcnew studentForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
-		f->ShowDialog();
+		try
+		{
+			String^ course = course_path + "-" + dgvCourseList->SelectedCells[1]->Value->ToString() + "-";
+			studentForm^ f = gcnew studentForm(user, dgvCourseList->SelectedCells[3]->Value->ToString(), course);
+			f->ShowDialog();
+		}
+		catch (Exception^ ex)
+		{
+			return;
+		}
 	}
 	private: System::Void viewScoreboardToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		scoreboardForm^ f = gcnew scoreboardForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
-		f->ShowDialog();
+		try
+		{
+			String^ course = course_path + "-" + dgvCourseList->SelectedCells[1]->Value->ToString() + "-";
+			scoreboardForm^ f = gcnew scoreboardForm(user, dgvCourseList->SelectedCells[3]->Value->ToString(), course);
+			f->ShowDialog();
+		}
+		catch (Exception^ ex)
+		{
+			return;
+		}
 	}
 	private: System::Void viewAttendanceListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		attendanceForm^ f = gcnew attendanceForm(user, dgvCourseList->SelectedCells[3]->Value->ToString());
-		f->ShowDialog();
+		try
+		{
+			String^ course = course_path + "-" + dgvCourseList->SelectedCells[1]->Value->ToString() + "-";
+			attendanceForm^ f = gcnew attendanceForm(user, dgvCourseList->SelectedCells[3]->Value->ToString(), course);
+			f->ShowDialog();
+		}
+		catch (Exception^ ex)
+		{
+			return;
+		}
 	}
 #pragma endregion
+		   //xong
 #pragma region Lecturer
+		   string* lecturer_pass;
 		   void dgvLecturerLoad()
 		   {
-			   ifstream f("lecturer.l");
+			   ifstream f("general\\lecturer.txt");
 			   string s;
 			   getline(f, s, '\n');
+			   if (dgvLecturer->RowCount > 0) delete[] lecturer_pass;
+			   lecturer_pass = new string[100];
 			   int x = 0;
 			   dgvLecturer->Rows->Clear();
 			   while (f.good())
 			   {
 				   dgvLecturer->Rows->Add();
 				   getline(f, s, '\n');
-				   dgvLecturer->Rows[x]->Cells[0]->Value = gcnew String(s.c_str());
-				   getline(f, s, '\n');
+				   dgvLecturer->Rows[x]->Cells[0]->Value = x + 1;
 				   dgvLecturer->Rows[x]->Cells[1]->Value = gcnew String(s.c_str());
-				   getline(f, s, '\n');
-				   dgvLecturer->Rows[x]->Cells[2]->Value = gcnew String(s.c_str());
+				   dgvLecturer->Rows[x]->Cells[2]->Value = "N/A";
 				   getline(f, s, '\n');
 				   dgvLecturer->Rows[x]->Cells[3]->Value = gcnew String(s.c_str());
+				   dgvLecturer->Rows[x]->Cells[4]->Value = "N/A";
 				   getline(f, s, '\n');
-				   dgvLecturer->Rows[x]->Cells[4]->Value = gcnew String(s.c_str());
+				   lecturer_pass[x] = s;
 				   x++;
 			   }
 			   f.close();
@@ -2898,21 +3577,20 @@ namespace StudentManagementSystem {
 			if (d == System::Windows::Forms::DialogResult::Yes)
 			{
 				std::ofstream f;
-				f.open("lecturer.l");
+				f.open("general\\lecturer.txt");
 				dgvLecturer->Rows->RemoveAt(dgvLecturer->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvLecturer->RowCount; i++)
 				{
 					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;
 					f << endl <<
-						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[1]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[3]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[4]->Value->ToString());
+						lecturer_pass[i];
 				}
 				f.close();
 				// LOAD LAI FILE user_login.txt
 				dgvLecturer->ClearSelection();
+				reloadUserLogin();
 			}
 		}
 		catch (Exception^ ex)
@@ -2924,18 +3602,17 @@ namespace StudentManagementSystem {
 		try
 		{
 			std::ofstream f;
-			f.open("lecturer.l");
+			f.open("general\\lecturer.txt");
 			for (int i = 0; i < dgvLecturer->RowCount; i++)
 			{
 				f << endl <<
-					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[1]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[3]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[4]->Value->ToString());
+					lecturer_pass[i];
 			}
 			f.close();
 			// LOAD LAI FILE user_login.txt
+			reloadUserLogin();
 		}
 		catch (Exception^ ex)
 		{
@@ -2977,7 +3654,20 @@ namespace StudentManagementSystem {
 		if (e->X < 50) panelMenu->Visible = true;
 		if (e->X > 50) panelMenu->Visible = false;
 	}
+	private: System::Void btImport_Click(System::Object^ sender, System::EventArgs^ e) {
+		importData();
+		MessageBox::Show(this, "IMPORT SUCCESS ", "NOTIFICATION", MessageBoxButtons::OK);
+	}
+	private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+		ifstream f1;
+		string s1;
+		f1.open("general\\semester\\schedule\\2019-2020-hk2-schedule.txt");
+		getline(f1, s1, '\n');
+		while (f1.good())
+		{
 
-
-	};
+		}
+		f1.close();
+	}
+};
 }

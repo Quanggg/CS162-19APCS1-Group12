@@ -1,4 +1,10 @@
 
+Le Chau Nhat Quang
+NONE
+NONE
+1
+
+Staff
 Trinh Van Minh
 2020-04-01
 NONE
@@ -59,23 +65,17 @@ NONE
 19127010
 20200410
 19APCS1
-Nguyen Thi Minh Phuc
+Nguyen Van m1nh
+2020-04-02
+NONE
+19127012
+20200402
+19APCS2
+Dinh Ba Ti
 NONE
 NONE
-ntmphuc
+dbti
 1
-Staff
-Le Chau Nhat Quang
-NONE
-NONE
-1
-
-Staff
-Dinh Ba Tien
-NONE
-NONE
-dbtien
-1234
 Lecturer
 Nguyen Minh Huy
 NONE
@@ -83,3 +83,9 @@ NONE
 nmhuy
 1
 Lecturer
+Nguyen Thi Minh Phuc
+NONE
+NONE
+ntmphuc
+1
+Staff

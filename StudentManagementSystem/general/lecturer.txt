@@ -1,7 +1,7 @@
 
-Dinh Ba Tien
-dbtien
-1234
+Dinh Ba Ti
+dbti
+1
 Nguyen Minh Huy
 nmhuy
 1
