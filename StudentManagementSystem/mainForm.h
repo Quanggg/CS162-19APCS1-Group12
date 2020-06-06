@@ -877,8 +877,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -1019,8 +1019,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -1139,8 +1139,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -1303,8 +1303,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -1494,8 +1494,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -1667,8 +1667,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Consolas", 18, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -2095,8 +2095,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -2222,8 +2222,8 @@ private: System::Windows::Forms::Button^ checkIn;
 			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle12->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(45)));
-			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
@@ -2311,12 +2311,18 @@ private: System::Windows::Forms::Button^ checkIn;
 			// 
 			// checkIn
 			// 
+			this->checkIn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
+				static_cast<System::Int32>(static_cast<System::Byte>(68)));
+			this->checkIn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->checkIn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->checkIn->ForeColor = System::Drawing::SystemColors::Control;
 			this->checkIn->Location = System::Drawing::Point(39, 472);
 			this->checkIn->Name = L"checkIn";
 			this->checkIn->Size = System::Drawing::Size(119, 38);
 			this->checkIn->TabIndex = 8;
 			this->checkIn->Text = L"Check In";
-			this->checkIn->UseVisualStyleBackColor = true;
+			this->checkIn->UseVisualStyleBackColor = false;
 			this->checkIn->Click += gcnew System::EventHandler(this, &mainForm::button9_Click);
 			// 
 			// mainForm
@@ -3206,7 +3212,8 @@ private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e
 					//thieu cai log out roi log in vo lai
 
 					export_file.open("general\\check_in.txt");
-					while (export_file.good()) {
+					while (export_file.good())
+					{
 						count++;
 						export_file << endl <<
 							msclr::interop::marshal_as<std::string>(current->Date.ToString()) << endl <<
@@ -3216,14 +3223,13 @@ private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e
 					}
 					export_file.close();
 				}
-				else
-				{
+				
 					export_file.open("general\\check_in.txt");
 					export_file << endl <<
 						msclr::interop::marshal_as<std::string>(current->Date.ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(u->className->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(count) << endl <<
-				}
+				
 			}
 		}
 		
