@@ -236,6 +236,34 @@ namespace StudentManagementSystem {
 			dgvScore->Rows->Clear();
 			int x = 0;
 			std::string s;
+			if (!f.is_open())
+			{
+				f.open("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
+				getline(f, s, '\n');
+				while (f.good())
+				{
+					getline(f, s, '\n');
+					dgvScore->Rows->Add();
+					dgvScore->Rows[x]->Cells[0]->Value = x + 1;
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[1]->Value = gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[2]->Value = gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[2]->Value += " " + gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[3]->Value = "";
+					dgvScore->Rows[x]->Cells[4]->Value = "";
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[5]->Value = "";
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[6]->Value = "";
+					x++;
+				}
+				dgvScore->ClearSelection();
+				f.close();
+				return;
+			}
 			getline(f, s, '\n');
 			while (f.good())
 			{

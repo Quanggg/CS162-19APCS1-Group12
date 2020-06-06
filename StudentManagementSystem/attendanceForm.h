@@ -37,10 +37,15 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToCSVFileToolStripMenuItem;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListNo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListID;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListLastname;
+
+
+
 	public: String^ classname, ^ course_path;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListLastname;
+	public:
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListID;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListNo;
+	private: System::Windows::Forms::DataGridView^ dgvAtt;
 	private: System::Windows::Forms::ToolStripMenuItem^ reloadToolStripMenuItem;
 	public:
 	protected:
@@ -54,7 +59,7 @@ namespace StudentManagementSystem {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dgvAtt;
+
 	protected:
 
 
@@ -78,16 +83,61 @@ namespace StudentManagementSystem {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			this->dgvAtt = (gcnew System::Windows::Forms::DataGridView());
-			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->exportToCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reloadToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->BeginInit();
+			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvAtt = (gcnew System::Windows::Forms::DataGridView());
 			this->contextMenuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->exportToCSVFileToolStripMenuItem,
+					this->reloadToolStripMenuItem
+			});
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(166, 48);
+			// 
+			// exportToCSVFileToolStripMenuItem
+			// 
+			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
+			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
+			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::exportToCSVFileToolStripMenuItem_Click);
+			// 
+			// reloadToolStripMenuItem
+			// 
+			this->reloadToolStripMenuItem->Name = L"reloadToolStripMenuItem";
+			this->reloadToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->reloadToolStripMenuItem->Text = L"Reload";
+			this->reloadToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::reloadToolStripMenuItem_Click);
+			// 
+			// dgvStudentListLastname
+			// 
+			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->dgvStudentListLastname->HeaderText = L"STUDENT NAME";
+			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
+			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListLastname->Width = 250;
+			// 
+			// dgvStudentListID
+			// 
+			this->dgvStudentListID->HeaderText = L"STUDENT ID";
+			this->dgvStudentListID->Name = L"dgvStudentListID";
+			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListID->Width = 130;
+			// 
+			// dgvStudentListNo
+			// 
+			this->dgvStudentListNo->HeaderText = L"No";
+			this->dgvStudentListNo->Name = L"dgvStudentListNo";
+			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListNo->Width = 50;
 			// 
 			// dgvAtt
 			// 
@@ -137,51 +187,6 @@ namespace StudentManagementSystem {
 			this->dgvAtt->TabIndex = 5;
 			this->dgvAtt->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &attendanceForm::dgvAtt_CellEndEdit);
 			// 
-			// dgvStudentListNo
-			// 
-			this->dgvStudentListNo->HeaderText = L"No";
-			this->dgvStudentListNo->Name = L"dgvStudentListNo";
-			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListNo->Width = 50;
-			// 
-			// dgvStudentListID
-			// 
-			this->dgvStudentListID->HeaderText = L"STUDENT ID";
-			this->dgvStudentListID->Name = L"dgvStudentListID";
-			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListID->Width = 130;
-			// 
-			// dgvStudentListLastname
-			// 
-			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
-			this->dgvStudentListLastname->HeaderText = L"STUDENT NAME";
-			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
-			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListLastname->Width = 250;
-			// 
-			// contextMenuStrip1
-			// 
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->exportToCSVFileToolStripMenuItem,
-					this->reloadToolStripMenuItem
-			});
-			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(181, 70);
-			// 
-			// exportToCSVFileToolStripMenuItem
-			// 
-			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
-			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
-			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::exportToCSVFileToolStripMenuItem_Click);
-			// 
-			// reloadToolStripMenuItem
-			// 
-			this->reloadToolStripMenuItem->Name = L"reloadToolStripMenuItem";
-			this->reloadToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->reloadToolStripMenuItem->Text = L"Reload";
-			this->reloadToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::reloadToolStripMenuItem_Click);
-			// 
 			// attendanceForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -193,8 +198,8 @@ namespace StudentManagementSystem {
 			this->Name = L"attendanceForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"attendanceForm";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->EndInit();
 			this->contextMenuStrip1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->EndInit();
 			this->ResumeLayout(false);
 
 		}

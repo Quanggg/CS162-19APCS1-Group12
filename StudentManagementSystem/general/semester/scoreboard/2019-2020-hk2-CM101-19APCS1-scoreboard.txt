@@ -1,15 +1,70 @@
 
 1
-cm101apcs1
-le chau nhat quang
-8
-8
-9.5
-9.0
-2
-19125116
-le chau nhat quan
-8
-8
+19127001
+Trinh Van Minh
 10
-9.0
+
+
+
+2
+19127002
+Nguyen Van m2
+
+
+
+
+3
+19127003
+Nguyen Van m3
+
+
+
+
+4
+19127004
+Nguyen Van m4
+
+
+
+
+5
+19127005
+Nguyen Van m5
+
+
+
+
+6
+19127006
+Nguyen Van m6
+
+
+
+
+7
+19127007
+Nguyen Van m7
+
+
+
+
+8
+19127008
+Nguyen Van m8
+
+
+
+
+9
+19127009
+Nguyen Van m9
+
+
+
+
+10
+19125
+Nguyen Van m10
+
+
+
