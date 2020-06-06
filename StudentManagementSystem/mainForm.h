@@ -20,6 +20,7 @@ namespace StudentManagementSystem {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO;
+	using namespace System::Globalization;
 	/// <summary>
 	/// Summary for mainForm
 	/// </summary>
@@ -32,6 +33,10 @@ namespace StudentManagementSystem {
 	public: ref class userInfo
 	{
 	public: String^ fullName, ^ dob, ^ email, ^ userid, ^ userpass, ^ cls;
+	};
+	public: ref class scheduleInfo
+	{
+	public: String^ no, ^ Id, ^ name, ^ className, ^ lecturer, ^ start_day, ^ end_day, ^ day, ^ start_time, ^ end_time, ^ room;
 	};
 	public:
 		mainForm(void)
@@ -294,6 +299,8 @@ namespace StudentManagementSystem {
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListNo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListID;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
+private: System::Windows::Forms::Button^ checkIn;
+
 
 
 
@@ -483,6 +490,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->Column21 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column22 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column23 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->checkIn = (gcnew System::Windows::Forms::Button());
 			this->panelLogin->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panelMenu->SuspendLayout();
@@ -517,10 +525,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelLogin->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->panelLogin->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->panelLogin->Controls->Add(this->panel2);
-			this->panelLogin->Location = System::Drawing::Point(848, 266);
-			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+			this->panelLogin->Location = System::Drawing::Point(613, 216);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(125, 87);
+			this->panelLogin->Size = System::Drawing::Size(94, 71);
 			this->panelLogin->TabIndex = 0;
 			// 
 			// panel2
@@ -536,28 +543,25 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panel2->Controls->Add(this->tbUserId);
 			this->panel2->Controls->Add(this->tbUserPass);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, -255);
-			this->panel2->Margin = System::Windows::Forms::Padding(4);
+			this->panel2->Location = System::Drawing::Point(0, -207);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(125, 342);
+			this->panel2->Size = System::Drawing::Size(94, 278);
 			this->panel2->TabIndex = 5;
 			// 
 			// panel4
 			// 
 			this->panel4->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->panel4->Location = System::Drawing::Point(51, 217);
-			this->panel4->Margin = System::Windows::Forms::Padding(4);
+			this->panel4->Location = System::Drawing::Point(38, 176);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(405, 1);
+			this->panel4->Size = System::Drawing::Size(304, 1);
 			this->panel4->TabIndex = 6;
 			// 
 			// panel3
 			// 
 			this->panel3->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->panel3->Location = System::Drawing::Point(51, 124);
-			this->panel3->Margin = System::Windows::Forms::Padding(4);
+			this->panel3->Location = System::Drawing::Point(38, 101);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(405, 1);
+			this->panel3->Size = System::Drawing::Size(304, 1);
 			this->panel3->TabIndex = 6;
 			// 
 			// label2
@@ -566,10 +570,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ControlDark;
-			this->label2->Location = System::Drawing::Point(47, 161);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(35, 131);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 17);
+			this->label2->Size = System::Drawing::Size(63, 15);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Password";
 			// 
@@ -579,10 +582,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ControlDark;
-			this->label1->Location = System::Drawing::Point(47, 69);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(35, 56);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(76, 17);
+			this->label1->Size = System::Drawing::Size(66, 15);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Username";
 			// 
@@ -591,10 +593,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->lbLogin->Font = (gcnew System::Drawing::Font(L"Arial", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbLogin->ForeColor = System::Drawing::Color::Firebrick;
-			this->lbLogin->Location = System::Drawing::Point(47, 239);
-			this->lbLogin->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbLogin->Location = System::Drawing::Point(35, 194);
 			this->lbLogin->Name = L"lbLogin";
-			this->lbLogin->Size = System::Drawing::Size(409, 28);
+			this->lbLogin->Size = System::Drawing::Size(307, 23);
 			this->lbLogin->TabIndex = 0;
 			this->lbLogin->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
@@ -607,10 +608,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btLogin->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btLogin->ForeColor = System::Drawing::Color::White;
-			this->btLogin->Location = System::Drawing::Point(171, 271);
-			this->btLogin->Margin = System::Windows::Forms::Padding(4);
+			this->btLogin->Location = System::Drawing::Point(128, 220);
 			this->btLogin->Name = L"btLogin";
-			this->btLogin->Size = System::Drawing::Size(171, 48);
+			this->btLogin->Size = System::Drawing::Size(128, 39);
 			this->btLogin->TabIndex = 3;
 			this->btLogin->Text = L"Login";
 			this->btLogin->UseVisualStyleBackColor = false;
@@ -624,10 +624,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbUserId->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbUserId->ForeColor = System::Drawing::SystemColors::Window;
-			this->tbUserId->Location = System::Drawing::Point(51, 100);
-			this->tbUserId->Margin = System::Windows::Forms::Padding(4);
+			this->tbUserId->Location = System::Drawing::Point(38, 81);
 			this->tbUserId->Name = L"tbUserId";
-			this->tbUserId->Size = System::Drawing::Size(405, 22);
+			this->tbUserId->Size = System::Drawing::Size(304, 18);
 			this->tbUserId->TabIndex = 1;
 			// 
 			// tbUserPass
@@ -637,10 +636,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbUserPass->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->tbUserPass->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F));
 			this->tbUserPass->ForeColor = System::Drawing::SystemColors::Window;
-			this->tbUserPass->Location = System::Drawing::Point(51, 192);
-			this->tbUserPass->Margin = System::Windows::Forms::Padding(4);
+			this->tbUserPass->Location = System::Drawing::Point(38, 156);
 			this->tbUserPass->Name = L"tbUserPass";
-			this->tbUserPass->Size = System::Drawing::Size(405, 22);
+			this->tbUserPass->Size = System::Drawing::Size(304, 18);
 			this->tbUserPass->TabIndex = 2;
 			this->tbUserPass->UseSystemPasswordChar = true;
 			// 
@@ -660,9 +658,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelMenu->Controls->Add(this->panelLogo);
 			this->panelMenu->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panelMenu->Location = System::Drawing::Point(0, 0);
-			this->panelMenu->Margin = System::Windows::Forms::Padding(4);
 			this->panelMenu->Name = L"panelMenu";
-			this->panelMenu->Size = System::Drawing::Size(235, 725);
+			this->panelMenu->Size = System::Drawing::Size(176, 589);
 			this->panelMenu->TabIndex = 1;
 			// 
 			// btScore
@@ -675,10 +672,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btScore->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btScore->ForeColor = System::Drawing::SystemColors::Control;
-			this->btScore->Location = System::Drawing::Point(0, 512);
-			this->btScore->Margin = System::Windows::Forms::Padding(4);
+			this->btScore->Location = System::Drawing::Point(0, 416);
 			this->btScore->Name = L"btScore";
-			this->btScore->Size = System::Drawing::Size(235, 53);
+			this->btScore->Size = System::Drawing::Size(176, 43);
 			this->btScore->TabIndex = 8;
 			this->btScore->Text = L"Score";
 			this->btScore->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -696,10 +692,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btSchedule->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btSchedule->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSchedule->Location = System::Drawing::Point(0, 459);
-			this->btSchedule->Margin = System::Windows::Forms::Padding(4);
+			this->btSchedule->Location = System::Drawing::Point(0, 373);
 			this->btSchedule->Name = L"btSchedule";
-			this->btSchedule->Size = System::Drawing::Size(235, 53);
+			this->btSchedule->Size = System::Drawing::Size(176, 43);
 			this->btSchedule->TabIndex = 7;
 			this->btSchedule->Text = L"Schedule";
 			this->btSchedule->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -717,10 +712,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btCheckIn->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btCheckIn->ForeColor = System::Drawing::SystemColors::Control;
-			this->btCheckIn->Location = System::Drawing::Point(0, 406);
-			this->btCheckIn->Margin = System::Windows::Forms::Padding(4);
+			this->btCheckIn->Location = System::Drawing::Point(0, 330);
 			this->btCheckIn->Name = L"btCheckIn";
-			this->btCheckIn->Size = System::Drawing::Size(235, 53);
+			this->btCheckIn->Size = System::Drawing::Size(176, 43);
 			this->btCheckIn->TabIndex = 6;
 			this->btCheckIn->Text = L"Check-in Result";
 			this->btCheckIn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -738,10 +732,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btLecturer->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btLecturer->ForeColor = System::Drawing::SystemColors::Control;
-			this->btLecturer->Location = System::Drawing::Point(0, 353);
-			this->btLecturer->Margin = System::Windows::Forms::Padding(4);
+			this->btLecturer->Location = System::Drawing::Point(0, 287);
 			this->btLecturer->Name = L"btLecturer";
-			this->btLecturer->Size = System::Drawing::Size(235, 53);
+			this->btLecturer->Size = System::Drawing::Size(176, 43);
 			this->btLecturer->TabIndex = 5;
 			this->btLecturer->Text = L"Lecturer";
 			this->btLecturer->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -758,10 +751,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btCourse->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btCourse->ForeColor = System::Drawing::SystemColors::Control;
-			this->btCourse->Location = System::Drawing::Point(0, 300);
-			this->btCourse->Margin = System::Windows::Forms::Padding(4);
+			this->btCourse->Location = System::Drawing::Point(0, 244);
 			this->btCourse->Name = L"btCourse";
-			this->btCourse->Size = System::Drawing::Size(235, 53);
+			this->btCourse->Size = System::Drawing::Size(176, 43);
 			this->btCourse->TabIndex = 4;
 			this->btCourse->Text = L"Course";
 			this->btCourse->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -778,10 +770,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btClass->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btClass->ForeColor = System::Drawing::SystemColors::Control;
-			this->btClass->Location = System::Drawing::Point(0, 247);
-			this->btClass->Margin = System::Windows::Forms::Padding(4);
+			this->btClass->Location = System::Drawing::Point(0, 201);
 			this->btClass->Name = L"btClass";
-			this->btClass->Size = System::Drawing::Size(235, 53);
+			this->btClass->Size = System::Drawing::Size(176, 43);
 			this->btClass->TabIndex = 1;
 			this->btClass->Text = L"Class";
 			this->btClass->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -797,10 +788,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::SystemColors::Control;
-			this->button1->Location = System::Drawing::Point(0, 245);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(0, 199);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(235, 2);
+			this->button1->Size = System::Drawing::Size(176, 2);
 			this->button1->TabIndex = 2;
 			this->button1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button1->UseVisualStyleBackColor = false;
@@ -810,10 +800,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			// 
 			this->panelBtProfile->Controls->Add(this->btProfile);
 			this->panelBtProfile->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panelBtProfile->Location = System::Drawing::Point(0, 123);
-			this->panelBtProfile->Margin = System::Windows::Forms::Padding(4);
+			this->panelBtProfile->Location = System::Drawing::Point(0, 100);
 			this->panelBtProfile->Name = L"panelBtProfile";
-			this->panelBtProfile->Size = System::Drawing::Size(235, 122);
+			this->panelBtProfile->Size = System::Drawing::Size(176, 99);
 			this->panelBtProfile->TabIndex = 0;
 			// 
 			// btProfile
@@ -828,9 +817,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btProfile->ForeColor = System::Drawing::SystemColors::Control;
 			this->btProfile->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btProfile.Image")));
 			this->btProfile->Location = System::Drawing::Point(0, 0);
-			this->btProfile->Margin = System::Windows::Forms::Padding(4);
 			this->btProfile->Name = L"btProfile";
-			this->btProfile->Size = System::Drawing::Size(235, 122);
+			this->btProfile->Size = System::Drawing::Size(176, 99);
 			this->btProfile->TabIndex = 0;
 			this->btProfile->UseVisualStyleBackColor = false;
 			this->btProfile->Click += gcnew System::EventHandler(this, &mainForm::btProfile_Click);
@@ -839,9 +827,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			// 
 			this->panelLogo->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panelLogo->Location = System::Drawing::Point(0, 0);
-			this->panelLogo->Margin = System::Windows::Forms::Padding(4);
 			this->panelLogo->Name = L"panelLogo";
-			this->panelLogo->Size = System::Drawing::Size(235, 123);
+			this->panelLogo->Size = System::Drawing::Size(176, 100);
 			this->panelLogo->TabIndex = 2;
 			// 
 			// panelMain
@@ -856,11 +843,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelMain->Controls->Add(this->panelScore);
 			this->panelMain->Controls->Add(this->panelSchedule);
 			this->panelMain->Controls->Add(this->panelLogin);
+			this->panelMain->Controls->Add(this->checkIn);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panelMain->Location = System::Drawing::Point(235, 0);
-			this->panelMain->Margin = System::Windows::Forms::Padding(4);
+			this->panelMain->Location = System::Drawing::Point(176, 0);
 			this->panelMain->Name = L"panelMain";
-			this->panelMain->Size = System::Drawing::Size(1197, 725);
+			this->panelMain->Size = System::Drawing::Size(852, 589);
 			this->panelMain->TabIndex = 2;
 			this->panelMain->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &mainForm::panelMain_MouseMove);
 			// 
@@ -869,10 +856,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelCheckIn->Controls->Add(this->dgvCheckIn);
 			this->panelCheckIn->Controls->Add(this->button8);
 			this->panelCheckIn->Controls->Add(this->label14);
-			this->panelCheckIn->Location = System::Drawing::Point(505, 266);
-			this->panelCheckIn->Margin = System::Windows::Forms::Padding(4);
+			this->panelCheckIn->Location = System::Drawing::Point(379, 216);
 			this->panelCheckIn->Name = L"panelCheckIn";
-			this->panelCheckIn->Size = System::Drawing::Size(323, 253);
+			this->panelCheckIn->Size = System::Drawing::Size(242, 206);
 			this->panelCheckIn->TabIndex = 5;
 			// 
 			// dgvCheckIn
@@ -906,8 +892,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			});
 			this->dgvCheckIn->EnableHeadersVisualStyles = false;
 			this->dgvCheckIn->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvCheckIn->Location = System::Drawing::Point(0, 123);
-			this->dgvCheckIn->Margin = System::Windows::Forms::Padding(4);
+			this->dgvCheckIn->Location = System::Drawing::Point(0, 100);
 			this->dgvCheckIn->Name = L"dgvCheckIn";
 			this->dgvCheckIn->ReadOnly = true;
 			this->dgvCheckIn->RowHeadersVisible = false;
@@ -918,7 +903,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvCheckIn->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Consolas", 9.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvCheckIn->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
-			this->dgvCheckIn->Size = System::Drawing::Size(323, 130);
+			this->dgvCheckIn->Size = System::Drawing::Size(242, 106);
 			this->dgvCheckIn->TabIndex = 1;
 			// 
 			// dgvCheckInListNo
@@ -954,10 +939,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button8->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button8->ForeColor = System::Drawing::SystemColors::Control;
-			this->button8->Location = System::Drawing::Point(0, 73);
-			this->button8->Margin = System::Windows::Forms::Padding(4);
+			this->button8->Location = System::Drawing::Point(0, 59);
 			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(323, 2);
+			this->button8->Size = System::Drawing::Size(242, 2);
 			this->button8->TabIndex = 7;
 			this->button8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button8->UseVisualStyleBackColor = false;
@@ -972,9 +956,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->label14->ForeColor = System::Drawing::SystemColors::Control;
 			this->label14->Location = System::Drawing::Point(0, 0);
-			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(323, 73);
+			this->label14->Size = System::Drawing::Size(242, 59);
 			this->label14->TabIndex = 6;
 			this->label14->Text = L"       Check-in Result";
 			this->label14->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -984,10 +967,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelLecturer->Controls->Add(this->button5);
 			this->panelLecturer->Controls->Add(this->label11);
 			this->panelLecturer->Controls->Add(this->dgvLecturer);
-			this->panelLecturer->Location = System::Drawing::Point(295, 204);
-			this->panelLecturer->Margin = System::Windows::Forms::Padding(4);
+			this->panelLecturer->Location = System::Drawing::Point(221, 166);
 			this->panelLecturer->Name = L"panelLecturer";
-			this->panelLecturer->Size = System::Drawing::Size(175, 186);
+			this->panelLecturer->Size = System::Drawing::Size(131, 151);
 			this->panelLecturer->TabIndex = 4;
 			// 
 			// button5
@@ -999,10 +981,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button5->ForeColor = System::Drawing::SystemColors::Control;
-			this->button5->Location = System::Drawing::Point(0, 73);
-			this->button5->Margin = System::Windows::Forms::Padding(4);
+			this->button5->Location = System::Drawing::Point(0, 59);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(175, 2);
+			this->button5->Size = System::Drawing::Size(131, 2);
 			this->button5->TabIndex = 7;
 			this->button5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button5->UseVisualStyleBackColor = false;
@@ -1017,9 +998,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->label11->ForeColor = System::Drawing::SystemColors::Control;
 			this->label11->Location = System::Drawing::Point(0, 0);
-			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(175, 73);
+			this->label11->Size = System::Drawing::Size(131, 59);
 			this->label11->TabIndex = 6;
 			this->label11->Text = L"       Lecturer list";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1055,8 +1035,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvLecturer->ContextMenuStrip = this->dgvLecturerMenu;
 			this->dgvLecturer->EnableHeadersVisualStyles = false;
 			this->dgvLecturer->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvLecturer->Location = System::Drawing::Point(0, -416);
-			this->dgvLecturer->Margin = System::Windows::Forms::Padding(4);
+			this->dgvLecturer->Location = System::Drawing::Point(0, -338);
 			this->dgvLecturer->MultiSelect = false;
 			this->dgvLecturer->Name = L"dgvLecturer";
 			this->dgvLecturer->RowHeadersVisible = false;
@@ -1069,7 +1048,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvLecturer->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvLecturer->RowTemplate->Height = 25;
 			this->dgvLecturer->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvLecturer->Size = System::Drawing::Size(175, 602);
+			this->dgvLecturer->Size = System::Drawing::Size(131, 489);
 			this->dgvLecturer->TabIndex = 1;
 			this->dgvLecturer->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvLecturer_CellEndEdit);
 			this->dgvLecturer->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvLecturer_CellMouseDown);
@@ -1117,19 +1096,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 					this->toolStripMenuItem2
 			});
 			this->dgvLecturerMenu->Name = L"ayMenu";
-			this->dgvLecturerMenu->Size = System::Drawing::Size(123, 52);
+			this->dgvLecturerMenu->Size = System::Drawing::Size(109, 48);
 			// 
 			// toolStripMenuItem1
 			// 
 			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
-			this->toolStripMenuItem1->Size = System::Drawing::Size(122, 24);
+			this->toolStripMenuItem1->Size = System::Drawing::Size(108, 22);
 			this->toolStripMenuItem1->Text = L"Create";
 			this->toolStripMenuItem1->Click += gcnew System::EventHandler(this, &mainForm::toolStripMenuItem1_Click);
 			// 
 			// toolStripMenuItem2
 			// 
 			this->toolStripMenuItem2->Name = L"toolStripMenuItem2";
-			this->toolStripMenuItem2->Size = System::Drawing::Size(122, 24);
+			this->toolStripMenuItem2->Size = System::Drawing::Size(108, 22);
 			this->toolStripMenuItem2->Text = L"Delete";
 			this->toolStripMenuItem2->Click += gcnew System::EventHandler(this, &mainForm::toolStripMenuItem2_Click);
 			// 
@@ -1139,10 +1118,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelClassList->Controls->Add(this->button3);
 			this->panelClassList->Controls->Add(this->panelClassHeader);
 			this->panelClassList->Controls->Add(this->dgvClassList);
-			this->panelClassList->Location = System::Drawing::Point(844, 21);
-			this->panelClassList->Margin = System::Windows::Forms::Padding(4);
+			this->panelClassList->Location = System::Drawing::Point(633, 17);
 			this->panelClassList->Name = L"panelClassList";
-			this->panelClassList->Size = System::Drawing::Size(217, 102);
+			this->panelClassList->Size = System::Drawing::Size(163, 83);
 			this->panelClassList->TabIndex = 2;
 			// 
 			// dgvStudentList
@@ -1177,8 +1155,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvStudentList->ContextMenuStrip = this->dgvStudentListMenu;
 			this->dgvStudentList->EnableHeadersVisualStyles = false;
 			this->dgvStudentList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvStudentList->Location = System::Drawing::Point(0, 123);
-			this->dgvStudentList->Margin = System::Windows::Forms::Padding(4);
+			this->dgvStudentList->Location = System::Drawing::Point(0, 100);
 			this->dgvStudentList->MultiSelect = false;
 			this->dgvStudentList->Name = L"dgvStudentList";
 			this->dgvStudentList->RowHeadersVisible = false;
@@ -1193,7 +1170,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvStudentList->RowTemplate->DefaultCellStyle->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			this->dgvStudentList->RowTemplate->Height = 25;
 			this->dgvStudentList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentList->Size = System::Drawing::Size(217, 0);
+			this->dgvStudentList->Size = System::Drawing::Size(163, 0);
 			this->dgvStudentList->TabIndex = 2;
 			this->dgvStudentList->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvStudentList_CellEndEdit);
 			this->dgvStudentList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvStudentList_CellMouseDown);
@@ -1223,26 +1200,26 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 					this->removeToolStripMenuItem, this->changeClassToolStripMenuItem
 			});
 			this->dgvStudentListMenu->Name = L"dgvStudentListMenu";
-			this->dgvStudentListMenu->Size = System::Drawing::Size(193, 76);
+			this->dgvStudentListMenu->Size = System::Drawing::Size(166, 70);
 			// 
 			// addNewStudentToolStripMenuItem
 			// 
 			this->addNewStudentToolStripMenuItem->Name = L"addNewStudentToolStripMenuItem";
-			this->addNewStudentToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+			this->addNewStudentToolStripMenuItem->Size = System::Drawing::Size(165, 22);
 			this->addNewStudentToolStripMenuItem->Text = L"Add new Student";
 			this->addNewStudentToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::addNewStudentToolStripMenuItem_Click);
 			// 
 			// removeToolStripMenuItem
 			// 
 			this->removeToolStripMenuItem->Name = L"removeToolStripMenuItem";
-			this->removeToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+			this->removeToolStripMenuItem->Size = System::Drawing::Size(165, 22);
 			this->removeToolStripMenuItem->Text = L"Remove";
 			this->removeToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::removeToolStripMenuItem_Click);
 			// 
 			// changeClassToolStripMenuItem
 			// 
 			this->changeClassToolStripMenuItem->Name = L"changeClassToolStripMenuItem";
-			this->changeClassToolStripMenuItem->Size = System::Drawing::Size(192, 24);
+			this->changeClassToolStripMenuItem->Size = System::Drawing::Size(165, 22);
 			this->changeClassToolStripMenuItem->Text = L"Change class";
 			this->changeClassToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::changeClassToolStripMenuItem_Click);
 			// 
@@ -1287,10 +1264,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::SystemColors::Control;
-			this->button3->Location = System::Drawing::Point(0, 73);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Location = System::Drawing::Point(0, 59);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(217, 2);
+			this->button3->Size = System::Drawing::Size(163, 2);
 			this->button3->TabIndex = 6;
 			this->button3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button3->UseVisualStyleBackColor = false;
@@ -1305,9 +1281,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->panelClassHeader->ForeColor = System::Drawing::SystemColors::Control;
 			this->panelClassHeader->Location = System::Drawing::Point(0, 0);
-			this->panelClassHeader->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->panelClassHeader->Name = L"panelClassHeader";
-			this->panelClassHeader->Size = System::Drawing::Size(217, 73);
+			this->panelClassHeader->Size = System::Drawing::Size(163, 59);
 			this->panelClassHeader->TabIndex = 5;
 			this->panelClassHeader->Text = L"       Class list";
 			this->panelClassHeader->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1343,8 +1318,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			});
 			this->dgvClassList->EnableHeadersVisualStyles = false;
 			this->dgvClassList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvClassList->Location = System::Drawing::Point(0, 123);
-			this->dgvClassList->Margin = System::Windows::Forms::Padding(4);
+			this->dgvClassList->Location = System::Drawing::Point(0, 100);
 			this->dgvClassList->MultiSelect = false;
 			this->dgvClassList->Name = L"dgvClassList";
 			this->dgvClassList->ReadOnly = true;
@@ -1359,7 +1333,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvClassList->RowTemplate->Height = 25;
 			this->dgvClassList->RowTemplate->ReadOnly = true;
 			this->dgvClassList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvClassList->Size = System::Drawing::Size(217, 0);
+			this->dgvClassList->Size = System::Drawing::Size(163, 0);
 			this->dgvClassList->TabIndex = 1;
 			this->dgvClassList->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvClassList_CellClick);
 			// 
@@ -1403,10 +1377,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelCourse->Controls->Add(this->panelCourseHeader);
 			this->panelCourse->Controls->Add(this->dgvCourseList);
 			this->panelCourse->Controls->Add(this->dgvAY);
-			this->panelCourse->Location = System::Drawing::Point(852, 144);
-			this->panelCourse->Margin = System::Windows::Forms::Padding(4);
+			this->panelCourse->Location = System::Drawing::Point(639, 117);
 			this->panelCourse->Name = L"panelCourse";
-			this->panelCourse->Size = System::Drawing::Size(88, 55);
+			this->panelCourse->Size = System::Drawing::Size(66, 45);
 			this->panelCourse->TabIndex = 3;
 			// 
 			// panelSemester
@@ -1415,10 +1388,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelSemester->Controls->Add(this->btSemester3);
 			this->panelSemester->Controls->Add(this->btSemester1);
 			this->panelSemester->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panelSemester->Location = System::Drawing::Point(0, -547);
-			this->panelSemester->Margin = System::Windows::Forms::Padding(4);
+			this->panelSemester->Location = System::Drawing::Point(0, -444);
 			this->panelSemester->Name = L"panelSemester";
-			this->panelSemester->Size = System::Drawing::Size(88, 602);
+			this->panelSemester->Size = System::Drawing::Size(66, 489);
 			this->panelSemester->TabIndex = 8;
 			// 
 			// btSemester2
@@ -1431,10 +1403,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btSemester2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btSemester2->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSemester2->Location = System::Drawing::Point(399, 0);
-			this->btSemester2->Margin = System::Windows::Forms::Padding(4);
+			this->btSemester2->Location = System::Drawing::Point(299, 0);
 			this->btSemester2->Name = L"btSemester2";
-			this->btSemester2->Size = System::Drawing::Size(0, 602);
+			this->btSemester2->Size = System::Drawing::Size(0, 489);
 			this->btSemester2->TabIndex = 2;
 			this->btSemester2->Text = L"SEMESTER II";
 			this->btSemester2->UseVisualStyleBackColor = false;
@@ -1450,10 +1421,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btSemester3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 26.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btSemester3->ForeColor = System::Drawing::SystemColors::Control;
-			this->btSemester3->Location = System::Drawing::Point(-311, 0);
-			this->btSemester3->Margin = System::Windows::Forms::Padding(4);
+			this->btSemester3->Location = System::Drawing::Point(-233, 0);
 			this->btSemester3->Name = L"btSemester3";
-			this->btSemester3->Size = System::Drawing::Size(399, 602);
+			this->btSemester3->Size = System::Drawing::Size(299, 489);
 			this->btSemester3->TabIndex = 2;
 			this->btSemester3->Text = L"SEMESTER III";
 			this->btSemester3->UseVisualStyleBackColor = false;
@@ -1470,9 +1440,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->btSemester1->ForeColor = System::Drawing::SystemColors::Control;
 			this->btSemester1->Location = System::Drawing::Point(0, 0);
-			this->btSemester1->Margin = System::Windows::Forms::Padding(4);
 			this->btSemester1->Name = L"btSemester1";
-			this->btSemester1->Size = System::Drawing::Size(399, 602);
+			this->btSemester1->Size = System::Drawing::Size(299, 489);
 			this->btSemester1->TabIndex = 2;
 			this->btSemester1->Text = L"SEMESTER I";
 			this->btSemester1->UseVisualStyleBackColor = false;
@@ -1487,10 +1456,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->ForeColor = System::Drawing::SystemColors::Control;
-			this->button4->Location = System::Drawing::Point(0, 73);
-			this->button4->Margin = System::Windows::Forms::Padding(4);
+			this->button4->Location = System::Drawing::Point(0, 59);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(88, 2);
+			this->button4->Size = System::Drawing::Size(66, 2);
 			this->button4->TabIndex = 7;
 			this->button4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button4->UseVisualStyleBackColor = false;
@@ -1505,9 +1473,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->panelCourseHeader->ForeColor = System::Drawing::SystemColors::Control;
 			this->panelCourseHeader->Location = System::Drawing::Point(0, 0);
-			this->panelCourseHeader->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->panelCourseHeader->Name = L"panelCourseHeader";
-			this->panelCourseHeader->Size = System::Drawing::Size(88, 73);
+			this->panelCourseHeader->Size = System::Drawing::Size(66, 59);
 			this->panelCourseHeader->TabIndex = 6;
 			this->panelCourseHeader->Text = L"       Academic years";
 			this->panelCourseHeader->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -1544,8 +1511,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvCourseList->ContextMenuStrip = this->dgvCourseListMenu;
 			this->dgvCourseList->EnableHeadersVisualStyles = false;
 			this->dgvCourseList->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvCourseList->Location = System::Drawing::Point(0, -546);
-			this->dgvCourseList->Margin = System::Windows::Forms::Padding(4);
+			this->dgvCourseList->Location = System::Drawing::Point(0, -444);
 			this->dgvCourseList->MultiSelect = false;
 			this->dgvCourseList->Name = L"dgvCourseList";
 			this->dgvCourseList->RowHeadersVisible = false;
@@ -1558,7 +1524,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvCourseList->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvCourseList->RowTemplate->Height = 25;
 			this->dgvCourseList->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvCourseList->Size = System::Drawing::Size(88, 602);
+			this->dgvCourseList->Size = System::Drawing::Size(66, 489);
 			this->dgvCourseList->TabIndex = 3;
 			this->dgvCourseList->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvCourseList_CellEndEdit);
 			this->dgvCourseList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &mainForm::dgvCourseList_CellMouseDown);
@@ -1649,40 +1615,40 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 					this->removeToolStripMenuItem1, this->viewStudentToolStripMenuItem, this->viewScoreboardToolStripMenuItem, this->viewAttendanceListToolStripMenuItem
 			});
 			this->dgvCourseListMenu->Name = L"dgvCourseListMenu";
-			this->dgvCourseListMenu->Size = System::Drawing::Size(217, 124);
+			this->dgvCourseListMenu->Size = System::Drawing::Size(185, 114);
 			// 
 			// addToolStripMenuItem
 			// 
 			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(216, 24);
+			this->addToolStripMenuItem->Size = System::Drawing::Size(184, 22);
 			this->addToolStripMenuItem->Text = L"Add";
 			this->addToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::addToolStripMenuItem_Click);
 			// 
 			// removeToolStripMenuItem1
 			// 
 			this->removeToolStripMenuItem1->Name = L"removeToolStripMenuItem1";
-			this->removeToolStripMenuItem1->Size = System::Drawing::Size(216, 24);
+			this->removeToolStripMenuItem1->Size = System::Drawing::Size(184, 22);
 			this->removeToolStripMenuItem1->Text = L"Remove";
 			this->removeToolStripMenuItem1->Click += gcnew System::EventHandler(this, &mainForm::removeToolStripMenuItem1_Click);
 			// 
 			// viewStudentToolStripMenuItem
 			// 
 			this->viewStudentToolStripMenuItem->Name = L"viewStudentToolStripMenuItem";
-			this->viewStudentToolStripMenuItem->Size = System::Drawing::Size(216, 24);
+			this->viewStudentToolStripMenuItem->Size = System::Drawing::Size(184, 22);
 			this->viewStudentToolStripMenuItem->Text = L"View Student";
 			this->viewStudentToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewStudentToolStripMenuItem_Click);
 			// 
 			// viewScoreboardToolStripMenuItem
 			// 
 			this->viewScoreboardToolStripMenuItem->Name = L"viewScoreboardToolStripMenuItem";
-			this->viewScoreboardToolStripMenuItem->Size = System::Drawing::Size(216, 24);
+			this->viewScoreboardToolStripMenuItem->Size = System::Drawing::Size(184, 22);
 			this->viewScoreboardToolStripMenuItem->Text = L"View Scoreboard";
 			this->viewScoreboardToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewScoreboardToolStripMenuItem_Click);
 			// 
 			// viewAttendanceListToolStripMenuItem
 			// 
 			this->viewAttendanceListToolStripMenuItem->Name = L"viewAttendanceListToolStripMenuItem";
-			this->viewAttendanceListToolStripMenuItem->Size = System::Drawing::Size(216, 24);
+			this->viewAttendanceListToolStripMenuItem->Size = System::Drawing::Size(184, 22);
 			this->viewAttendanceListToolStripMenuItem->Text = L"View Attendance List";
 			this->viewAttendanceListToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::viewAttendanceListToolStripMenuItem_Click);
 			// 
@@ -1714,8 +1680,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvAY->ContextMenuStrip = this->ayMenu;
 			this->dgvAY->EnableHeadersVisualStyles = false;
 			this->dgvAY->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvAY->Location = System::Drawing::Point(0, -546);
-			this->dgvAY->Margin = System::Windows::Forms::Padding(4);
+			this->dgvAY->Location = System::Drawing::Point(0, -444);
 			this->dgvAY->MultiSelect = false;
 			this->dgvAY->Name = L"dgvAY";
 			this->dgvAY->RowHeadersVisible = false;
@@ -1731,7 +1696,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->dgvAY->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvAY->RowTemplate->Height = 100;
 			this->dgvAY->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvAY->Size = System::Drawing::Size(88, 602);
+			this->dgvAY->Size = System::Drawing::Size(66, 489);
 			this->dgvAY->TabIndex = 1;
 			this->dgvAY->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellDoubleClick);
 			this->dgvAY->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mainForm::dgvAY_CellEndEdit);
@@ -1752,19 +1717,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 					this->deleteToolStripMenuItem
 			});
 			this->ayMenu->Name = L"ayMenu";
-			this->ayMenu->Size = System::Drawing::Size(123, 52);
+			this->ayMenu->Size = System::Drawing::Size(109, 48);
 			// 
 			// createToolStripMenuItem
 			// 
 			this->createToolStripMenuItem->Name = L"createToolStripMenuItem";
-			this->createToolStripMenuItem->Size = System::Drawing::Size(122, 24);
+			this->createToolStripMenuItem->Size = System::Drawing::Size(108, 22);
 			this->createToolStripMenuItem->Text = L"Create";
 			this->createToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::createToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem
 			// 
 			this->deleteToolStripMenuItem->Name = L"deleteToolStripMenuItem";
-			this->deleteToolStripMenuItem->Size = System::Drawing::Size(122, 24);
+			this->deleteToolStripMenuItem->Size = System::Drawing::Size(108, 22);
 			this->deleteToolStripMenuItem->Text = L"Delete";
 			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &mainForm::deleteToolStripMenuItem_Click);
 			// 
@@ -1774,10 +1739,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelProfile->Controls->Add(this->groupBox1);
 			this->panelProfile->Controls->Add(this->button2);
 			this->panelProfile->Controls->Add(this->label3);
-			this->panelProfile->Location = System::Drawing::Point(1069, 15);
-			this->panelProfile->Margin = System::Windows::Forms::Padding(4);
+			this->panelProfile->Location = System::Drawing::Point(802, 12);
 			this->panelProfile->Name = L"panelProfile";
-			this->panelProfile->Size = System::Drawing::Size(112, 102);
+			this->panelProfile->Size = System::Drawing::Size(84, 83);
 			this->panelProfile->TabIndex = 1;
 			this->panelProfile->Visible = false;
 			// 
@@ -1791,11 +1755,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->groupBox2->Controls->Add(this->tbChangePass);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Century Schoolbook", 12));
 			this->groupBox2->ForeColor = System::Drawing::SystemColors::Control;
-			this->groupBox2->Location = System::Drawing::Point(611, 123);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(4);
+			this->groupBox2->Location = System::Drawing::Point(458, 100);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(4);
-			this->groupBox2->Size = System::Drawing::Size(504, 556);
+			this->groupBox2->Size = System::Drawing::Size(378, 452);
 			this->groupBox2->TabIndex = 7;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Login information";
@@ -1805,10 +1767,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(21, 160);
-			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label10->Location = System::Drawing::Point(16, 130);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(116, 28);
+			this->label10->Size = System::Drawing::Size(90, 22);
 			this->label10->TabIndex = 4;
 			this->label10->Text = L"Password";
 			// 
@@ -1817,10 +1778,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(21, 66);
-			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label9->Location = System::Drawing::Point(16, 54);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(116, 28);
+			this->label9->Size = System::Drawing::Size(90, 22);
 			this->label9->TabIndex = 4;
 			this->label9->Text = L"Username";
 			// 
@@ -1832,11 +1792,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileUserid->Enabled = false;
 			this->tbProfileUserid->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
 			this->tbProfileUserid->ForeColor = System::Drawing::SystemColors::ScrollBar;
-			this->tbProfileUserid->Location = System::Drawing::Point(8, 97);
-			this->tbProfileUserid->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileUserid->Location = System::Drawing::Point(6, 79);
 			this->tbProfileUserid->Name = L"tbProfileUserid";
 			this->tbProfileUserid->ReadOnly = true;
-			this->tbProfileUserid->Size = System::Drawing::Size(440, 23);
+			this->tbProfileUserid->Size = System::Drawing::Size(330, 19);
 			this->tbProfileUserid->TabIndex = 1;
 			this->tbProfileUserid->Text = L"User name";
 			this->tbProfileUserid->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -1849,11 +1808,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileUserPass->Enabled = false;
 			this->tbProfileUserPass->Font = (gcnew System::Drawing::Font(L"Courier New", 12));
 			this->tbProfileUserPass->ForeColor = System::Drawing::SystemColors::ScrollBar;
-			this->tbProfileUserPass->Location = System::Drawing::Point(8, 191);
-			this->tbProfileUserPass->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileUserPass->Location = System::Drawing::Point(6, 155);
 			this->tbProfileUserPass->Name = L"tbProfileUserPass";
 			this->tbProfileUserPass->ReadOnly = true;
-			this->tbProfileUserPass->Size = System::Drawing::Size(440, 23);
+			this->tbProfileUserPass->Size = System::Drawing::Size(330, 19);
 			this->tbProfileUserPass->TabIndex = 1;
 			this->tbProfileUserPass->Text = L"Password";
 			this->tbProfileUserPass->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -1865,10 +1823,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->btLogout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btLogout->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btLogout->Location = System::Drawing::Point(361, 495);
-			this->btLogout->Margin = System::Windows::Forms::Padding(4);
+			this->btLogout->Location = System::Drawing::Point(271, 402);
 			this->btLogout->Name = L"btLogout";
-			this->btLogout->Size = System::Drawing::Size(135, 54);
+			this->btLogout->Size = System::Drawing::Size(101, 44);
 			this->btLogout->TabIndex = 2;
 			this->btLogout->Text = L"Logout";
 			this->btLogout->UseVisualStyleBackColor = true;
@@ -1880,10 +1837,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbChangePass->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->tbChangePass->Font = (gcnew System::Drawing::Font(L"Consolas", 8.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tbChangePass->Location = System::Drawing::Point(148, 495);
-			this->tbChangePass->Margin = System::Windows::Forms::Padding(4);
+			this->tbChangePass->Location = System::Drawing::Point(111, 402);
 			this->tbChangePass->Name = L"tbChangePass";
-			this->tbChangePass->Size = System::Drawing::Size(188, 54);
+			this->tbChangePass->Size = System::Drawing::Size(141, 44);
 			this->tbChangePass->TabIndex = 3;
 			this->tbChangePass->Text = L"Change password";
 			this->tbChangePass->UseVisualStyleBackColor = true;
@@ -1904,11 +1860,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Century Schoolbook", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->groupBox1->ForeColor = System::Drawing::SystemColors::Control;
-			this->groupBox1->Location = System::Drawing::Point(45, 123);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
+			this->groupBox1->Location = System::Drawing::Point(34, 100);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
-			this->groupBox1->Size = System::Drawing::Size(504, 556);
+			this->groupBox1->Size = System::Drawing::Size(378, 452);
 			this->groupBox1->TabIndex = 6;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Your information";
@@ -1918,10 +1872,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(12, 453);
-			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label8->Location = System::Drawing::Point(9, 368);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(77, 28);
+			this->label8->Size = System::Drawing::Size(60, 22);
 			this->label8->TabIndex = 2;
 			this->label8->Text = L"Class";
 			// 
@@ -1930,10 +1883,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(12, 352);
-			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label7->Location = System::Drawing::Point(9, 286);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(142, 28);
+			this->label7->Size = System::Drawing::Size(110, 22);
 			this->label7->TabIndex = 2;
 			this->label7->Text = L"Student ID";
 			// 
@@ -1942,10 +1894,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(12, 255);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Location = System::Drawing::Point(9, 207);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(77, 28);
+			this->label6->Size = System::Drawing::Size(60, 22);
 			this->label6->TabIndex = 2;
 			this->label6->Text = L"Email";
 			// 
@@ -1954,10 +1905,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(12, 160);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(9, 130);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(181, 28);
+			this->label5->Size = System::Drawing::Size(140, 22);
 			this->label5->TabIndex = 2;
 			this->label5->Text = L"Date of Birth";
 			// 
@@ -1966,10 +1916,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Consolas", 14.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(12, 66);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(9, 54);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(129, 28);
+			this->label4->Size = System::Drawing::Size(100, 22);
 			this->label4->TabIndex = 2;
 			this->label4->Text = L"Full name";
 			// 
@@ -1982,11 +1931,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileEmail->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbProfileEmail->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->tbProfileEmail->Location = System::Drawing::Point(12, 284);
-			this->tbProfileEmail->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileEmail->Location = System::Drawing::Point(9, 231);
 			this->tbProfileEmail->Name = L"tbProfileEmail";
 			this->tbProfileEmail->ReadOnly = true;
-			this->tbProfileEmail->Size = System::Drawing::Size(447, 23);
+			this->tbProfileEmail->Size = System::Drawing::Size(335, 19);
 			this->tbProfileEmail->TabIndex = 1;
 			this->tbProfileEmail->Text = L"Email";
 			this->tbProfileEmail->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -2000,11 +1948,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileClass->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbProfileClass->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->tbProfileClass->Location = System::Drawing::Point(12, 484);
-			this->tbProfileClass->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileClass->Location = System::Drawing::Point(9, 393);
 			this->tbProfileClass->Name = L"tbProfileClass";
 			this->tbProfileClass->ReadOnly = true;
-			this->tbProfileClass->Size = System::Drawing::Size(447, 23);
+			this->tbProfileClass->Size = System::Drawing::Size(335, 19);
 			this->tbProfileClass->TabIndex = 1;
 			this->tbProfileClass->Text = L"Class";
 			this->tbProfileClass->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -2018,11 +1965,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileFullname->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbProfileFullname->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->tbProfileFullname->Location = System::Drawing::Point(12, 97);
-			this->tbProfileFullname->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileFullname->Location = System::Drawing::Point(9, 79);
 			this->tbProfileFullname->Name = L"tbProfileFullname";
 			this->tbProfileFullname->ReadOnly = true;
-			this->tbProfileFullname->Size = System::Drawing::Size(447, 23);
+			this->tbProfileFullname->Size = System::Drawing::Size(335, 19);
 			this->tbProfileFullname->TabIndex = 1;
 			this->tbProfileFullname->Text = L"Full name";
 			this->tbProfileFullname->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -2036,11 +1982,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileDob->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbProfileDob->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->tbProfileDob->Location = System::Drawing::Point(12, 192);
-			this->tbProfileDob->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileDob->Location = System::Drawing::Point(9, 156);
 			this->tbProfileDob->Name = L"tbProfileDob";
 			this->tbProfileDob->ReadOnly = true;
-			this->tbProfileDob->Size = System::Drawing::Size(447, 23);
+			this->tbProfileDob->Size = System::Drawing::Size(335, 19);
 			this->tbProfileDob->TabIndex = 1;
 			this->tbProfileDob->Text = L"Date of birth";
 			this->tbProfileDob->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -2054,11 +1999,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->tbProfileSid->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbProfileSid->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->tbProfileSid->Location = System::Drawing::Point(12, 384);
-			this->tbProfileSid->Margin = System::Windows::Forms::Padding(4);
+			this->tbProfileSid->Location = System::Drawing::Point(9, 312);
 			this->tbProfileSid->Name = L"tbProfileSid";
 			this->tbProfileSid->ReadOnly = true;
-			this->tbProfileSid->Size = System::Drawing::Size(447, 23);
+			this->tbProfileSid->Size = System::Drawing::Size(335, 19);
 			this->tbProfileSid->TabIndex = 1;
 			this->tbProfileSid->Text = L"Student ID";
 			this->tbProfileSid->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -2072,10 +2016,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::SystemColors::Control;
-			this->button2->Location = System::Drawing::Point(0, 73);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
+			this->button2->Location = System::Drawing::Point(0, 59);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(112, 2);
+			this->button2->Size = System::Drawing::Size(84, 2);
 			this->button2->TabIndex = 5;
 			this->button2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button2->UseVisualStyleBackColor = false;
@@ -2089,9 +2032,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::SystemColors::Control;
 			this->label3->Location = System::Drawing::Point(0, 0);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(112, 73);
+			this->label3->Size = System::Drawing::Size(84, 59);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"       Profile";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -2101,10 +2043,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelScore->Controls->Add(this->button7);
 			this->panelScore->Controls->Add(this->label13);
 			this->panelScore->Controls->Add(this->dgvScore);
-			this->panelScore->Location = System::Drawing::Point(505, 91);
-			this->panelScore->Margin = System::Windows::Forms::Padding(4);
+			this->panelScore->Location = System::Drawing::Point(379, 74);
 			this->panelScore->Name = L"panelScore";
-			this->panelScore->Size = System::Drawing::Size(320, 138);
+			this->panelScore->Size = System::Drawing::Size(240, 112);
 			this->panelScore->TabIndex = 7;
 			// 
 			// button7
@@ -2116,10 +2057,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button7->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button7->ForeColor = System::Drawing::SystemColors::Control;
-			this->button7->Location = System::Drawing::Point(0, 73);
-			this->button7->Margin = System::Windows::Forms::Padding(4);
+			this->button7->Location = System::Drawing::Point(0, 59);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(320, 2);
+			this->button7->Size = System::Drawing::Size(240, 2);
 			this->button7->TabIndex = 7;
 			this->button7->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button7->UseVisualStyleBackColor = false;
@@ -2134,9 +2074,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->label13->ForeColor = System::Drawing::SystemColors::Control;
 			this->label13->Location = System::Drawing::Point(0, 0);
-			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(320, 73);
+			this->label13->Size = System::Drawing::Size(240, 59);
 			this->label13->TabIndex = 6;
 			this->label13->Text = L"       Score";
 			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -2171,8 +2110,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			});
 			this->dgvScore->EnableHeadersVisualStyles = false;
 			this->dgvScore->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvScore->Location = System::Drawing::Point(0, -464);
-			this->dgvScore->Margin = System::Windows::Forms::Padding(4);
+			this->dgvScore->Location = System::Drawing::Point(0, -377);
 			this->dgvScore->Name = L"dgvScore";
 			this->dgvScore->ReadOnly = true;
 			this->dgvScore->RowHeadersVisible = false;
@@ -2184,7 +2122,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvScore->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvScore->RowTemplate->Height = 25;
-			this->dgvScore->Size = System::Drawing::Size(320, 602);
+			this->dgvScore->Size = System::Drawing::Size(240, 489);
 			this->dgvScore->TabIndex = 1;
 			// 
 			// Column24
@@ -2232,10 +2170,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->panelSchedule->Controls->Add(this->button6);
 			this->panelSchedule->Controls->Add(this->label12);
 			this->panelSchedule->Controls->Add(this->dgvSchedule);
-			this->panelSchedule->Location = System::Drawing::Point(899, 553);
-			this->panelSchedule->Margin = System::Windows::Forms::Padding(4);
+			this->panelSchedule->Location = System::Drawing::Point(674, 449);
 			this->panelSchedule->Name = L"panelSchedule";
-			this->panelSchedule->Size = System::Drawing::Size(243, 111);
+			this->panelSchedule->Size = System::Drawing::Size(182, 90);
 			this->panelSchedule->TabIndex = 6;
 			// 
 			// button6
@@ -2247,10 +2184,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->button6->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button6->ForeColor = System::Drawing::SystemColors::Control;
-			this->button6->Location = System::Drawing::Point(0, 73);
-			this->button6->Margin = System::Windows::Forms::Padding(4);
+			this->button6->Location = System::Drawing::Point(0, 59);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(243, 2);
+			this->button6->Size = System::Drawing::Size(182, 2);
 			this->button6->TabIndex = 7;
 			this->button6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->button6->UseVisualStyleBackColor = false;
@@ -2265,9 +2201,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				static_cast<System::Byte>(0)));
 			this->label12->ForeColor = System::Drawing::SystemColors::Control;
 			this->label12->Location = System::Drawing::Point(0, 0);
-			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(243, 73);
+			this->label12->Size = System::Drawing::Size(182, 59);
 			this->label12->TabIndex = 6;
 			this->label12->Text = L"       Schedule";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -2302,8 +2237,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			});
 			this->dgvSchedule->EnableHeadersVisualStyles = false;
 			this->dgvSchedule->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvSchedule->Location = System::Drawing::Point(0, -491);
-			this->dgvSchedule->Margin = System::Windows::Forms::Padding(4);
+			this->dgvSchedule->Location = System::Drawing::Point(0, -399);
 			this->dgvSchedule->MultiSelect = false;
 			this->dgvSchedule->Name = L"dgvSchedule";
 			this->dgvSchedule->ReadOnly = true;
@@ -2316,7 +2250,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dgvSchedule->RowTemplate->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::Control;
 			this->dgvSchedule->RowTemplate->Height = 25;
-			this->dgvSchedule->Size = System::Drawing::Size(243, 602);
+			this->dgvSchedule->Size = System::Drawing::Size(182, 489);
 			this->dgvSchedule->TabIndex = 1;
 			// 
 			// Column17
@@ -2375,16 +2309,25 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			this->Column23->Name = L"Column23";
 			this->Column23->ReadOnly = true;
 			// 
+			// checkIn
+			// 
+			this->checkIn->Location = System::Drawing::Point(39, 472);
+			this->checkIn->Name = L"checkIn";
+			this->checkIn->Size = System::Drawing::Size(119, 38);
+			this->checkIn->TabIndex = 8;
+			this->checkIn->Text = L"Check In";
+			this->checkIn->UseVisualStyleBackColor = true;
+			this->checkIn->Click += gcnew System::EventHandler(this, &mainForm::button9_Click);
+			// 
 			// mainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1432, 725);
+			this->ClientSize = System::Drawing::Size(1028, 589);
 			this->Controls->Add(this->panelMain);
 			this->Controls->Add(this->panelMenu);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"mainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->panelLogin->ResumeLayout(false);
@@ -3216,5 +3159,78 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvCheckInListName;
 			   
 		   }
 	
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	int count = 0;
+	DateTime^ current = DateTime::Now;
+	DateTime current_date = current->Date;
+	std::string s;
+	std::ifstream f;
+	std::ofstream export_file;
+	userInfo^ user = gcnew userInfo;
+	scheduleInfo^ u = gcnew scheduleInfo;
+	f.open("general\\semester\\schedule\\2019-2020-hk2-schedule-19APCS1.txt");
+	getline(f, s, '\n');
+	while (f.good()) {
+		getline(f, s, '\n');
+		u->no = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->Id = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->name = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->className = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->lecturer = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->start_day = gcnew String(s.c_str());
+		DateTime start_day = DateTime::ParseExact(u->start_day, "dd/MM/yyyy", Globalization::CultureInfo::InvariantCulture);
+		getline(f, s, '\n');
+		u->end_day = gcnew String(s.c_str());
+		DateTime end_day = DateTime::ParseExact(u->end_day, "dd/MM/yyyy", Globalization::CultureInfo::InvariantCulture);
+		getline(f, s, '\n');
+		u->day = gcnew String(s.c_str());
+		getline(f, s, '\n');
+		u->start_time = gcnew String(s.c_str());
+		DateTime start_time = DateTime::ParseExact(u->start_time, "HH:mm", Globalization::CultureInfo::InvariantCulture);
+		getline(f, s, '\n');
+		u->end_time = gcnew String(s.c_str());
+		DateTime end_time = DateTime::ParseExact(u->end_time, "HH:mm", Globalization::CultureInfo::InvariantCulture);
+		getline(f, s, '\n');
+		u->room = gcnew String(s.c_str());
+		if (current_date >= start_day && current_date <= end_day)
+		{
+			if (current->DayOfWeek.ToString() == u->day)
+			{
+				if (current->Date >= start_time.AddMinutes(-15) && current->Date <= start_time.AddMinutes(15))
+				{	
+					//thieu cai log out roi log in vo lai
+
+					export_file.open("general\\check_in.txt");
+					while (export_file.good()) {
+						count++;
+						export_file << endl <<
+							msclr::interop::marshal_as<std::string>(current->Date.ToString()) << endl <<
+							msclr::interop::marshal_as<std::string>(u->className->ToString()) << endl <<
+							msclr::interop::marshal_as<std::string>(count) << endl <<
+							msclr::interop::marshal_as<std::string>(user->userid->ToString()) << endl <<
+					}
+					export_file.close();
+				}
+				else
+				{
+					export_file.open("general\\check_in.txt");
+					export_file << endl <<
+						msclr::interop::marshal_as<std::string>(current->Date.ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(u->className->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(count) << endl <<
+				}
+			}
+		}
+		
+	}
+	export_file.close();
+	f.close();
+
+}
 };
 }
