@@ -17,13 +17,19 @@ namespace StudentManagementSystem {
 	public ref class studentForm : public System::Windows::Forms::Form
 	{
 	public:
-		studentForm(int k, String^ s)
+		studentForm(int k, String^ s, String^ st)
 		{
 			InitializeComponent();
-			this->Text = s;
+			this->Text = st->Substring(14, st->Length - 14) + s;
 			classname = s;
+			course_path = st;
 			dgvStudentListLoad();
-			if (k > 1) dgvStudentList->ReadOnly = true;
+			if (k > 1)
+			{
+				dgvStudentList->ReadOnly = true;
+				addNewStudentToolStripMenuItem->Visible = false;
+				removeToolStripMenuItem->Visible = false;
+			}
 			//
 			//TODO: Add the constructor code here
 			//
@@ -35,7 +41,7 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListFirstname;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListGender;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListDob;
-		   String^ classname;
+		   String^ classname, ^ course_path;
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -166,6 +172,7 @@ namespace StudentManagementSystem {
 			this->dgvStudentList->Size = System::Drawing::Size(814, 353);
 			this->dgvStudentList->TabIndex = 3;
 			this->dgvStudentList->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &studentForm::dgvStudentList_CellEndEdit);
+			this->dgvStudentList->CellMouseDown += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &studentForm::dgvStudentList_CellMouseDown);
 			// 
 			// dgvStudentListNo
 			// 
@@ -228,7 +235,7 @@ namespace StudentManagementSystem {
 #pragma endregion
 		void dgvStudentListLoad()
 		{
-			ifstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + ".l");
+			ifstream f("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
 			dgvStudentList->Rows->Clear();
 			int x = 0;
 			std::string s;
@@ -247,8 +254,8 @@ namespace StudentManagementSystem {
 				getline(f, s, '\n');
 				dgvStudentList->Rows[x]->Cells[4]->Value = gcnew String(s.c_str());
 				getline(f, s, '\n');
-				s.insert(2, "/").insert(5, "/");
 				dgvStudentList->Rows[x]->Cells[5]->Value = gcnew String(s.c_str());
+				getline(f, s, '\n');
 				x++;
 			}
 			dgvStudentList->ClearSelection();
@@ -272,7 +279,7 @@ namespace StudentManagementSystem {
 			if (d == System::Windows::Forms::DialogResult::Yes)
 			{
 				std::ofstream f;
-				f.open(msclr::interop::marshal_as<std::string>(classname->ToString()) + ".l");
+				f.open("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
 				dgvStudentList->Rows->RemoveAt(dgvStudentList->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvStudentList->RowCount; i++)
 				{
@@ -283,11 +290,11 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+						msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(classname->ToString());
 				}
 				f.close();
-				dgvStudentList->Focus();
-				// LOAD LAI FILE user_login.txt
+				dgvStudentList->ClearSelection();
 			}
 		}
 		catch (Exception^ ex)
@@ -310,17 +317,23 @@ namespace StudentManagementSystem {
 		try
 		{
 			std::ofstream f;
-			f.open(msclr::interop::marshal_as<std::string>(classname->ToString()) + ".l");
+			f.open("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
 			for (int i = 0; i < dgvStudentList->RowCount; i++)
 			{
-				//if (i) f << endl;
+				if (dgvStudentList->Rows[i]->Cells[0]->Value == nullptr) dgvStudentList->Rows[i]->Cells[0]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[1]->Value == nullptr) dgvStudentList->Rows[i]->Cells[1]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[2]->Value == nullptr) dgvStudentList->Rows[i]->Cells[2]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[3]->Value == nullptr) dgvStudentList->Rows[i]->Cells[3]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[4]->Value == nullptr) dgvStudentList->Rows[i]->Cells[4]->Value = "";
+				if (dgvStudentList->Rows[i]->Cells[5]->Value == nullptr) dgvStudentList->Rows[i]->Cells[5]->Value = "";
 				f << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[2]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[3]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[4]->Value->ToString()) << endl <<
-					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()->Remove(5, 1)->Remove(2, 1));
+					msclr::interop::marshal_as<std::string>(dgvStudentList->Rows[i]->Cells[5]->Value->ToString()) << endl <<
+					msclr::interop::marshal_as<std::string>(classname->ToString());
 			}
 			f.close();
 			//	LOAD LAI FILE user_login.txt

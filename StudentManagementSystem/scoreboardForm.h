@@ -18,13 +18,19 @@ namespace StudentManagementSystem {
 	public ref class scoreboardForm : public System::Windows::Forms::Form
 	{
 	public:
-		scoreboardForm(int k, String^ s)
+		scoreboardForm(int k, String^ s, String^ st)
 		{
 			InitializeComponent();
 			classname = s;
-			this->Text = s;
+			this->Text = st->Substring(14, st->Length - 14) + s;
+			course_path = st;
 			dgvScoreLoad();
-			if (k == 1) dgvScore->ReadOnly = true;
+			if (k == 1)
+			{
+				dgvScore->ReadOnly = true;
+				importFromCSVFileToolStripMenuItem->Visible = false;
+			}
+			else exportToCSVFileToolStripMenuItem->Visible = false;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -33,7 +39,7 @@ namespace StudentManagementSystem {
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToCSVFileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ importFromCSVFileToolStripMenuItem;
-	public: String^ classname;
+	public: String^ classname, ^course_path;
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -204,6 +210,7 @@ namespace StudentManagementSystem {
 			this->importFromCSVFileToolStripMenuItem->Name = L"importFromCSVFileToolStripMenuItem";
 			this->importFromCSVFileToolStripMenuItem->Size = System::Drawing::Size(182, 22);
 			this->importFromCSVFileToolStripMenuItem->Text = L"Import from CSV file";
+			this->importFromCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &scoreboardForm::importFromCSVFileToolStripMenuItem_Click);
 			// 
 			// scoreboardForm
 			// 
@@ -225,10 +232,38 @@ namespace StudentManagementSystem {
 #pragma endregion
 		void dgvScoreLoad()
 		{
-			std::ifstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_sco.l");
+			ifstream f("general\\semester\\scoreboard\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.txt");
 			dgvScore->Rows->Clear();
 			int x = 0;
 			std::string s;
+			if (!f.is_open())
+			{
+				f.open("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
+				getline(f, s, '\n');
+				while (f.good())
+				{
+					getline(f, s, '\n');
+					dgvScore->Rows->Add();
+					dgvScore->Rows[x]->Cells[0]->Value = x + 1;
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[1]->Value = gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[2]->Value = gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[2]->Value += " " + gcnew String(s.c_str());
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[3]->Value = "";
+					dgvScore->Rows[x]->Cells[4]->Value = "";
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[5]->Value = "";
+					getline(f, s, '\n');
+					dgvScore->Rows[x]->Cells[6]->Value = "";
+					x++;
+				}
+				dgvScore->ClearSelection();
+				f.close();
+				return;
+			}
 			getline(f, s, '\n');
 			while (f.good())
 			{
@@ -252,7 +287,7 @@ namespace StudentManagementSystem {
 			dgvScore->ClearSelection();
 		}
 	private: System::Void exportToCSVFileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		ofstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_scoreboard.csv");
+		ofstream f("export\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.csv");
 		f << "No,Student Name,Student ID,Midterm,Final,Bonus,Total";
 		for (int i = 0; i < dgvScore->RowCount; i++)
 		{
@@ -266,11 +301,19 @@ namespace StudentManagementSystem {
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[6]->Value->ToString());
 		}
 		f.close();
+		MessageBox::Show(this, "EXPORT COMPLETED!", "", MessageBoxButtons::OK);
 	}
 	private: System::Void dgvScore_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		ofstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_sco.l");
+		ofstream f("general\\semester\\scoreboard\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.txt");
 		for (int i = 0; i < dgvScore->RowCount; i++)
 		{
+			if (dgvScore->Rows[i]->Cells[0]->Value == nullptr) dgvScore->Rows[i]->Cells[0]->Value = "";
+			if (dgvScore->Rows[i]->Cells[1]->Value == nullptr) dgvScore->Rows[i]->Cells[1]->Value = "";
+			if (dgvScore->Rows[i]->Cells[2]->Value == nullptr) dgvScore->Rows[i]->Cells[2]->Value = "";
+			if (dgvScore->Rows[i]->Cells[3]->Value == nullptr) dgvScore->Rows[i]->Cells[3]->Value = "";
+			if (dgvScore->Rows[i]->Cells[4]->Value == nullptr) dgvScore->Rows[i]->Cells[4]->Value = "";
+			if (dgvScore->Rows[i]->Cells[5]->Value == nullptr) dgvScore->Rows[i]->Cells[5]->Value = "";
+			if (dgvScore->Rows[i]->Cells[6]->Value == nullptr) dgvScore->Rows[i]->Cells[6]->Value = "";
 			f << endl <<
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[0]->Value->ToString()) << endl <<
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[1]->Value->ToString()) << endl <<
@@ -281,6 +324,41 @@ namespace StudentManagementSystem {
 				msclr::interop::marshal_as<std::string>(dgvScore->Rows[i]->Cells[6]->Value->ToString());
 		}
 		f.close();
+	}
+	private: System::Void importFromCSVFileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ifstream fi("import\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.csv");
+		if (!fi.is_open())
+		{
+			MessageBox::Show(this, "NO FILE TO BE IMPORTED!", "WARNING!", MessageBoxButtons::OK);
+		}
+		else
+		{
+			ofstream fo("general\\semester\\scoreboard\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.txt");
+			string s;
+			getline(fi, s, '\n');
+			while (fi.good())
+			{
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, ',');
+				fo << endl << s;
+				getline(fi, s, '\n');
+				fo << endl << s;
+			}
+			fi.close();
+			fo.close();
+			dgvScoreLoad();
+			MessageBox::Show(this, "IMPORT COMPLETED!", "", MessageBoxButtons::OK);
+
+		}
 	}
 };
 }

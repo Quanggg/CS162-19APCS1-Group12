@@ -241,7 +241,8 @@ namespace StudentManagementSystem {
 						msclr::interop::marshal_as<std::string>(r->Cells[2]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[3]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(r->Cells[4]->Value->ToString()) << endl <<
-						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString());
+						msclr::interop::marshal_as<std::string>(r->Cells[5]->Value->ToString()) << endl <<
+						msclr::interop::marshal_as<std::string>(dgvClassList->Rows[e->RowIndex]->Cells[1]->Value->ToString());
 					fout.close();
 				}
 			}

@@ -17,13 +17,19 @@ namespace StudentManagementSystem {
 	public ref class attendanceForm : public System::Windows::Forms::Form
 	{
 	public:
-		attendanceForm(int k, String ^s)
+		attendanceForm(int k, String^ s, String^ st)
 		{
 			InitializeComponent();
 			classname = s;
-			this->Text = s;
+			course_path = st;
+			this->Text = st->Substring(14, st->Length - 14) + s;
 			dgvAttLoad();
-			if (k == 1) dgvAtt->ReadOnly = true;
+			if (k == 1)
+			{
+				dgvAtt->ReadOnly = true;
+				reloadToolStripMenuItem->Visible = false;
+			}
+			else exportToCSVFileToolStripMenuItem->Visible = false;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -31,10 +37,17 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToCSVFileToolStripMenuItem;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListNo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListID;
+
+
+
+	public: String^ classname, ^ course_path;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListLastname;
-	public: String^ classname;
+	public:
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListID;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvStudentListNo;
+	private: System::Windows::Forms::DataGridView^ dgvAtt;
+	private: System::Windows::Forms::ToolStripMenuItem^ reloadToolStripMenuItem;
+	public:
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -46,7 +59,7 @@ namespace StudentManagementSystem {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dgvAtt;
+
 	protected:
 
 
@@ -70,15 +83,61 @@ namespace StudentManagementSystem {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			this->dgvAtt = (gcnew System::Windows::Forms::DataGridView());
-			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->exportToCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->BeginInit();
+			this->reloadToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dgvStudentListLastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvStudentListNo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgvAtt = (gcnew System::Windows::Forms::DataGridView());
 			this->contextMenuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->exportToCSVFileToolStripMenuItem,
+					this->reloadToolStripMenuItem
+			});
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(166, 48);
+			// 
+			// exportToCSVFileToolStripMenuItem
+			// 
+			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
+			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
+			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::exportToCSVFileToolStripMenuItem_Click);
+			// 
+			// reloadToolStripMenuItem
+			// 
+			this->reloadToolStripMenuItem->Name = L"reloadToolStripMenuItem";
+			this->reloadToolStripMenuItem->Size = System::Drawing::Size(165, 22);
+			this->reloadToolStripMenuItem->Text = L"Reload";
+			this->reloadToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::reloadToolStripMenuItem_Click);
+			// 
+			// dgvStudentListLastname
+			// 
+			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->dgvStudentListLastname->HeaderText = L"STUDENT NAME";
+			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
+			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListLastname->Width = 250;
+			// 
+			// dgvStudentListID
+			// 
+			this->dgvStudentListID->HeaderText = L"STUDENT ID";
+			this->dgvStudentListID->Name = L"dgvStudentListID";
+			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListID->Width = 130;
+			// 
+			// dgvStudentListNo
+			// 
+			this->dgvStudentListNo->HeaderText = L"No";
+			this->dgvStudentListNo->Name = L"dgvStudentListNo";
+			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvStudentListNo->Width = 50;
 			// 
 			// dgvAtt
 			// 
@@ -110,12 +169,10 @@ namespace StudentManagementSystem {
 			this->dgvAtt->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->dgvAtt->EnableHeadersVisualStyles = false;
 			this->dgvAtt->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->dgvAtt->Location = System::Drawing::Point(0, 72);
-			this->dgvAtt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgvAtt->Location = System::Drawing::Point(0, 58);
 			this->dgvAtt->MultiSelect = false;
 			this->dgvAtt->Name = L"dgvAtt";
 			this->dgvAtt->RowHeadersVisible = false;
-			this->dgvAtt->RowHeadersWidth = 51;
 			this->dgvAtt->RowTemplate->DefaultCellStyle->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			this->dgvAtt->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(65)));
@@ -126,63 +183,23 @@ namespace StudentManagementSystem {
 			this->dgvAtt->RowTemplate->DefaultCellStyle->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			this->dgvAtt->RowTemplate->Height = 25;
 			this->dgvAtt->RowTemplate->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvAtt->Size = System::Drawing::Size(1092, 434);
+			this->dgvAtt->Size = System::Drawing::Size(819, 353);
 			this->dgvAtt->TabIndex = 5;
 			this->dgvAtt->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &attendanceForm::dgvAtt_CellEndEdit);
 			// 
-			// dgvStudentListNo
-			// 
-			this->dgvStudentListNo->HeaderText = L"No";
-			this->dgvStudentListNo->MinimumWidth = 6;
-			this->dgvStudentListNo->Name = L"dgvStudentListNo";
-			this->dgvStudentListNo->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListNo->Width = 50;
-			// 
-			// dgvStudentListID
-			// 
-			this->dgvStudentListID->HeaderText = L"STUDENT ID";
-			this->dgvStudentListID->MinimumWidth = 6;
-			this->dgvStudentListID->Name = L"dgvStudentListID";
-			this->dgvStudentListID->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListID->Width = 130;
-			// 
-			// dgvStudentListLastname
-			// 
-			this->dgvStudentListLastname->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
-			this->dgvStudentListLastname->HeaderText = L"STUDENT NAME";
-			this->dgvStudentListLastname->MinimumWidth = 6;
-			this->dgvStudentListLastname->Name = L"dgvStudentListLastname";
-			this->dgvStudentListLastname->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvStudentListLastname->Width = 250;
-			// 
-			// contextMenuStrip1
-			// 
-			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->exportToCSVFileToolStripMenuItem });
-			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(195, 28);
-			// 
-			// exportToCSVFileToolStripMenuItem
-			// 
-			this->exportToCSVFileToolStripMenuItem->Name = L"exportToCSVFileToolStripMenuItem";
-			this->exportToCSVFileToolStripMenuItem->Size = System::Drawing::Size(194, 24);
-			this->exportToCSVFileToolStripMenuItem->Text = L"Export to CSV file";
-			this->exportToCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &attendanceForm::exportToCSVFileToolStripMenuItem_Click);
-			// 
 			// attendanceForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(30)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(85)));
-			this->ClientSize = System::Drawing::Size(1092, 506);
+			this->ClientSize = System::Drawing::Size(819, 411);
 			this->Controls->Add(this->dgvAtt);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"attendanceForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"attendanceForm";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->EndInit();
 			this->contextMenuStrip1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvAtt))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -190,7 +207,7 @@ namespace StudentManagementSystem {
 		void dgvAttLoad()
 		{
 			dgvAtt->EndEdit();
-			std::ifstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + ".l");
+			std::ifstream f("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
 			dgvAtt->Rows->Clear();
 			int x = 0;
 			std::string s;
@@ -208,10 +225,11 @@ namespace StudentManagementSystem {
 				dgvAtt->Rows[x]->Cells[2]->Value += " " + gcnew String(s.c_str());
 				getline(f, s, '\n');
 				getline(f, s, '\n');
+				getline(f, s, '\n');
 				x++;
 			}
 			f.close();
-			f.open(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_att.l");
+			f.open("general\\semester\\attendance\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-attendance.txt");
 			int i = 3;
 			getline(f, s, '\n');
 			while (f.good())
@@ -220,7 +238,7 @@ namespace StudentManagementSystem {
 				dgvAtt->Columns->Add("col" + i, gcnew String(s.c_str()));
 				dgvAtt->Columns[i]->MinimumWidth = 130;
 				f >> x;
-				int* a = new int[x]{ 0 };
+				int* a = new int[x] { 0 };
 				for (int j = 0; j < x; j++)
 				{
 					f >> a[j];
@@ -249,7 +267,7 @@ namespace StudentManagementSystem {
 			dgvAtt->ClearSelection();
 		}
 	private: System::Void exportToCSVFileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		ofstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_attendance.csv");
+		ofstream f("export\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-attendance.csv");
 		for (int i = 0; i < dgvAtt->ColumnCount; i++)
 			if (i < dgvAtt->ColumnCount - 1) f << msclr::interop::marshal_as<std::string>(dgvAtt->Columns[i]->HeaderText->ToString()) << ",";
 			else  f << msclr::interop::marshal_as<std::string>(dgvAtt->Columns[i]->HeaderText->ToString());
@@ -267,29 +285,30 @@ namespace StudentManagementSystem {
 		f.close();
 	}
 	private: System::Void dgvAtt_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		ofstream f(msclr::interop::marshal_as<std::string>(classname->ToString()) + "_att.l");
+		ofstream f("general\\semester\\attendance\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-attendance.txt");
 		for (int i = 3; i < dgvAtt->ColumnCount; i++)
 		{
-			f << endl << msclr::interop::marshal_as<std::string>(dgvAtt->Columns[i]->HeaderText) << endl;
+			f << endl << msclr::interop::marshal_as<std::string>(dgvAtt->Columns[i]->HeaderText);
 			int k = 0, t = 0;
 			for (int j = 0; j < dgvAtt->RowCount; j++)
 			{
 				if (dgvAtt->Rows[j]->Cells[i]->Value == nullptr) k++;
 			}
-			f << k;
-			if (k) f << endl;
+			f << endl << k;
 			for (int j = 0; j < dgvAtt->RowCount; j++)
 			{
 				if (dgvAtt->Rows[j]->Cells[i]->Value == nullptr)
 				{
-					f << msclr::interop::marshal_as<std::string>(dgvAtt->Rows[j]->Cells[1]->Value->ToString());
+					f << endl << msclr::interop::marshal_as<std::string>(dgvAtt->Rows[j]->Cells[1]->Value->ToString());
 					t++;
-					if (t < k - 1) f << endl;
+					//if (t < k - 1) f << endl;
 				}
 			}
 		}
 		f.close();
 	}
-
-};
+	private: System::Void reloadToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		dgvAttLoad();
+	}
+	};
 }
