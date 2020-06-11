@@ -323,6 +323,7 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column28;
 	private: System::Windows::Forms::DataGridView^ dgvCheckIn;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
+private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 
 
 
@@ -623,6 +624,7 @@ namespace StudentManagementSystem {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->btImport = (gcnew System::Windows::Forms::Button());
 			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->panelLogin->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panelMenu->SuspendLayout();
@@ -2442,6 +2444,10 @@ namespace StudentManagementSystem {
 			this->button9->UseVisualStyleBackColor = false;
 			this->button9->Click += gcnew System::EventHandler(this, &mainForm::button9_Click);
 			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
 			// mainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -2806,12 +2812,24 @@ namespace StudentManagementSystem {
 							<< si[j].id << endl
 							<< u[i].pass << endl
 							<< si[j].cls;
-					}
-					i++;
+					}					
 					j++;
+					if (i + 1 < user_size) i++;
 				}
 				else if (u[i].id < si[j].id)
-					i++;
+				{
+					if (i + 1 < user_size) i++;
+					else
+					{
+						f2 << endl
+							<< si[j].lname << endl
+							<< "NONE\nNONE\n"
+							<< si[j].id << endl
+							<< "1" << endl
+							<< si[j].cls;
+						j++;
+					}
+				}
 				else if (u[i].id > si[j].id)
 				{
 					if (si[j].cls == "Lecturer" || si[j].cls == "Staff")
@@ -3725,6 +3743,7 @@ namespace StudentManagementSystem {
 		   //xong
 #pragma region Lecturer
 		   string* lecturer_pass;
+		   int lecturer_size;
 		   void dgvLecturerLoad()
 		   {
 			   ifstream f("general\\lecturer.txt");
@@ -3748,6 +3767,7 @@ namespace StudentManagementSystem {
 				   lecturer_pass[x] = s;
 				   x++;
 			   }
+			   lecturer_size = x - 1;
 			   f.close();
 			   dgvLecturer->ClearSelection();
 		   }
@@ -3772,7 +3792,7 @@ namespace StudentManagementSystem {
 				dgvLecturer->Rows->RemoveAt(dgvLecturer->SelectedCells[0]->RowIndex);
 				for (int i = 0; i < dgvLecturer->RowCount; i++)
 				{
-					dgvCourseList->Rows[i]->Cells[0]->Value = i + 1;
+					dgvLecturer->Rows[i]->Cells[0]->Value = i + 1;
 					f << endl <<
 						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 						msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[3]->Value->ToString()) << endl <<
@@ -3796,6 +3816,9 @@ namespace StudentManagementSystem {
 			f.open("general\\lecturer.txt");
 			for (int i = 0; i < dgvLecturer->RowCount; i++)
 			{
+				if (dgvLecturer->Rows[i]->Cells[1]->Value == nullptr) dgvLecturer->Rows[i]->Cells[1]->Value = "";
+				if (dgvLecturer->Rows[i]->Cells[3]->Value == nullptr) dgvLecturer->Rows[i]->Cells[3]->Value = "";
+				if (i > lecturer_size) lecturer_pass[i] = "1", lecturer_size++;
 				f << endl <<
 					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[1]->Value->ToString()) << endl <<
 					msclr::interop::marshal_as<std::string>(dgvLecturer->Rows[i]->Cells[3]->Value->ToString()) << endl <<
