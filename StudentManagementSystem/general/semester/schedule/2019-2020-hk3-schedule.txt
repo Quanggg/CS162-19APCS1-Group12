@@ -1,0 +1,23 @@
+
+1
+CS162
+Introduction to Programming
+19APCS2
+dbtien
+06/04/2020
+01/06/2020
+MON
+07:30
+11:30
+I42
+2
+CM101
+Communications
+19APCS2
+dnvu
+06/04/2020
+01/06/2020
+SAT
+13:30
+17:30
+I23
