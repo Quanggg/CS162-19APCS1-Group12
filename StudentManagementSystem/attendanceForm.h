@@ -206,6 +206,11 @@ namespace StudentManagementSystem {
 #pragma endregion
 		void dgvAttLoad()
 		{
+			dgvAtt->Rows->Clear();
+			while (dgvAtt->ColumnCount > 3)
+			{
+				dgvAtt->Columns->RemoveAt(3);
+			}
 			dgvAtt->EndEdit();
 			std::ifstream f("general\\semester\\student\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + ".txt");
 			dgvAtt->Rows->Clear();
@@ -283,6 +288,7 @@ namespace StudentManagementSystem {
 			}
 		}
 		f.close();
+		MessageBox::Show(this, "EXPORT COMPLETED!", "", MessageBoxButtons::OK);
 	}
 	private: System::Void dgvAtt_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		ofstream f("general\\semester\\attendance\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-attendance.txt");

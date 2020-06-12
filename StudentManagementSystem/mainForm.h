@@ -12,7 +12,7 @@
 #include "studentForm.h"
 #include "stdafx.h"
 #include <msclr/marshal_cppstd.h>
-//#include <time.h>
+#include <time.h>
 namespace StudentManagementSystem {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -324,6 +324,9 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::DataGridView^ dgvCheckIn;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
 private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+private: System::Windows::Forms::Label^ label15;
+private: System::Windows::Forms::Label^ label16;
+private: System::Windows::Forms::Panel^ panel1;
 
 
 
@@ -479,7 +482,6 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(mainForm::typeid));
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
@@ -493,6 +495,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle13 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(mainForm::typeid));
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
@@ -624,7 +627,10 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->btImport = (gcnew System::Windows::Forms::Button());
 			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panelLogin->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panelMenu->SuspendLayout();
@@ -659,10 +665,11 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			// 
 			this->panelLogin->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->panelLogin->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->panelLogin->Controls->Add(this->panel1);
 			this->panelLogin->Controls->Add(this->panel2);
-			this->panelLogin->Location = System::Drawing::Point(6, 176);
+			this->panelLogin->Location = System::Drawing::Point(485, 108);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(94, 71);
+			this->panelLogin->Size = System::Drawing::Size(72, 71);
 			this->panelLogin->TabIndex = 0;
 			// 
 			// panel2
@@ -680,7 +687,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->panel2->Location = System::Drawing::Point(0, -207);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(94, 278);
+			this->panel2->Size = System::Drawing::Size(72, 278);
 			this->panel2->TabIndex = 5;
 			// 
 			// panel4
@@ -999,6 +1006,8 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->panelMain->Controls->Add(this->panelLogin);
 			this->panelMain->Controls->Add(this->btImport);
 			this->panelMain->Controls->Add(this->button9);
+			this->panelMain->Controls->Add(this->label16);
+			this->panelMain->Controls->Add(this->label15);
 			this->panelMain->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panelMain->Location = System::Drawing::Point(176, 0);
 			this->panelMain->Name = L"panelMain";
@@ -1766,7 +1775,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->panelCourse->Controls->Add(this->panelCourseHeader);
 			this->panelCourse->Controls->Add(this->dgvCourseList);
 			this->panelCourse->Controls->Add(this->dgvAY);
-			this->panelCourse->Location = System::Drawing::Point(10, 268);
+			this->panelCourse->Location = System::Drawing::Point(656, 134);
 			this->panelCourse->Name = L"panelCourse";
 			this->panelCourse->Size = System::Drawing::Size(66, 45);
 			this->panelCourse->TabIndex = 3;
@@ -2411,6 +2420,8 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			// 
 			// btImport
 			// 
+			this->btImport->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->btImport->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(68)));
 			this->btImport->FlatAppearance->BorderSize = 0;
@@ -2429,6 +2440,8 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			// 
 			// button9
 			// 
+			this->button9->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->button9->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(30)),
 				static_cast<System::Int32>(static_cast<System::Byte>(68)));
 			this->button9->FlatAppearance->BorderSize = 0;
@@ -2444,9 +2457,43 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->button9->UseVisualStyleBackColor = false;
 			this->button9->Click += gcnew System::EventHandler(this, &mainForm::button9_Click);
 			// 
+			// label16
+			// 
+			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label16->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label16->Location = System::Drawing::Point(10, 242);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(876, 81);
+			this->label16->TabIndex = 10;
+			this->label16->Text = L"HELLO";
+			this->label16->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label15->ForeColor = System::Drawing::SystemColors::ControlLight;
+			this->label15->Location = System::Drawing::Point(164, 117);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(167, 62);
+			this->label15->TabIndex = 10;
+			this->label15->Text = L"HELLO";
+			// 
 			// openFileDialog1
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
+			// panel1
+			// 
+			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(72, 0);
+			this->panel1->TabIndex = 6;
 			// 
 			// mainForm
 			// 
@@ -2466,6 +2513,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			this->panelBtProfile->ResumeLayout(false);
 			this->panelLogo->ResumeLayout(false);
 			this->panelMain->ResumeLayout(false);
+			this->panelMain->PerformLayout();
 			this->panelCheckIn->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCheckIn))->EndInit();
 			this->panelScore->ResumeLayout(false);
@@ -2794,6 +2842,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			{
 				if (u[i].id == si[j].id)
 				{
+					if (u[i].pass == "" && si[j].dob.length() > 6) u[i].pass = si[j].dob.erase(2, 1).erase(4, 1);
 					if (si[j].cls == "Lecturer" || si[j].cls == "Staff")
 					{
 						f2 << endl
@@ -2852,7 +2901,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 							f2 << si[j].dob << endl
 							<< si[j].cls;
 						else
-							f2 << si[j].dob.erase(4, 1).erase(6, 1) << endl
+							f2 << si[j].dob.erase(2, 1).erase(4, 1) << endl
 							<< si[j].cls;
 					}
 					j++;
@@ -2915,7 +2964,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 						f4 << endl
 							<< tmp;
 						f4 << endl
-							<< s2.erase(4, 1).erase(6, 1);
+							<< s2.erase(2, 1).erase(4, 1);
 						getline(f2, s2, '\n');
 						f3 << endl
 							<< s2;
@@ -2936,7 +2985,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 					{
 						if (i1)
 						{
-							f3.open("general\\semester\\schedule\\" + s5 + "-hk1-schedule.txt");
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk1-schedule.txt", ios::app);
 							i1 = 0;
 						}
 						else
@@ -2986,7 +3035,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 					{
 						if (i2)
 						{
-							f3.open("general\\semester\\schedule\\" + s5 + "-hk2-schedule.txt");
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk2-schedule.txt", ios::app);
 							i2 = 0;
 						}
 						else
@@ -3036,7 +3085,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 					{
 						if (i3)
 						{
-							f3.open("general\\semester\\schedule\\" + s5 + "-hk3-schedule.txt");
+							f3.open("general\\semester\\schedule\\" + s5 + "-hk3-schedule.txt", ios::app);
 							i3 = 0;
 						}
 						else
@@ -3123,7 +3172,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			}
 			f1.close();
 			f4.close();
-			if (c) reloadUserLogin();
+			reloadUserLogin();
 		}
 		//xong
 #pragma region Login & Profile
@@ -3159,6 +3208,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 					f.close();
 					user_class = u->cls;
 					user_id = u->userid;
+					label16->Text = u->fullName;
 					return true;
 				}
 			}
@@ -3192,9 +3242,9 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			{
 				btClass->Visible = false;
 				btLecturer->Visible = false;
+				btImport->Visible = false;
 				if (user > 2)
 				{
-					btImport->Visible = false;
 					btCourse->Visible = false;
 					btCheckIn->Visible = true;
 					btScore->Visible = true;
@@ -3497,6 +3547,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		if (user < 2)
 		{
 			dgvAY->Visible = true;
+			dgvCourseList->ReadOnly = false;
 			dgvCourseList->Visible = false;
 			panelCourseHeader->Text = "Academic years";
 			dgvAYload();
@@ -3505,6 +3556,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		}
 		else
 		{
+			dgvCourseList->ReadOnly = true;
 			dgvCourseList->Visible = true;
 			dgvAY->Visible = false;
 			panelCourseHeader->Text = "2019-2020 Semester II";
@@ -3853,7 +3905,13 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 #pragma endregion
 		   static bool cmp3(att& ar1, att& ar2)
 		   {
-			   return ar1.date < ar2.date;
+			   if (ar1.date.substr(6, 4) == ar2.date.substr(6, 4))
+			   {
+				   if (ar1.date.substr(3, 2) == ar2.date.substr(3, 2))
+					   return ar1.date.substr(0, 2) == ar2.date.substr(0, 2);
+				   else return ar1.date.substr(3, 2) < ar2.date.substr(3, 2);
+			   }
+			   return ar1.date.substr(6, 4) < ar2.date.substr(6, 4);
 		   }
 		   void checkInLoad()
 		   {
@@ -3935,8 +3993,13 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 					   dgvCheckIn->Rows[ar[j].row]->Cells[x - 1]->Style->Alignment = DataGridViewContentAlignment(32);
 					   dgvCheckIn->Rows[ar[j].row]->Cells[x - 1]->Value = "X";
 				   }
-				   else dgvCheckIn->Rows[ar[j].row]->Cells[x - 1]->Value = "";
+				   else dgvCheckIn->Rows[ar[j].row]->Cells[x - 1]->Value = "Checked";
 			   }			   
+			   for (int p = 0; p < dgvCheckIn->RowCount; p++)
+				   for (int q = 0; q < dgvCheckIn->ColumnCount; q++)
+				   {
+					   if (dgvCheckIn->Rows[p]->Cells[q]->Value == nullptr) dgvCheckIn->Rows[p]->Cells[q]->Style->BackColor = Color::LightGray;
+				   }
 			   dgvCheckIn->ClearSelection();
 		   }
 	private: System::Void btCheckIn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -4072,6 +4135,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 				   {
 					   dgvScore->Rows->Add();
 					   dgvScore->Rows[x]->Cells[0]->Value = gcnew String(st.c_str());
+					   dgvScore->Rows[x]->Cells[0]->Style->Alignment = DataGridViewContentAlignment(16);
 					   ifstream fi("general\\semester\\scoreboard\\2019-2020-hk2-" + course_name + "-" + class_name + "-scoreboard.txt");
 					   string si;
 					   String^ tmp;
@@ -4107,13 +4171,49 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 		if (e->X < 50) panelMenu->Visible = true;
 		if (e->X > 50) panelMenu->Visible = false;
 	}
+		   void copyFile(string& s)
+		   {
+			   ifstream fi(s, ios::binary);
+			   string st;
+			   if (fi.is_open())
+			   {
+				   for (int i = s.length() - 1; i >=0; i--)
+					   if (s[i] == '\\')
+					   {
+						   st = s.substr(i + 1, s.length() - i + 1);
+						   break;
+					   }
+				   ofstream fo("import\\" + st, ios::binary);
+				   if (!fo.is_open())
+				   {
+					   MessageBox::Show(this, "CAN NOT IMPORT", "WARNING!", MessageBoxButtons::OK);
+					   return;
+				   }
+				   fo << fi.rdbuf();
+				   fo.close();
+				   fi.close();
+				   MessageBox::Show(this, "IMPORTED SUCCESSFULLY!", "NOTIFICATION", MessageBoxButtons::OK);
+				   importData();
+				   File::Delete("import\\" + gcnew String(st.c_str()));
+			   }		
+			   else
+				   MessageBox::Show(this, "IMPORTED UNSUCCESSFULLY!", "WARNING!", MessageBoxButtons::OK);
+		   }
 	private: System::Void btImport_Click(System::Object^ sender, System::EventArgs^ e) {
-		importData();
-		MessageBox::Show(this, "IMPORT SUCCESS ", "NOTIFICATION", MessageBoxButtons::OK);
+		//importData();
+		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+		openFileDialog1->FileName = "";
+		openFileDialog1->RestoreDirectory = true;
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			string file_path = msclr::interop::marshal_as<std::string>(openFileDialog1->FileName->ToString());
+			copyFile(file_path);
+		}
 	}
 
 	public: String^ user_class, ^ user_id;
-		  /*
+		  
 				void stot(string& s, tm*& t)
 				{
 					t->tm_year = stoi(s.substr(6, 4)) - 1900;
@@ -4184,9 +4284,9 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 							f2.close();
 						}
 					}
-				}*/
+				}
 	private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*time_t t = time(0);
+		time_t t = time(0);
 		tm* now = new tm, * t1 = new tm, * t2 = new tm;
 		now = localtime(&t);
 		ifstream f1;
@@ -4238,7 +4338,7 @@ private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 			}
 		}
 		if (!c) MessageBox::Show(this, "CHECK-IN NOT SUCCESSFULLY!", "WARNING", MessageBoxButtons::OK);
-		f1.close();*/
+		f1.close();
 	}
 	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
 		panelLecturer->Visible = false;

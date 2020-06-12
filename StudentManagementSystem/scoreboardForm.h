@@ -40,6 +40,8 @@ namespace StudentManagementSystem {
 	private: System::Windows::Forms::ToolStripMenuItem^ exportToCSVFileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ importFromCSVFileToolStripMenuItem;
 	public: String^ classname, ^course_path;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	public:
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -94,6 +96,7 @@ namespace StudentManagementSystem {
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->exportToCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->importFromCSVFileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvScore))->BeginInit();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -212,6 +215,10 @@ namespace StudentManagementSystem {
 			this->importFromCSVFileToolStripMenuItem->Text = L"Import from CSV file";
 			this->importFromCSVFileToolStripMenuItem->Click += gcnew System::EventHandler(this, &scoreboardForm::importFromCSVFileToolStripMenuItem_Click);
 			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
 			// scoreboardForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -325,7 +332,40 @@ namespace StudentManagementSystem {
 		}
 		f.close();
 	}
+		   void copyFile(string& s)
+		   {
+			   ifstream fi(s, ios::binary);
+			   string st;
+			   if (fi.is_open())
+			   {
+				   for (int i = s.length() - 1; i >= 0; i--)
+					   if (s[i] == '\\')
+					   {
+						   st = s.substr(i + 1, s.length() - i + 1);
+						   break;
+					   }
+				   ofstream fo("import\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.csv", ios::binary);
+				   if (!fo.is_open())
+				   {
+					   return;
+				   }
+				   fo << fi.rdbuf();
+				   fo.close();
+				   fi.close();
+			   }
+			   else
+				   MessageBox::Show(this, "IMPORTED UNSUCCESSFULLY!", "WARNING!", MessageBoxButtons::OK);
+		   }
 	private: System::Void importFromCSVFileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		openFileDialog1->InitialDirectory = "c:\\";
+		openFileDialog1->Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+		openFileDialog1->FileName = "";
+		openFileDialog1->RestoreDirectory = true;
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			string file_path = msclr::interop::marshal_as<std::string>(openFileDialog1->FileName->ToString());
+			copyFile(file_path);
+		}
 		ifstream fi("import\\" + msclr::interop::marshal_as<std::string>(course_path->ToString() + classname->ToString()) + "-scoreboard.csv");
 		if (!fi.is_open())
 		{
@@ -357,7 +397,7 @@ namespace StudentManagementSystem {
 			fo.close();
 			dgvScoreLoad();
 			MessageBox::Show(this, "IMPORT COMPLETED!", "", MessageBoxButtons::OK);
-
+			File::Delete("import\\" +course_path->ToString() + classname->ToString() + "-scoreboard.csv");
 		}
 	}
 };

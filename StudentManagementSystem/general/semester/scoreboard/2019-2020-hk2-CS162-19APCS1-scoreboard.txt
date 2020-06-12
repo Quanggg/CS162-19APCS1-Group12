@@ -1,15 +1,29 @@
 
 1
-19127001
-le chau nhat quang
-8
-8
-9.5
-9.0
-2
-19125116
-le chau nhat quan
-8
-8
+19125021
+Nguyen Thanh Dat
 10
-9.0
+10
+10
+10
+2
+19125024
+Mai Quoc Khanh
+10
+10
+10
+10
+3
+19125034
+Cao Thien Tri
+10
+10
+10
+10
+4
+19125036
+Truong Hoang Vu
+10
+10
+10
+0
